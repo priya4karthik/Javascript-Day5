@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Day5</title>
+    <style>
+        .taskstyle{
+            font-size: 24px;
+            color: white;
+            background-color: #4CAF50;
+            padding: 15px;
+            width: fit-content;
+            border-radius: 8px;
+            font-family: Arial, sans-serif;
+            margin: 1cm;
+        }
+        h2{
+             font-family: "Arial", sans-serif;
+            font-size: 28px;
+            color: #7f0fb0;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+          hr {
+            border: 0;
+            height: 3px;
+            
+            background: linear-gradient(to right, #da018a, #2E7D32);
+            margin-left: 0; /* keeps it aligned under the heading */
+            border-radius: 5px;
+        }
+    </style>
+
+</head>
+<body>
+    <h2>Task:1</h2>
+    <div id="task1"class="taskstyle">
+
+    </div>
+    <script>
+        function sayhello()
+        {
+            document.getElementById("task1").innerHTML="Hello World";
+        }
+        sayhello();
+    </script>
+    <hr>
+    <h2>Task:2</h2>
+    <div id="task2" class="taskstyle">
+
+    </div>
+    <script>
+        function cube(num) {
+        return num * num * num;
+    }   
+        document.getElementById("task2").innerText = "Cube: " + cube(10);
+    
+    </script>
+    <hr>
+    <h2> Task 3:</h2>
+    <div id="task3" class="taskstyle"></div>
+    <script>
+        function checkevenodd(num)
+        {
+            if(num%2==0)
+        {
+            document.getElementById("task3").innerHTML= num + " The Number is even";
+
+        }
+        else{
+            Document.getElementById("task3").innerHTML=num+ " The number is Odd";
+        }
+        }
+        checkevenodd(10);
+    </script>
+    <hr>
+    <h2>Task 4:</h2>
+    <div id="task4" class="taskstyle"></div>
+    <script>
+        function factorial(num) {
+    let result = 1;
+    for (let i = 1; i <= num; i++) {
+        result *= i;
+    }
+    return result;
+}
+document.getElementById("task4").innerHTML= "5 Factorial is:" + factorial(5);
+    </script>
+    <hr>
+    <h2>Task5:</h2>
+    <div id="task5" class="taskstyle"></div>
+    <script>
+    function sum(a,b){
+        return a+b;
+
+    }
+    document.getElementById("task5").innerHTML="Sum of 5 & 6 is: "+ sum(5,6);
+    </script>
+    <hr>
+    <h2>Task 6:</h2>
+    <div id="task6" class="taskstyle"></div>
+    <script>
+        function largest(a, b, c) {
+    return Math.max(a, b, c);
+}
+document.getElementById("task6").innerHTML=" The largest among 25,65,78 is: "+ largest(25,65,78);
+    </script>
+    <hr>
+    <h2>Task7: </h2>
+    <div id="task7" class="taskstyle"></div>
+    <script>
+        function isPalindrome(str) {
+        const lower = str.toLowerCase();
+        return lower === lower.split('').reverse().join('');
+        }
+        document.getElementById("task7").innerHTML="Madam is Polindrome " + isPalindrome("Madam");
+    </script>
+    <hr>
+     <h2>Task8: </h2>
+    <div id="task8" class="taskstyle"></div>
+    <script>
+ function celsiusToFahrenheit(celsius) {
+  const fahrenheit = (celsius * 9/5) + 32;
+  return `${celsius}°C = ${fahrenheit}°F`;
+}
+document.getElementById("task8").innerHTML=celsiusToFahrenheit(25);
+
+    </script>
+    <hr>
+
+     <h2>Task9: </h2>
+    <div id="task9" class="taskstyle"></div>
+    <script>
+function simpleInterest(principal, rate, time) {
+  return (principal * rate * time) / 100;
+}
+document.getElementById("task9").innerHTML="Simple Interest of 1000 : " + simpleInterest(1000,5,2);
+    </script>
+    <hr>
+
+     <h2>Task10: </h2>
+    <div id="task10"class="taskstyle"></div>
+    <script>
+function reverseAndDisplayArray(arr) {
+  const reversed = arr.slice().reverse();
+  document.getElementById("task10").innerHTML = reversed.join("<br>");
+}
+
+const myArray = ["Apple", "Banana", "Orange"];
+reverseAndDisplayArray(myArray);
+
+    </script>
+    <hr>
+
+     <h2>Task11: </h2>
+    <div id="task11"class="taskstyle"></div>
+    <script>
+        function countvowels(str){
+            const vowels="aeiouAEIOU";
+            let count=0;
+            for(let char of str){
+                if(vowels.includes(char))
+            {
+                count++;
+            }
+            }
+        return count;
+        }
+        document.getElementById("task11").innerHTML= "Vowels in Welcome Word: "+countvowels("Welcome");
+    </script>
+    <hr>
+
+     <h2>Task12: </h2>
+    <div id="task12"class="taskstyle"></div>
+    <script>
+        const doubleNumbers=arr=> arr.map(num=>num*2);
+        document.getElementById("task12").innerHTML= "Doubles the numbers in an ARRAY[2,4,6]: "+ doubleNumbers([2,4,6]);
+    </script>
+    <hr>
+
+     <h2>Task13: </h2>
+    <div id="task13"class="taskstyle"></div>
+    <script>
+          function callCallback(callback) {
+            const result = callback();  // Call the callback
+            document.getElementById("task13").innerText = result; // Display result
+        }
+
+ function sayHello() {
+            return "Hello, World!";
+        }
+
+        // Call our function with the callback
+        callCallback(sayHello);
+        // document.getElementById("task13").innerHTML=sayHello();
+    </script>
+    <hr>
+
+     <h2>Task14: </h2>
+    <div id="task14"class="taskstyle"></div>
+    <script>
+  function maxOfThree(a, b, c) {
+            let max = a;
+            if (b > max) max = b;
+            if (c > max) max = c;
+            return max;
+        }
+
+        // Example usage
+        const a = 10;
+        const b = 25;
+        const c = 15;
+        const maximum = maxOfThree(a, b, c);
+
+        // Display the result in the HTML element
+        document.getElementById("task14").innerText = "Maximum number Among 10,25,15 is : " + maximum;
+    </script>
+    <hr>
+
+     <h2>Task15: </h2>
+    <div id="task15"class="taskstyle"></div>
+    <script>
+  function isPalindrome(str) {
+            // Remove non-alphanumeric characters and convert to lowercase
+            const cleaned = str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+            // Reverse the cleaned string
+            const reversed = cleaned.split('').reverse().join('');
+            // Check if reversed string matches the original cleaned string
+            return cleaned === reversed;
+        }
+
+        // Example usage
+        const text = "Racecar";
+        const result = isPalindrome(text);
+
+        // Display the result
+        document.getElementById("task15").innerText = 
+            `"${text}" is ${result ? "" : "not "}a palindrome.`;
+    </script>
+    <hr>
+
+     <h2>Task16: </h2>
+    <div id="task16"class="taskstyle"></div>
+    <script>
+   // Function to calculate the area of a circle
+        function circleArea(radius) {
+            return Math.PI * radius * radius;
+        }
+
+        // Example usage
+        const radius = 5;
+        const area = circleArea(radius);
+
+        // Display the result
+        document.getElementById("task16").innerText = 
+            `The area of a circle with radius ${radius} is ${area.toFixed(2)}.`;
+    </script>
+    <hr>
+
+     <h2>Task17: </h2>
+    <div id="task17" class="taskstyle"></div>
+    <script>
+    function capitalizeWords(sentence) {
+            return sentence
+                .split(' ')                     // Split sentence into words
+                .map(word => 
+                    word.charAt(0).toUpperCase() + word.slice(1).toLowerCase() // Capitalize first letter
+                )
+                .join(' ');                     // Join words back into a sentence
+        }
+
+        // Example usage
+        const text1 = "hello world! this is javascript.";
+        const capitalized = capitalizeWords(text1);
+
+        // Display the result
+        document.getElementById("task17").innerText = "Capitalized each word in a Sentence: " +capitalized;
+    </script>
+    <hr>
+
+     <h2>Task18: </h2>
+    <div id="task18"class="taskstyle"></div>
+    <script>
+        // Function to reverse a string
+        function reverseString(str) {
+            return str.split('').reverse().join('');
+        }
+
+        // Example usage
+        const text2 = "Hello, World!";
+        const reversed = reverseString(text2);
+
+        // Display the result
+        document.getElementById("task18").innerText = reversed;
+    </script>
+    <hr>
+
+     <h2>Task19: </h2>
+    <div id="task19" class="taskstyle"></div>
+    <script>
+              function countVowelsAndConsonants(str) {
+            let vowelsCount = 0;
+            let consonantsCount = 0;
+            const vowels = "aeiouAEIOU";
+
+            for (let char of str) {
+                if (/[a-zA-Z]/.test(char)) { // Check if the character is a letter
+                    if (vowels.includes(char)) {
+                        vowelsCount++;
+                    } else {
+                        consonantsCount++;
+                    }
+                }
+            }
+
+            return { vowels: vowelsCount, consonants: consonantsCount };
+        }
+
+        // Example usage
+        const text3 = "Hello, World!";
+        const counts = countVowelsAndConsonants(text3);
+
+        // Display the results
+        document.getElementById("task19").innerText =" Vowels and Consonants count in Hello world Sentence: "+
+            `Vowels: ${counts.vowels}, Consonants: ${counts.consonants}`;
+    </script>
+    <hr>
+
+     <h2>Task20: </h2>
+    <div id="task20"class="taskstyle"></div>
+    <script>
+ // Function to check if a number is prime
+        function isPrime(num) {
+            if (num <= 1) return false; // 0 and 1 are not prime
+            if (num === 2) return true; // 2 is prime
+            if (num % 2 === 0) return false; // Even numbers > 2 are not prime
+
+            // Check for factors from 3 up to the square root of num
+            for (let i = 3; i <= Math.sqrt(num); i += 2) {
+                if (num % i === 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        // Example usage
+        const number = 29;
+        const result20 = isPrime(number);
+
+        // Display the result
+        document.getElementById("task20").innerText = "Checking Prime Number or Not: "+
+            `${number} is ${result20 ? "a prime number" : "not a prime number"}.`;
+    </script>
+    <hr>
+</body>
+</html>

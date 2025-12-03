@@ -1,0 +1,20 @@
+1.Create a function that prints "Hello, World!".  
+2.Write a function that takes a number and returns its cube.  
+3.Write a function to check if a number is even or odd.  
+4.Write a function to find the factorial of a number.  
+5.Create a function to return the sum of two numbers.  
+6.Write a function that returns the largest of three numbers.  
+7.Write a function that checks if a string is a palindrome.  
+8.Create a function to convert Celsius to Fahrenheit.  
+9.Write a function to calculate the simple interest.  
+10.Create a function that reverses an array.  
+11.Write a function that counts the number of vowels in a string.  
+12.Write an arrow function that doubles each number in an array.  
+13.Create a function that takes a callback and calls it.
+14.Create a function to find the maximum of three numbers
+15.Write a function that checks if a string is a palindrome
+16.Create a function to calculate the area of a circle
+17.Write a function that capitalizes the first letter of each word in a sentence
+18.Create a function that returns the reverse of a string
+19.Create a function that counts vowels and consonants in a string
+20.Write a function to check if a number is prime or not
