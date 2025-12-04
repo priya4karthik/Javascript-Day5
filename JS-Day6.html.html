@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+          body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background: #f4f4f4;
+    }
+        h1{
+            text-decoration: underline;
+        }
+        .taskstyle{
+           background: white;
+      padding: 20px;
+      max-width: 450px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      font-size: 1.1rem;
+      color: rgb(43, 128, 30);
+            
+
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: red;">Task No:1</h1>
+    <div id="task1" class="taskstyle"> 
+    <h2 style="color: blueviolet">Array Element:</h2>
+    <p>Names: <span id="output1"></span></p></div>
+    <script>
+        const names=['Banu','priya','sana','sasmi','shini'];
+        document.getElementById("output1").textContent=names.join(" , ");
+    </script>
+    <hr>
+    <h1 style="color: red;">Task No:2</h1>
+    <div id="task2" class="taskstyle"> 
+    <h2 style="color: blueviolet">Array Element(push):</h2>
+    <p>Names: <span id="output2"></span></p></div>
+    <script>
+        
+      names.push("Liya");
+      document.getElementById("output2").textContent=names.join(" , ")
+    </script>
+    <hr>
+    <h1 style="color: red;">Task No:3</h1>
+    <div id="task3" class="taskstyle"> 
+    <h2>Array Element(pop):</h2>
+    <p>Names: <span id="output3"></span></p></div>
+    <script>
+        
+    //   names.push("Liya");
+    names.pop();
+      document.getElementById("output3").textContent=names.join(" , ")
+    </script>
+    <hr>
+    <h1 style="color: red;">Task No:4</h1>
+    <div id="task4" class="taskstyle"> 
+    <h2>Array Element(UpperCase):</h2>
+    <p>Names: <span id="output4"></span></p></div>
+  <script>
+    const uppername = names.map(name => name.toUpperCase());
+    document.getElementById("output4").textContent = uppername.join(", ");
+</script>
+<hr>
+<h1 style="color: red;">Task No:5</h1>
+    <div id="task5" class="taskstyle"> 
+    <h2>Array Element(Name Start with A):</h2>
+    <p>Names: <span id="output5"></span></p></div>
+  <script>
+   names.push('Anitha','Anu');
+   const aNames=names.filter(name => name.startsWith('A'));
+//    document.getElementById("output5").textContent = names.join(", ");
+    document.getElementById("output5").textContent = aNames.join(", ");
+</script>
+<hr>
+<h1 style="color: red;">Task No:6</h1>
+    <div id="task6" class="taskstyle"> 
+    <h2>Array Element(print each name):</h2>
+    <p>Names:<br> <span id="output6"></span></p></div>
+  <script>
+  
+    let result="";
+    names.forEach(name => {result+=name + "<br>";});
+    document.getElementById("output6").innerHTML = result.trim();
+</script>
+<hr>
+<h1 style="color: red;">Task No:7</h1>
+    <div id="task7" class="taskstyle"> 
+    <h2>Book Object</h2>
+    <p>Title: <span id="title"></span></p>
+    <p>Author: <span id="author"></span></p>
+    <p>Price:$ <span id="price"></span></p>
+
+</div>
+  <script>
+  
+     const book = {
+            title: "The Great Gatsby",
+            author: "F. Scott Fitzgerald",
+            price: 15.99
+        };
+
+        // Display the book properties in HTML
+        document.getElementById("title").textContent = book.title;
+        document.getElementById("author").textContent = book.author;
+        document.getElementById("price").textContent = book.price;
+</script>
+<hr>
+<h1 style="color: red;">Task No:8</h1>
+    <div id="task8" class="taskstyle"> 
+    <h2>Book Properties</h2>
+     <p>Properties: <span id="bookKeys"></span></p>
+
+</div>
+  <script>
+      const book1 = {
+        title: "The Great Gatsby",
+        author: "F. Scott Fitzgerald",
+        price: 15.99
+    };
+
+    // Get all keys of the book object
+    const keys = Object.keys(book1);
+document.getElementById("bookKeys").textContent = keys.join(", ");
+    </script>
+  <hr>
+  <h1 style="color: red;">Task No:9</h1>
+    <div id="task9" class="taskstyle"> 
+    <h2>Book Values</h2>
+     <p>Values: <span id="bookvalues"></span></p>
+
+</div>
+  <script>
+      const book2 = {
+        title: "The Great Gatsby",
+        author: "F. Scott Fitzgerald",
+        price: 15.99
+    };
+
+    // Get all keys of the book object
+    const values = Object.values(book2);
+document.getElementById("bookvalues").textContent = values.join(", ");
+    </script>
+    <hr>
+    <h1 style="color: red;">Task No:10</h1>
+    <div id="task10" class="taskstyle"> 
+ <h2>Book Details with Genre:</h2>
+    <p>Title: <span id="titles"></span></p>
+    <p>Author: <span id="authors"></span></p>
+    <p>Price: $<span id="prices"></span></p>
+    <p>Genre: <span id="genres"></span></p>
+</div>
+  <script>
+       const books = {
+        title: "The Great Gatsby",
+        author: "F. Scott Fitzgerald",
+        price: 15.99
+    };
+     books.genre = "Classic Literature";
+      document.getElementById("titles").textContent = books.title;
+    document.getElementById("authors").textContent = books.author;
+    document.getElementById("prices").textContent = books.price;
+    document.getElementById("genres").textContent = books.genre;
+  </script>
+<hr>
+ <h1 style="color: red;">Task No:11</h1>
+    <div id="task11" class="taskstyle"> 
+ <h2>Book Details After Deleting Price:</h2>
+    <p>Title: <span id="titles1"></span></p>
+    <p>Author: <span id="authors1"></span></p>
+    <p>Price: $<span id="prices1"></span></p>
+    <p>Genre: <span id="genres1"></span></p>
+</div>
+  <script>
+     const books1 = {
+        title: "The Great Gatsby",
+        author: "F. Scott Fitzgerald",
+        price: 15.99,
+        genre: "Classic Literature"
+    };
+    delete books1.price;
+    
+    // Display book details
+    document.getElementById("titles1").textContent = books1.title;
+    document.getElementById("authors1").textContent = books1.author;
+    
+    // Check if price exists before displaying
+    document.getElementById("prices1").textContent = books1.price !== undefined ? "$" + books1.price : "N/A";
+
+    document.getElementById("genres1").textContent = books1.genre;
+
+  </script>
+  <hr>
+  <h1 style="color: red;">Task No:12</h1>
+    <div id="task12" class="taskstyle"> 
+ <h2>Book Details with Publisher:</h2>
+    
+    <p>Title: <span id="title2"></span></p>
+    <p>Author: <span id="author2"></span></p>
+    <p>Genre: <span id="genre2"></span></p>
+    <p>Publisher: <span id="publisher2"></span></p>
+    <p>Year: <span id="year2"></span></p>
+</div>
+  <script>
+    // Original book object
+    const book3 = {
+        title: "The Great Gatsby",
+        author: "F. Scott Fitzgerald",
+        genre: "Classic Literature"
+    };
+
+    // Publisher object
+    const publisher = {
+        publisher: "Scribner",
+        year: 1925
+    };
+
+    // Merge publisher into book
+    Object.assign(book3, publisher);
+    // Alternatively, you could use: const mergedBook = {...book, ...publisher};
+
+    // Display book details
+    document.getElementById("title2").textContent = book3.title;
+    document.getElementById("author2").textContent = book3.author;
+    document.getElementById("genre2").textContent = book3.genre;
+    document.getElementById("publisher2").textContent = book3.publisher;
+    document.getElementById("year2").textContent = book3.year;
+  </script>
+  <hr>
+ <h1 style="color: red;">Task No:13</h1>
+    <div id="task13" class="taskstyle"> 
+ <h2>Book as a key value pairs:</h2>
+ <ul id="bookentries"></ul>
+</div>
+  <script>
+      const book4 = {
+        title: "The Great Gatsby",
+        author: "F. Scott Fitzgerald",
+        genre: "Classic Literature",
+        publisher: "Scribner",
+        year: 1925
+    };
+
+    // Convert book object into array of key-value pairs
+    const entries = Object.entries(book4); // [["title", "The Great Gatsby"], ["author", "F. Scott Fitzgerald"], ...]
+
+    // Display as a list
+    const ul = document.getElementById("bookentries");
+    entries.forEach(([key, value]) => {
+        const li = document.createElement("li");
+        li.textContent = `${key}: ${value}`;
+        ul.appendChild(li);
+    });
+  </script>
+  <hr>
+  <h1 style="color: red;">Task No: 14</h1>
+<div id="oddNumbersTask" class="taskstyle"> 
+    <h2>Odd Numbers:</h2>
+    <p><span id="oddNumbers"></span></p>
+</div>
+
+<script>
+    // Array of 10 numbers
+    const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+    // Filter only odd numbers
+    const oddNumbers = numbers.filter(num => num % 2 !== 0);
+
+    // Display odd numbers
+    document.getElementById("oddNumbers").textContent = oddNumbers.join(", ");
+</script>
+ <hr>
+ <h1 style="color: red">Task No:15</h1>
+<div id="scoresTask" class="taskstyle"> 
+    <h2>Student Scores (Descending):</h2>
+    <p><span id="sortedScores"></span></p>
+</div>
+
+<script>
+    // Array of student scores
+    const scores = [85, 42, 97, 73, 66, 91, 58, 79, 88, 100];
+
+    // Sort in descending order
+    scores.sort((a, b) => b - a);
+
+    // Display sorted scores
+    document.getElementById("sortedScores").textContent = scores.join(", ");
+</script>
+
+</body>
+</html>
