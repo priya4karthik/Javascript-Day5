@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            /* background:
+  radial-gradient(circle, #ff6f61 20%, transparent 21%) 0 0 / 50px 50px,
+  radial-gradient(circle, #6b5b95 20%, transparent 21%) 25px 25px / 50px 50px; */
+            /* background:
+  radial-gradient(circle, #aaa 10%, transparent 11%) 0 0 / 20px 20px; */
+            background:
+                radial-gradient(circle, rgba(255, 111, 97, 0.5) 20%, transparent 21%) 0 0 / 50px 50px,
+                radial-gradient(circle, rgba(107, 91, 149, 0.5) 20%, transparent 21%) 25px 25px / 50px 50px;
+
+
+        }
+
+        h1 {
+            text-decoration: underline;
+        }
+
+        .taskstyle {
+            background: white;
+            padding: 15px;
+            max-width: 450px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            font-size: 1.1rem;
+            color: rgb(130, 8, 152);
+
+
+        }
+
+        hr {
+            border: 3px solid white;
+            border-color: orange;
+        }
+    </style>
+
+<body>
+    <h1 style="color: rgb(28, 53, 137); background-color: aliceblue; display: inline;">Task No:1</h1>
+    <div class="taskstyle">
+        <h2>Convert to Uppercase</h2>
+        <p>Result: <span id="result"></span></p>
+    </div>
+
+    <script>
+        const text = "javascript";
+        const upper = text.toUpperCase();
+
+        document.getElementById("result").textContent = upper;
+    </script>
+    <hr>
+    <h1 style="color: rgb(28, 53, 137); background-color: aliceblue; display: inline;">Task No:2</h1>
+    <div class="taskstyle">
+        <h2>Convert to Lowercase</h2>
+        <p>Result: <span id="result1"></span></p>
+    </div>
+
+    <script>
+        const text1 = "HELLO WORLD";
+        const lower = text1.toLowerCase();
+        document.getElementById("result1").textContent = lower;
+    </script>
+    <hr>
+    <h1 style="color: rgb(28, 53, 137); background-color: aliceblue; display: inline;">Task No:3</h1>
+    <div class="taskstyle">
+        <h2>Extract Using slice()</h2>
+        <p>Result: <span id="sliceOutput"></span></p>
+    </div>
+    <script>
+        const text2 = "JavaScript";
+
+        // Extract "Script" → starts at index 4
+        const result = text2.slice(4);
+
+        document.getElementById("sliceOutput").textContent = result;
+    </script>
+    <hr>
+    <h1 style="color: rgb(28, 53, 137); background-color: aliceblue; display: inline;">Task No:4</h1>
+    <div class="taskstyle">
+        <h2>Replace Text</h2>
+        <p>Result: <span id="replaceOutput"></span></p>
+    </div>
+
+    <script>
+        const sentence = "This is a bad day";
+
+        // Replace "bad" with "good"
+        const updatedSentence = sentence.replace("bad", "good");
+
+        document.getElementById("replaceOutput").textContent = updatedSentence;
+    </script>
+    <hr>
+    <h1 style="color: rgb(28, 53, 137); background-color: aliceblue; display: inline;">Task No:5</h1>
+    <div class="taskstyle">
+        <h2>Check Substring</h2>
+        <p>Sentence:<span id="sentence"></span></p>
+        <p>Result(Check coding word is present): <span id="checkOutput"></span></p>
+    </div>
+    <script>
+        const text5 = "I love Coding!";
+        const word = "Coding";
+
+        // Check if "Coding" is present
+        const isPresent = text5.includes(word);
+        document.getElementById("sentence").textContent = text5;
+        document.getElementById("checkOutput").textContent = isPresent;
+    </script>
+    <hr>
+    <h1 style="color: rgb(28, 53, 137); background-color: aliceblue; display: inline;">Task No:6</h1>
+    <div class="taskstyle">
+        <h2>Find Position</h2>
+        <p>Sentence: <span id="sentence6"></span></p>
+        <p>Result(Position of 'World'): <span id="positionOutput"></span></p>
+    </div>
+    <script>
+        const text6 = "Hello world!";
+        const word6 = "world";
+
+        // Find position
+        const position = text6.indexOf(word6);
+        document.getElementById("sentence6").textContent = text6;
+        document.getElementById("positionOutput").textContent = position;
+    </script>
+
+    <hr>
+
+    <h1 style="color: rgb(28, 53, 137); background-color: aliceblue; display: inline;">Task No:7</h1>
+    <div class="taskstyle">
+        <h2>Remove Extra Spaces</h2>
+        <p>Original: "<span id="originalText"> Trim me </span>"</p>
+        <p>Cleaned: "<span id="cleanOutput"></span>"</p>
+    </div>
+    <script>
+        const text7 = document.getElementById("originalText").textContent;
+
+        // Remove leading/trailing spaces and extra spaces between words
+        const cleaned = text7.trim().replace(/\s/g, "");
+
+        document.getElementById("cleanOutput").textContent = cleaned;
+    </script>
+    <hr>
+    <h1 style="color: rgb(28, 53, 137); background-color: aliceblue; display: inline;">Task No:8</h1>
+    <div class="taskstyle">
+        <h2>count Characters</h2>
+        <p>Number of characters: <span id="charCount"></span></p>
+    </div>
+    <script>
+        const text8 = "programming";
+        const count8 = text8.length;
+        document.getElementById("charCount").textContent = count8;
+    </script>
+    <hr>
+    <h1 style="color: rgb(28, 53, 137); background-color: aliceblue; display: inline;">Task No:9</h1>
+    <div class="taskstyle">
+        <h2>check startwith</h2>
+        <p>Does apple start with a: <span id="startwith"></span></p>
+    </div>
+
+    <script>
+        const word9 = "apple";
+        const result9 = word9.startsWith("a");
+        document.getElementById("startwith").textContent = result9;
+    </script>
+    <hr>
+    <h1 style="color: rgb(28, 53, 137); background-color: aliceblue; display: inline;">Task No:10</h1>
+    <div class="taskstyle">
+        <h2>Split String into Array</h2>
+        <p>Result: <span id="splitOutput"></span></p>
+    </div>
+    <script>
+        const fruits = "banana,apple,orange";
+        const farray = fruits.split(",");
+        document.getElementById("splitOutput").textContent = farray.join(" | ");
+    </script>
+    <hr>
+    <h1 style="color: rgb(28, 53, 137); background-color: aliceblue; display: inline;">Task No:11</h1>
+    <div class="taskstyle">
+        <h2>Repeat String</h2>
+        <p>Result: <span id="repeatOutput"></span></p>
+    </div>
+    <script>
+        const text11 = "JS";
+        const result11 = text11.repeat(3);
+
+        document.getElementById("repeatOutput").innerHTML = result11;
+    </script>
+    <hr>
+    <h1 style="color: rgb(28, 53, 137); background-color: aliceblue; display: inline;">Task No:12</h1>
+    <div class="taskstyle">
+        <h2>Concatenate Strings</h2>
+        <p>Result: <span id="concatOutput"></span></p>
+    </div>
+    <script>
+        const str1 = "web";
+        const str2 = "Development";
+        const result12 = str1 + str2;
+        document.getElementById("concatOutput").textContent = result12
+    </script>
+    <hr>
+    <h1 style="color: rgb(28, 53, 137); background-color: aliceblue; display: inline;">Task No:13</h1>
+    <div class="taskstyle">
+        <h2>Validate String Length</h2>
+        <p>Username: <span id="username">user123</span></p>
+        <p>Validation: <span id="validationResult"></span></p>
+    </div>
+    <script>
+        const username = "user123";
+        const isValid = username.length >= 5;
+        document.getElementById("validationResult").textContent = isValid ? "Valid(At least 5 characters)" : "Invalid(Not 5 characters)";
+    </script>
+    <hr>
+    <h1 style="color: rgb(28, 53, 137); background-color: aliceblue; display: inline;">Task No:14</h1>
+    <div class="taskstyle">
+        <h2> Checking Startwith</h2>
+        <p>String: <span id="str">Hello world </span></p>
+        <p>Result: <span id="startwithResult"></span></p>
+    </div>
+    <script>
+        const str14 = "Hello world";
+        const substring14 = "Hello";
+        const result14 = str14.startsWith(substring14);
+        document.getElementById("startwithResult").textContent = result14 ? "Yes,The string start with substring" : "No, The string doesn't start with substring";
+
+    </script>
+    <hr>
+    <h1 style="color: rgb(28, 53, 137); background-color: aliceblue; display: inline;">Task No:15</h1>
+    <div class="taskstyle">
+        <h2>Checking Endwith</h2>
+        <p>String:<span id="str15">Hello World</span></p>
+        <p>Result:<span id="EndwithResult"></span></p>
+    </div>
+    <script>
+        const str15 = "hello world";
+        const substrng15 = "world";
+        const result15 = str15.endsWith(substrng15);
+        document.getElementById("EndwithResult").textContent = result15 ? "Yes,The string ends with substring" : "No,The string doesn't end with substring";
+    </script>
+    <hr>
+    <h1 style="color: rgb(28, 53, 137); background-color: aliceblue; display: inline;">Task No:16</h1>
+    <div class="taskstyle">
+        <h2>Check if a word exist in a sentence</h2>
+
+        <p>Sentence:<span>Vetri Technology Solutions</span></p>
+        <p>Result:<span id="result16"></span></p>
+    </div>
+    <script>
+        const str16 = "Vetri Technology solutions";
+        const word16 = "Technology";
+        if (str16.toLowerCase().includes(word16.toLowerCase())) {
+            document.getElementById("result16").textContent = "Word Found";
+
+        }
+        else {
+            document.getElementById("result16").textContent = "word not found";
+        }
+
+    </script>
+    <hr>
+    <h1 style="color: rgb(28, 53, 137); background-color: aliceblue; display: inline;">Task No:17</h1>
+    <div class="taskstyle">
+        <h2>Name to Initials</h2>
+
+        <p>Name:<span id="name17">John Doe</span></p>
+        <p>Result:<span id="result17"></span></p>
+    </div>
+    <script>
+        const name17 = "John Doe";
+
+        const initials = name17
+            .trim()
+            .split(/\s+/)
+            .map(part => part[0].toUpperCase() + ".")
+            .join("");
+        document.getElementById("result17").textContent = initials;
+    </script>
+    <hr>
+<h1 style="color: rgb(28, 53, 137); background-color: aliceblue; display: inline;">Task No:18</h1>
+    <div class="taskstyle">
+        <h2>CountingLetters</h2>
+
+        <p>String:<span id="str18">Hello world</span></p>
+        <p>Result:<span id="result18"></span></p>
+    </div>
+    <script>
+        function countLetter(str18, letter18) {
+  let count = 0;
+  letter18 = letter18.toLowerCase();
+  str18 = str18.toLowerCase();
+
+  for (let char of str18) {
+    if (char === letter18) count++;
+  }
+  return count;
+}
+
+// console.log(countLetter("Hello World", "l")); 
+document.getElementById("result18").textContent=countLetter("Hello world","l");
+    </script>
+    <hr>
+    <h1 style="color: rgb(28, 53, 137); background-color: aliceblue; display: inline;">Task No:19</h1>
+    <div class="taskstyle">
+        <h2>Longest Word</h2>
+
+        <p>String:<span id="str19">Good Morning Everone</span></p>
+        <p>Result:<span id="result19"></span></p>
+    </div>
+    <script>
+        function longestWord(sentence19) {
+  return sentence19
+    .trim()
+    .split(/\s+/)
+    .reduce((longest, current) =>
+      current.length > longest.length ? current : longest
+    );
+}
+document.getElementById("result19").textContent=longestWord("Good Morning Everyone")
+    </script>
+    <hr>
+    <h1 style="color: rgb(28, 53, 137); background-color: aliceblue; display: inline;">Task No:20</h1>
+    <div class="taskstyle">
+        <h2>Capitalize First Word</h2>
+
+        <p>String:<span id="str20">good morning everone</span></p>
+        <p>Result:<span id="result20"></span></p>
+    </div>
+    <script>
+        function capitalizeWords(sentence20) {
+  return sentence20
+    .toLowerCase()
+    .split(" ")
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
+document.getElementById("result20").textContent=capitalizeWords("good morning everyone");
+
+    </script>
+</body>
+
+</html>
