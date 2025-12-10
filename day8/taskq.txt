@@ -1,0 +1,20 @@
+1.Change the background color of the page using a button click.  
+2.Change the text of a paragraph using a button.  
+3.Hide and show an element using a toggle button.  
+4.Create a new list item dynamically.  
+5.Remove a specific item from a list.  
+6.Change the font size of a paragraph when a button is clicked.  
+7.Change the text color of all paragraphs using querySelectorAll().
+8.Add a border to an image when hovered.  
+9.Display an alert message when a button is clicked.  
+10.Toggle between two different text contents.  
+11.Store and retrieve a username using LocalStorage.  
+12.Save and load dark/light mode settings using LocalStorage.  
+13.Implement a shopping cart that remembers selected items using  LocalStorage.  
+14.Store and retrieve session-based login status using SessionStorage.
+15.Save form input values temporarily in SessionStorage and restore on page reload.  
+16.Store last visited page in LocalStorage and display it on the next visit.  
+17.Implement a simple click counter using LocalStorage.  
+18.Save and retrieve a to-do list using LocalStorage with JSON.  
+19.Convert a JavaScript object to a JSON string using JSON.stringify() and store it.  
+20.Convert a JSON string back to a JavaScript object using JSON.parse() and use it.

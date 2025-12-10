@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS Day-8</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        /* Styled button */
+        .color-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .color-btn:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+        ul {
+    list-style-position: inside;   /* keeps bullets aligned with text */
+    text-align: center;            /* centers the list items */
+    padding: 0;                    /* optional */
+    margin: 0 auto;                /* centers the UL block */
+}
+input,textarea {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus, textarea:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+ body {
+        transition: background 0.3s, color 0.3s;
+        background: #ffffff;
+        color: #000000;
+        font-family: sans-serif;
+    }
+
+    body.dark {
+        background: #121212;
+        color: #ffffff;
+    }
+
+    #themeToggle {
+        padding: 10px 20px;
+        margin-top: 20px;
+        cursor: pointer;
+    }
+     #dashboard { display: none; }
+     /* #output { margin-top: 20px; padding: 10px; border: 1px solid #ccc; width: 320px; } */
+     a { display: block; margin: 5px 0; }
+    </style>
+</head>
+
+<body id="page">
+    <h1 style="color: red;">Task No:1</h1>
+    <h2 style="color:rebeccapurple">Change Background Color</h2>
+    <button class="color-btn" onclick="changeColor()">Change Background</button>
+<hr><hr>
+ <h1 style="color: red;">Task No:2</h1>
+    <h2 style="color:rebeccapurple">Change Text</h2>
+    <p id="myParagraph">This is the original text.</p>
+
+    <button class="color-btn" onclick="changeText()">Change Text</button>
+    <hr><hr>
+<h1 style="color: red;">Task No:3</h1>
+    <h2 style="color:rebeccapurple">Toggle Element</h2>
+    <p id="content">This is the element you can hide or show.</p>
+
+    <button  id="toggleBtn" class="color-btn" onclick="toggleElement()">Hide</button>
+    <hr><hr>
+    <h1 style="color: red;">Task No:4</h1>
+    <h2 style="color:rebeccapurple">Add List Item</h2>
+  <ul id="myList">
+        <li>Item 1</li>
+        <li>Item 2</li>
+    </ul>
+
+    <button class="color-btn" onclick="addItem()">Add Item</button>
+    <hr><hr>
+    <h1 style="color: red;">Task No:5</h1>
+    <h2 style="color:rebeccapurple">Remove List Item</h2>
+  
+<ul id="myList1">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>New Item</li>
+</ul>
+
+<button class="color-btn" onclick="removeItem('Item 2')">Remove Item 2</button>
+    <hr><hr>
+     <h1 style="color: red;">Task No:6</h1>
+    <h2 style="color:rebeccapurple">Change Font Size</h2>
+  
+<p id="text">This is a paragraph whose font size will change.</p>
+
+<button class="color-btn"onclick="changeSize()">Change Font Size</button>
+    <hr><hr>
+     
+ <h1 style="color: red;">Task No:7</h1>
+    <h2 style="color:rebeccapurple">Change color</h2>
+  
+
+<p>Paragraph 1</p>
+<p>Paragraph 2</p>
+<p>Paragraph 3</p>
+
+<button class="color-btn" onclick="changeColor()">Change Text Color</button>
+    <hr><hr>
+<h1 style="color: red;">Task No:8</h1>
+    <h2 style="color:rebeccapurple">Image Hover Border</h2>
+  
+<img id="myImage" src="https://img.freepik.com/free-photo/closeup-scarlet-macaw-from-side-view-scarlet-macaw-closeup-head_488145-3540.jpg?semt=ais_hybrid&w=740&q=80" width="300" alt="Example Image">
+
+
+<button class="color-btn">Hover Image</button>
+    <hr><hr>
+
+<h1 style="color: red;">Task No:9</h1>
+    <h2 style="color:rebeccapurple">Button Alert</h2>
+  <button class="color-btn" onclick="showAlert()">Click me</button>
+    <hr><hr>
+    
+<h1 style="color: red;">Task No:10</h1>
+    <h2 style="color:rebeccapurple">Toggle Text</h2>
+  <p id="message">This is the first text.</p>
+
+<button class="color-btn" onclick="toggleText()">Toggle Text</button>
+    <hr><hr>
+        
+<h1 style="color: red;">Task No:11</h1>
+    <h2 style="color:rebeccapurple">LocalStorage Example</h2>
+<input type="text" id="usernameInput" placeholder="Enter username">
+<button class="color-btn" onclick="saveUsername()">Save Username</button>
+<button class="color-btn" onclick="loadUsername()">Load Username</button>
+<p id="displayArea"></p>
+    <hr><hr>
+    <h1 style="color: red;">Task No:12</h1>
+    <h2 style="color:rebeccapurple">Dark / Light Mode Demo</h2>
+<button id="themeToggle">Toggle Theme</button>
+    <hr><hr>
+     <h1 style="color: red;">Task No:13</h1>
+    <h2 style="color:rebeccapurple">Shopping Cart with LocalStorage</h2>
+<div class="item">
+    Item A <button  class="color-btn"onclick="addToCart('Item A')">Add to Cart</button>
+</div><br>
+<div class="item">
+    Item B <button  class="color-btn"onclick="addToCart('Item B')">Add to Cart</button>
+</div><br>
+<div class="item">
+    Item C <button  class="color-btn"onclick="addToCart('Item C')">Add to Cart</button>
+</div>
+<h2>Your Cart</h2>
+<div id="cart"></div>
+    <hr><hr>
+
+ <h1 style="color: red;">Task No:14</h1>
+    <h2 style="color:rebeccapurple">Session Login Example</h2>
+    <!-- Login Form -->
+<div id="loginForm">
+    <input type="text" id="username" placeholder="Username">
+    <button class="color-btn" onclick="login()">Login</button>
+</div>
+
+<!-- Dashboard (visible only when logged in) -->
+<div id="dashboard">
+    <h2>Welcome! You are logged in.</h2>
+    <button class="color-btn" onclick="logout()">Logout</button>
+</div>
+    <hr><hr>
+     <h1 style="color: red;">Task No:15</h1>
+    <h2 style="color:rebeccapurple">Session Form Save ExampleS</h2>
+   <form id="userForm">
+  <input type="text" id="name" placeholder="Name"><br>
+  <input type="email" id="email" placeholder="Email"><br>
+  <textarea id="message" placeholder="Message..." rows="4"></textarea><br>
+  <button class="color-btn" type="button" onclick="clearForm()">Clear Saved Data</button>
+</form>
+
+<div id="output"></div>
+<hr><hr>
+  <h1 style="color: red;">Task No:16</h1>
+    <h2 style="color:rebeccapurple">Last Visited Page Demo</h2>
+    <div id="lastVisited"></div>
+    <a href="page1.html">Go to Page 1</a>
+<a href="page2.html">Go to Page 2</a>
+<a href="page3.html">Go to Page 3</a>
+    <hr><hr>
+ <h1 style="color: red;">Task No:17</h1>
+    <h2 style="color:rebeccapurple">Click Counter</h2>
+    <p>Button clicked <span id="count">0</span> times.</p>
+<button class="color-btn" id="clickBtn">Click Me!</button>
+<button class="color-btn" id="resetBtn">Reset Counter</button>
+<hr><hr>
+ <h1 style="color: red;">Task No:18</h1>
+    <h2 style="color:rebeccapurple">To-Do List with LocalStorage</h2>
+    
+<input type="text" id="todoInput" placeholder="Enter a task">
+<button class="color-btn" id="addBtn">Add</button>
+<button class="color-btn" id="clearBtn">Clear All</button>
+
+<ul id="todoList"></ul>
+<hr><hr>
+
+<h1 style="color: red;">Task No:19</h1>
+    <h2 style="color:rebeccapurple">Store JS Object in LocalStorage</h2>
+    <div id="output1"></div>
+    <hr><hr>
+    
+<h1 style="color: red;">Task No:20</h1>
+    <h2 style="color:rebeccapurple">Using JSON.parse() to Convert JSON String</h2>
+    <div id="output2"></div>
+    <hr><hr>
+    <script>
+        function changeColor() {
+            document.body.style.backgroundColor =
+                '#' + Math.floor(Math.random()*16777215).toString(16);
+        }
+        function changeText() {
+            document.getElementById("myParagraph").innerText =
+                "The text has been changed!";
+        }
+         function toggleElement() {
+            let element = document.getElementById("content");
+            let button = document.getElementById("toggleBtn")
+
+            if (element.style.display === "none") {
+                element.style.display = "block";
+                button.innerText = "Hide";
+            } else {
+                element.style.display = "none";
+                button.innerText = "Show";
+            }
+        }
+            function addItem() {
+            let list = document.getElementById("myList");
+
+            // Create a new list item
+            let newItem = document.createElement("li");
+            newItem.innerText = "New Item";
+
+            // Add it to the list
+            list.appendChild(newItem);
+        }
+
+        function removeItem(text) {
+            let list1 = document.getElementById("myList1");
+            let items = list1.getElementsByTagName("li");
+
+            for (let i = 0; i < items.length; i++) {
+            if (items[i].innerText === text) {
+            list1.removeChild(items[i]);
+            break; // stop after removing the first matching item
+        }
+    }
+}
+function changeSize() {
+    let para = document.getElementById("text");
+    para.style.fontSize = "24px";   // set to any size you want
+}
+function changeColor() {
+    // Select all <p> elements
+    let paragraphs = document.querySelectorAll("p");
+
+    // Loop through and change color
+    paragraphs.forEach(function(p) {
+        p.style.color = "blue";
+    });
+}
+  let img = document.getElementById("myImage");
+// When mouse enters the image
+    img.addEventListener("mouseenter", function() {
+        img.style.border = "3px solid #007BFF"; // add border
+    });
+
+    // When mouse leaves the image
+    img.addEventListener("mouseleave", function() {
+        img.style.border = "3px solid transparent"; // remove border
+    });
+    function showAlert() {
+    alert("Hello! This is an alert message.");
+}
+function toggleText() {
+    let para = document.getElementById("message");
+
+    if (para.innerText === "This is the first text.") {
+        para.innerText = "This is the second text.";
+    } else {
+        para.innerText = "This is the first text.";
+    }
+}
+// Save username
+function saveUsername() {
+    let username = document.getElementById("usernameInput").value;
+    localStorage.setItem("username", username);
+    alert("Username saved!");
+}
+
+// Retrieve username
+function loadUsername() {
+    let savedName = localStorage.getItem("username");
+
+    if (savedName) {
+        document.getElementById("displayArea").innerText =
+            "Saved Username: " + savedName;
+    } else {
+        document.getElementById("displayArea").innerText =
+            "No username found in LocalStorage.";
+    }
+}
+// Load saved theme when the page loads
+window.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "dark") {
+        document.body.classList.add("dark");
+    }
+});
+
+// Toggle theme and save preference
+document.getElementById("themeToggle").addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+
+    // Save the current theme
+    const theme = document.body.classList.contains("dark") ? "dark" : "light";
+    localStorage.setItem("theme", theme);
+});
+let cart = [];
+
+// Load cart from LocalStorage on page load
+window.addEventListener("DOMContentLoaded", () => {
+    const savedCart = localStorage.getItem("cart");
+    if (savedCart) {
+        cart = JSON.parse(savedCart);
+        renderCart();
+    }
+});
+
+// Add item to cart
+function addToCart(item) {
+    cart.push(item);
+    saveCart();
+    renderCart();
+}
+
+// Remove item by index
+function removeItem(index) {
+    cart.splice(index, 1);
+    saveCart();
+    renderCart();
+}
+
+// Save cart to LocalStorage
+function saveCart() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+// Display cart
+function renderCart() {
+    const cartDiv = document.getElementById("cart");
+    cartDiv.innerHTML = "";
+
+    if (cart.length === 0) {
+        cartDiv.innerHTML = "<p>Your cart is empty.</p>";
+        return;
+    }
+
+    cart.forEach((item, index) => {
+        cartDiv.innerHTML += `
+            <div class="cart-item">
+                ${item} 
+                <button class="color-btn" onclick="removeItem(${index})">Remove</button>
+            </div><br>
+        `;
+    });
+}
+
+// Check login status on page load
+window.addEventListener("DOMContentLoaded", () => {
+    const isLoggedIn = sessionStorage.getItem("loggedIn");
+
+    if (isLoggedIn === "true") {
+        showDashboard();
+    } else {
+        showLogin();
+    }
+});
+
+// Login function
+function login() {
+    const username = document.getElementById("username").value;
+
+    if (username.trim() === "") {
+        alert("Enter a username!");
+        return;
+    }
+
+    // Store login status in sessionStorage
+    sessionStorage.setItem("loggedIn", "true");
+    sessionStorage.setItem("username", username);
+
+    showDashboard();
+}
+
+// Logout function
+function logout() {
+    sessionStorage.clear(); // remove all session data
+    showLogin();
+}
+
+// Show dashboard and hide login form
+function showDashboard() {
+    document.getElementById("loginForm").style.display = "none";
+    document.getElementById("dashboard").style.display = "block";
+}
+
+// Show login form and hide dashboard
+function showLogin() {
+    document.getElementById("loginForm").style.display = "block";
+    document.getElementById("dashboard").style.display = "none";
+}
+// Save input values to SessionStorage on input change
+document.querySelectorAll("#userForm input, #userForm textarea").forEach(field => {
+  field.addEventListener("input", () => {
+    sessionStorage.setItem(field.id, field.value);
+    showOutput();
+  });
+});
+
+// Restore values from SessionStorage on page load
+window.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll("#userForm input, #userForm textarea").forEach(field => {
+    const savedValue = sessionStorage.getItem(field.id);
+    if (savedValue !== null) {
+      field.value = savedValue;
+    }
+  });
+  showOutput();
+});
+
+// Clear form + SessionStorage
+function clearForm() {
+  sessionStorage.clear();
+  document.getElementById("userForm").reset();
+  showOutput();
+}
+
+// Show current saved values in output div
+function showOutput() {
+  const name = sessionStorage.getItem("name") || "";
+  const email = sessionStorage.getItem("email") || "";
+  const message = sessionStorage.getItem("message") || "";
+  document.getElementById("output").innerHTML = `
+    <strong>Saved Data:</strong><br>
+    Name: ${name}<br>
+    Email: ${email}<br>
+    Message: ${message}
+  `;
+}
+
+// Display last visited page
+window.addEventListener("DOMContentLoaded", () => {
+    const lastPage = localStorage.getItem("lastVisitedPage");
+    const displayDiv = document.getElementById("lastVisited");
+
+    if (lastPage) {
+        displayDiv.innerHTML = `Your last visited page was: <strong>${lastPage}</strong>`;
+    } else {
+        displayDiv.innerHTML = "This is your first visit!";
+    }
+
+    // Save current page as last visited
+    const currentPage = document.title; // or use window.location.href
+    localStorage.setItem("lastVisitedPage", currentPage);
+});
+// Get references
+const countSpan = document.getElementById("count");
+const clickBtn = document.getElementById("clickBtn");
+const resetBtn = document.getElementById("resetBtn");
+
+// Load saved count from LocalStorage
+let count = parseInt(localStorage.getItem("clickCount")) || 0;
+countSpan.textContent = count;
+
+// Increment count on button click
+clickBtn.addEventListener("click", () => {
+    count++;
+    countSpan.textContent = count;
+    localStorage.setItem("clickCount", count);
+});
+
+// Reset counter
+resetBtn.addEventListener("click", () => {
+    count = 0;
+    countSpan.textContent = count;
+    localStorage.removeItem("clickCount");
+});
+// Initialize todo array
+let todos = [];
+
+// Load todos from LocalStorage
+window.addEventListener("DOMContentLoaded", () => {
+    const savedTodos = localStorage.getItem("todos");
+    if (savedTodos) {
+        todos = JSON.parse(savedTodos);
+    }
+    renderTodos();
+});
+
+// Add new todo
+document.getElementById("addBtn").addEventListener("click", () => {
+    const input = document.getElementById("todoInput");
+    const task = input.value.trim();
+    if (task !== "") {
+        todos.push(task);
+        saveTodos();
+        renderTodos();
+        input.value = "";
+    }
+});
+
+// Clear all todos
+document.getElementById("clearBtn").addEventListener("click", () => {
+    todos = [];
+    saveTodos();
+    renderTodos();
+});
+
+// Save todos to LocalStorage
+function saveTodos() {
+    localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+// Render todos in the list
+function renderTodos() {
+    const list = document.getElementById("todoList");
+    list.innerHTML = "";
+    todos.forEach((task, index) => {
+        const li = document.createElement("li");
+        li.textContent = task;
+
+         // Add a line break
+        const br = document.createElement("br");
+        li.appendChild(br);
+        // Add remove button
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "Remove";
+        removeBtn.classList.add("color-btn"); 
+        removeBtn.addEventListener("click", () => {
+            todos.splice(index, 1);
+            saveTodos();
+            renderTodos();
+        });
+
+        li.appendChild(removeBtn);
+        list.appendChild(li);
+    });
+}
+// Example JavaScript object
+const user = {
+    name: "Alice",
+    age: 25,
+    email: "alice@example.com",
+    hobbies: ["reading", "coding", "traveling"]
+};
+
+// Convert object to JSON string
+const userJSON = JSON.stringify(user);
+
+// Store JSON string in LocalStorage
+localStorage.setItem("user", userJSON);
+
+// Retrieve it later and convert back to JS object
+const storedUserJSON = localStorage.getItem("user");
+const storedUser = JSON.parse(storedUserJSON);
+
+// Display the object on HTML
+const outputDiv = document.getElementById("output1");
+outputDiv.innerHTML = `
+  <p><strong>Name:</strong> ${storedUser.name}</p>
+  <p><strong>Age:</strong> ${storedUser.age}</p>
+  <p><strong>Email:</strong> ${storedUser.email}</p>
+  <p><strong>Hobbies:</strong></p>
+  <ul>
+    ${storedUser.hobbies.map(hobby => `<li>${hobby}</li>`).join('')}
+  </ul>
+`;
+
+// Optional: Display the raw JSON string
+outputDiv.innerHTML += `<h3>Raw JSON String:</h3><pre>${storedUserJSON}</pre>`;
+
+
+// Example JSON string (could come from LocalStorage or an API)
+const userJSON1 = `{
+    "name": "Bob",
+    "age": 30,
+    "email": "bob@example.com",
+    "hobbies": ["gaming", "hiking", "music"]
+}`;
+
+// Convert JSON string back to JavaScript object
+const userObj = JSON.parse(userJSON1);
+
+// Now you can use it like a normal object
+console.log(userObj.name); // Output: Bob
+console.log(userObj.hobbies[1]); // Output: hiking
+
+// Display it on the HTML page
+const outputDiv1 = document.getElementById("output2");
+outputDiv1.innerHTML = `
+  <p><strong>Name:</strong> ${userObj.name}</p>
+  <p><strong>Age:</strong> ${userObj.age}</p>
+  <p><strong>Email:</strong> ${userObj.email}</p>
+  <p><strong>Hobbies:</strong></p>
+  <ul>
+    ${userObj.hobbies.map(hobby => `<li>${hobby}</li>`).join('')}
+  </ul>
+`;
+
+// Optional: Show the raw JSON string
+outputDiv1.innerHTML += `<h3>Raw JSON String:</h3><pre>${userJSON1}</pre>`;
+    </script>
+</body>
+</html>
