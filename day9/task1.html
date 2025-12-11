@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Day-9</title>
+
+    <style>
+        body {
+            /* font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center; */
+            margin: 1cm;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 18px;
+            border: none;
+            background: #007bff;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+               .area {
+            width: 300px;
+            height: 200px;
+            background: rgb(170, 242, 190);
+            border: 2px solid #248e07;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        input {
+            padding: 10px;
+            width: 250px;
+            font-size: 16px;
+        }
+         #coords {
+            font-size: 24px;
+            background: #f0f0f0;
+            padding: 10px 20px;
+            display: inline-block;
+            border-radius: 6px;
+        }
+        
+        form {
+            padding: 20px;
+            background: #f0f0f0;
+            width: 300px;
+            border-radius: 8px;
+        }
+         #count {
+            font-size: 24px;
+            margin-top: 20px;
+            display: block;
+        }
+        
+        #toggleBtn {
+            padding: 12px 24px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        #content {
+            padding: 20px;
+            background-color: #f0f0f0;
+            display: none; /* Initially hidden */
+            border-radius: 6px;
+        }
+           /* Full-screen loader */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+        }
+
+        /* Simple spinning circle */
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 6px solid #ddd;
+            border-top-color: #3498db;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        img {
+            width: 250px;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+             #box {
+            width: 300px;
+            height: 200px;
+            background-color: lightgray;
+            border: 3px solid #149186;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+        }
+
+        #message {
+            margin-top: 30px;
+            font-size: 22px;
+            color: #e41212;
+            font-style: bold;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .success {
+            color: green;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 style="color: slateblue;">Task No:1</h2>
+    <h3 style="color: orangered;">Change button text</h3>
+    <button id="myButton">Click me</button>
+<hr>
+<h2 style="color: slateblue;">Task No:2</h2>
+    <h3 style="color: orangered;">Mouse enter Alert</h3>
+    <div class="area" id="alertArea">
+        Hover here
+    </div>
+    <hr>
+    <h2 style="color: slateblue;">Task No:3</h2>
+    <h3 style="color: orangered;">Detect Enter Key</h3>
+     <input type="text" id="textInput" placeholder="Type something and press Enter">
+    <hr>
+<h2 style="color: slateblue;">Task No:4</h2>
+    <h3 style="color: orangered;"></h3>
+     <button onclick="changeBackground()">Change Background Color</button>
+    <hr>
+    <h2 style="color: slateblue;">Task No:5</h2>
+    <h3 style="color: orangered;">Toggle Password Visibility</h3>
+     <input type="password" id="passwordField" placeholder="Enter password">
+    <button onclick="togglePassword()">Show/Hide</button>
+    <hr>
+     <h2 style="color: slateblue;">Task No:6</h2>
+    <h3 style="color: orangered;">Mouse Coordinates</h3>
+    
+    <div id="coords">X: 0, Y: 0</div>
+    <hr>
+     <h2 style="color: slateblue;">Task No:7</h2>
+    <h3 style="color: orangered;">Prevent Form Submission</h3>
+     <form id="myForm">
+        <input type="text" placeholder="Type something">
+        <button type="submit">Submit</button>
+    </form>
+    <hr>
+     <h2 style="color: slateblue;">Task No:8</h2>
+    <h3 style="color: orangered;">Click Counter</h3>
+     <button onclick="increaseCount()">Click Me</button>
+    <span id="count">Clicks: 0</span>
+    <hr>
+ <h2 style="color: slateblue;">Task No:9</h2>
+    <h3 style="color: orangered;">Click to Disappear</h3>
+<button id="disappearBtn" onclick="hideButton()">Click to Disappear</button>
+    <br>
+     <h2 style="color: slateblue;">Task No:10</h2>
+    <h3 style="color: orangered;">Toggle Visibility</h3>
+     <button id="toggleBtn">Show/Hide Content</button>
+    <div id="content">This content can be toggled!</div>
+    <hr>
+    <h2 style="color: slateblue;">Task No:11</h2>
+    <h3 style="color: orangered;">Play sound on button click</h3>
+
+ <button onclick="playSound()">Play Sound</button>
+
+    <!-- Audio element -->
+    <!-- <audio id="mySound" src="https://www.soundjay.com/button/beep-07.mp3"></audio> -->
+    <hr>
+
+ <h2 style="color: slateblue;">Task No:12</h2>
+    <h3 style="color: orangered;">Loading Animation</h3>
+   <!-- Loader -->
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Page content -->
+    <h2 style="text-align:center; margin-top:150px;">Page Content Loaded</h2>
+    <hr>
+     <h2 style="color: slateblue;">Task No:13</h2>
+    <h3 style="color: orangered;">Change Image</h3>
+    <img id="myImage" src="https://media.istockphoto.com/id/1489566726/photo/leopard-in-sri-lanka.jpg?s=612x612&w=0&k=20&c=kIHqKhwO_JCq94l7yg8zkZuY-v-BbiaaRxr-giy97w4=" alt="Image">
+    <br>
+    <button onclick="changeImage()">Change Image</button>
+    <hr>
+    <h2 style="color: slateblue;">Task No:14</h2>
+    <h3 style="color: orangered;">Double Click Background Change</h3>
+    <button id="dblBtn">Double-Click Me</button>
+    <hr>
+<h2 style="color: slateblue;">Task No:15</h2>
+    <h3 style="color: orangered;">Detect Enter Key</h3>
+     <input type="text" id="textInput15" placeholder="Type something and press Enter">
+    <hr>
+    <h2 style="color: slateblue;">Task No:16</h2>
+    <h3 style="color: orangered;">Mouse Enter & Leave</h3>
+     <div id="box">Hover over me</div>
+
+    <div id="message">Move your mouse into the box</div>
+    <hr>
+
+ <h2 style="color: slateblue;">Task No:17</h2>
+    <h3 style="color: orangered;">Keylogger</h3>
+
+        <div id="Wrapper">
+        <br>
+         <input type="text" placeholder="Texto" id="Texto">
+
+<br><br>
+
+        <div id="Resultado"></div>
+       
+    </div>
+    <hr>
+     <h2 style="color: slateblue;">Task No:18</h2>
+    <h3 style="color: orangered;">Right Click Alert</h3>
+    <h2>Right-click anywhere on this page</h2>
+
+    <hr>
+ <h2 style="color: slateblue;">Task No:19</h2>
+    <h3 style="color: orangered;">Disable Form Submission</h3>
+     <form id="myForm1">
+        <input type="text" placeholder="Type something..." required>
+        <button type="submit">Submit</button>
+    </form>
+    <hr>
+     <h2 style="color: slateblue;">Task No:20</h2>
+    <h3 style="color: orangered;">Blur Validation Form</h3>
+    <form id="myForm20">
+        <label>Username:</label>
+        <input type="text" id="username" placeholder="Enter username">
+        <div id="usernameMsg"></div>
+
+        <label>Email:</label>
+        <input type="email" id="email" placeholder="Enter email">
+        <div id="emailMsg"></div>
+
+        <button type="submit">Submit</button>
+    </form>
+<hr>
+    <script>
+        const btn = document.getElementById("myButton");
+
+        btn.addEventListener("click", () => {
+            btn.textContent = "Button Clicked!";
+        });
+
+         const area = document.getElementById("alertArea");
+
+        area.addEventListener("mouseenter", () => {
+            alert("Mouse entered the area!");
+        });
+        const input = document.getElementById("textInput");
+
+        input.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                alert("Enter key was pressed!");
+            }
+        });
+          function changeBackground() {
+            document.body.style.backgroundColor = "grey";  
+        }
+        function togglePassword() {
+            const passField = document.getElementById("passwordField");
+
+            if (passField.type === "password") {
+                passField.type = "text";      // Show password
+            } else {
+                passField.type = "password";  // Hide password
+            }
+        }
+        document.addEventListener("mousemove", function(event) {
+            const x = event.clientX;
+            const y = event.clientY;
+
+            document.getElementById("coords").textContent = `X: ${x}, Y: ${y}`;
+        });
+         const form = document.getElementById("myForm");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault(); // ⛔ Stop form from submitting
+            alert("Form submission prevented!");
+        });
+         let clickCount = 0;
+
+        function increaseCount() {
+            clickCount++;
+            document.getElementById("count").textContent = "Clicks: " + clickCount;
+        }
+         function hideButton() {
+            const btn = document.getElementById("disappearBtn");
+            btn.style.display = "none"; // Hides the button
+        }
+        const btn1 = document.getElementById("toggleBtn");
+        const content = document.getElementById("content");
+
+        btn1.addEventListener("click", () => {
+            if (content.style.display === "none" || content.style.display === "") {
+                content.style.display = "block"; // Show the element
+            } else {
+                content.style.display = "none";  // Hide the element
+            }
+        });
+         function playSound() {
+            const audio = new Audio("audio.mp3");
+            audio.play().catch(error => {
+                console.log("Error playing sound:", error);
+            });
+        }
+        // FORCE the loader to stay 2 seconds so you can clearly see it
+        window.addEventListener("load", function() {
+            setTimeout(() => {
+                document.getElementById("loader").style.display = "none";
+            }, 2000);
+        });
+        function changeImage() {
+            document.getElementById("myImage").src = "https://cdn.pixabay.com/photo/2024/05/26/10/15/bird-8788491_1280.jpg"; 
+        }
+        const btn2 = document.getElementById("dblBtn");
+
+        btn2.addEventListener("dblclick", function() {
+            document.body.style.backgroundColor = "lightblue";
+        });
+         const input15 = document.getElementById("textInput15");
+
+        input15.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                alert("Enter key was pressed!");
+            }
+        });
+        const box = document.getElementById("box");
+        const message = document.getElementById("message");
+
+        box.addEventListener("mouseenter", function() {
+            message.textContent = "Mouse entered the box!";
+        });
+
+        box.addEventListener("mouseleave", function() {
+            message.textContent = "Mouse left the box!";
+        });
+        document.getElementById("Texto").addEventListener('keyup', function(event) {
+
+    document.getElementById("Resultado").innerHTML+=(event.key);
+    // document.getElementById("Resultado2").innerHTML+=(event.keyCode+", ");
+
+})
+ document.addEventListener("contextmenu", function(event) {
+            event.preventDefault(); // Optional: stops the default context menu
+            alert("Right-click detected!");
+        });
+          const form19 = document.getElementById("myForm1");
+
+        form19.addEventListener("submit", function(event) {
+            event.preventDefault(); // ⛔ Stop form from submitting
+            alert("Form submission prevented here!");
+        });
+
+         document.addEventListener("DOMContentLoaded", function() {
+            const username = document.getElementById("username");
+            const email = document.getElementById("email");
+            const usernameMsg = document.getElementById("usernameMsg");
+            const emailMsg = document.getElementById("emailMsg");
+            const form20 = document.getElementById("myForm20");
+
+            username.addEventListener("blur", function() {
+                if(username.value.trim() === "") {
+                    usernameMsg.textContent = "Username is required";
+                    usernameMsg.className = "error";
+                } else if(username.value.length < 3) {
+                    usernameMsg.textContent = "Username must be at least 3 characters";
+                    usernameMsg.className = "error";
+                } else {
+                    usernameMsg.textContent = "Looks good!";
+                    usernameMsg.className = "success";
+                }
+            });
+
+            email.addEventListener("blur", function() {
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if(email.value.trim() === "") {
+                    emailMsg.textContent = "Email is required";
+                    emailMsg.className = "error";
+                } else if(!emailPattern.test(email.value)) {
+                    emailMsg.textContent = "Enter a valid email";
+                    emailMsg.className = "error";
+                } else {
+                    emailMsg.textContent = "Looks good!";
+                    emailMsg.className = "success";
+                }
+            });
+
+            form20.addEventListener("submit", function(e) {
+                e.preventDefault(); // prevent form submission
+                alert("Form submission blocked for demo");
+            });
+        });
+    </script>
+
+</body>
+</html>
