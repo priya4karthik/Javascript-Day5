@@ -1,0 +1,15 @@
+1.Create an array of employees with name, age, and position.  
+2.Fetch and display a list of products from an API.  
+3.Sort an array of objects by age in ascending order.  
+4.Filter an array to show only students with grade 'A'.  
+5.Find a specific product in an array by name.  
+6.Convert an array of objects to only an array of names.  
+7.Modify an object inside an array and update its value.  
+8.Count how many objects meet a specific condition.  
+9.Implement a search function to find objects dynamically.  
+10.Group objects based on a property value.  
+11.Remove a specific object from an array by property
+12.Add new objects dynamically to an array. 
+13.Merge two arrays of objects.
+14.Clone an array of objects without affecting the original.
+15.Create a function to calculate the total stock in an inventory.

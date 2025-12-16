@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .employee-container ,.employee-container3{
+            max-width: 500px;
+            margin: auto;
+        }
+
+        .employee-card {
+            background: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+
+        .employee-card p {
+            margin: 5px 0;
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .product {
+            background: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .product img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+        }
+
+        .price {
+            color: green;
+            font-weight: bold;
+        }
+         .student-container {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .student-card {
+            background: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+
+        .student-card p {
+            margin: 5px 0;
+        }
+        .search-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            width: 200px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 8px 12px;
+            border-radius: 5px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .product-card {
+            max-width: 400px;
+            margin: 10px auto;
+            background: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .product-card p {
+            margin: 5px 0;
+        }
+        
+        ul {
+            list-style: none;
+            padding: 0;
+            max-width: 400px;
+            margin: auto;
+        }
+
+        li {
+            background: #fff;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        
+        .count-box {
+            background: #fff;
+            display: inline-block;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .student-list {
+            max-width: 400px;
+            margin: auto;
+            text-align: left;
+        }
+
+        .student-card {
+            background: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+         input {
+            padding: 10px;
+            width: 250px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
+
+        .result-container {
+            max-width: 500px;
+            margin: auto;
+            text-align: left;
+        }
+
+        .card {
+            background: #fff;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+
+        .no-result {
+            color: red;
+            text-align: center;
+        }
+         .group {
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        .group-title {
+            background: #007bff;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .student-card {
+            background: #fff;
+            padding: 10px;
+            margin-bottom: 8px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        .product-list12 {
+            max-width: 500px;
+            margin: 20px auto;
+            text-align: left;
+        }
+
+        .product-card {
+            background: #fff;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        button {
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: none;
+            background-color: #17a2b8;
+            color: white;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        button:hover {
+            background-color: #138496;
+        }
+
+        .array-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .array-box {
+            background: #fff;
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 0 0 6px rgba(0,0,0,0.1);
+            width: 200px;
+        }
+
+        .item {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Task No:1</h1>
+
+<h1>Employee List</h1>
+
+<div class="employee-container" id="employeeContainer"></div>
+<hr>
+<h1>Task No:2</h1>
+<h1>Products</h1>
+
+<div class="products" id="productList"></div>
+<hr>
+<h1>Task No:3</h1>
+
+<h1>Employees Sorted by Age</h1>
+
+<div class="employee-container3" id="employeeContainer3"></div>
+<hr>
+<h1>Task No:4</h1>
+<h1>Students with Grade 'A'</h1>
+
+<div class="student-container" id="studentContainer"></div>
+<hr>
+<h1>Task No:5</h1>
+<h1>Find Product</h1>
+
+<div class="search-container">
+    <input type="text" id="productNameInput" placeholder="Enter product name">
+    <button onclick="searchProduct()">Search</button>
+</div>
+<div style="text-align: center;"> Ex:phone ,laptop</div>
+<div id="productResult"></div>
+<hr>
+<h1>Task No:6</h1>
+<h1>Employee Names</h1>
+
+<ul id="nameList"></ul>
+<hr>
+<h1>Task No:7</h1>
+<h1>Update Employee Position</h1>
+
+<div>
+    <input type="text" id="employeeName" placeholder="Enter employee name">
+    <input type="text" id="newPosition" placeholder="Enter new position">
+    <button onclick="updateEmployee()">Update</button>
+</div>
+
+<div class="employee-list" id="employeeList"></div>
+<hr>
+<h1>Task No:8</h1>
+<h1>Students with Grade 'A'</h1>
+
+<div class="count-box" id="countBox"></div>
+
+<div class="student-list" id="studentList"></div>
+<hr>
+<h1>Task No:9</h1>
+<h1>Student Search</h1>
+
+<input 
+    type="text" 
+    id="searchInput" 
+    placeholder="Search by name or grade..."
+    onkeyup="searchStudents()"
+/>
+<div class="result-container" id="resultContainer"></div>
+<br>
+<hr>
+<h1>Task no:10</h1>
+<h1>Students Grouped by Grade</h1>
+
+<div id="groupsContainer"></div>
+<hr>
+<h1>Task No:11</h1>
+<h1>Product List</h1>
+
+<div class="product-list" id="ProductList"></div>
+<hr>
+<h1>Task No:12</h1>
+<h1>Add Products</h1>
+
+<div>
+    <input type="text" id="productName" placeholder="Product name">
+    <input type="number" id="productPrice" placeholder="Price">
+    <button onclick="addProduct()">Add Product</button>
+</div>
+
+<div class="product-list12" id="productList12"></div>
+<hr>
+<h1>Task No:13</h1>
+<h2>Combined Team Members</h2>
+<button onclick="combineTeams()">Merge Teams</button>
+
+<div id="teamOutput"></div>
+<hr>
+<h1>Task No:14</h1>
+<h1>Clone Array of Objects</h1>
+
+<button onclick="modifyClone()">Modify Clone</button>
+
+<div class="array-container">
+    <div class="array-box">
+        <h3>Original Array</h3>
+        <div id="originalArray"></div>
+    </div>
+    <div class="array-box">
+        <h3>Cloned Array</h3>
+        <div id="clonedArray"></div>
+    </div>
+</div>
+<hr>
+<h1>Task No:15</h1>
+<h2>Inventory Stock Calculator</h2>
+
+<button onclick="showTotalStock()">Calculate Total Stock</button>
+
+<div id="totalStock"></div>
+<script>
+    // Create an array of employees
+    const employees = [
+        { name: "Alice Johnson", age: 28, position: "Software Developer" },
+        { name: "Bob Smith", age: 35, position: "Project Manager" },
+        { name: "Carol Williams", age: 30, position: "UI/UX Designer" }
+    ];
+
+    // Display employees on the page
+    const container = document.getElementById("employeeContainer");
+
+    employees.forEach(employee => {
+        const card = document.createElement("div");
+        card.className = "employee-card";
+
+        card.innerHTML = `
+            <p><strong>Name:</strong> ${employee.name}</p>
+            <p><strong>Age:</strong> ${employee.age}</p>
+            <p><strong>Position:</strong> ${employee.position}</p>
+        `;
+
+        container.appendChild(card);
+    });
+</script>
+<script>
+    const productList = document.getElementById("productList");
+
+    // Fetch products from API
+    fetch("https://fakestoreapi.com/products")
+        .then(response => response.json())
+        .then(products => {
+            products.forEach(product => {
+                const productDiv = document.createElement("div");
+                productDiv.className = "product";
+
+                productDiv.innerHTML = `
+                    <img src="${product.image}" alt="${product.title}">
+                    <h3>${product.title}</h3>
+                    <p class="price">$${product.price}</p>
+                `;
+
+                productList.appendChild(productDiv);
+            });
+        })
+        .catch(error => {
+            productList.innerHTML = "<p>Failed to load products.</p>";
+            console.error(error);
+        });
+
+        // Array of employees
+    const employees3 = [
+        { name: "Alice Johnson", age: 28, position: "Software Developer" },
+        { name: "Bob Smith", age: 35, position: "Project Manager" },
+        { name: "Carol Williams", age: 30, position: "UI/UX Designer" }
+    ];
+
+    // Sort employees by age ascending
+    employees3.sort((a, b) => a.age - b.age);
+
+    // Display sorted employees
+    const container3 = document.getElementById("employeeContainer3");
+
+    employees3.forEach(employee => {
+        const card = document.createElement("div");
+        card.className = "employee-card";
+
+        card.innerHTML = `
+            <p><strong>Name:</strong> ${employee.name}</p>
+            <p><strong>Age:</strong> ${employee.age}</p>
+            <p><strong>Position:</strong> ${employee.position}</p>
+        `;
+
+        container3.appendChild(card);
+    });
+      // Array of students
+    const students = [
+        { name: "Alice", grade: "A" },
+        { name: "Bob", grade: "B" },
+        { name: "Carol", grade: "A" },
+        { name: "David", grade: "C" }
+    ];
+
+    // Filter students with grade 'A'
+    const gradeAStudents = students.filter(student => student.grade === "A");
+
+    // Display filtered students
+    const container4 = document.getElementById("studentContainer");
+
+    gradeAStudents.forEach(student => {
+        const card = document.createElement("div");
+        card.className = "student-card";
+
+        card.innerHTML = `
+            <p><strong>Name:</strong> ${student.name}</p>
+            <p><strong>Grade:</strong> ${student.grade}</p>
+        `;
+
+        container4.appendChild(card);
+    });
+     const products = [
+        { name: "Laptop", price: 1200 },
+        { name: "Phone", price: 800 },
+        { name: "Tablet", price: 500 }
+    ];
+
+    // Function to search and display product
+    function searchProduct() {
+        const input = document.getElementById("productNameInput").value.trim();
+        const resultContainer = document.getElementById("productResult");
+        resultContainer.innerHTML = "";
+
+        const product = products.find(p => p.name.toLowerCase() === input.toLowerCase());
+
+        if (product) {
+            const card = document.createElement("div");
+            card.className = "product-card";
+            card.innerHTML = `
+                <p><strong>Name:</strong> ${product.name}</p>
+                <p><strong>Price:</strong> $${product.price}</p>
+            `;
+            resultContainer.appendChild(card);
+        } else {
+            resultContainer.innerHTML = "<p style='text-align:center;color:red;'>Product not found!</p>";
+        }
+    }
+     // Array of employees
+    const employees6 = [
+        { name: "Alice", age: 28, position: "Developer" },
+        { name: "Bob", age: 35, position: "Manager" },
+        { name: "Carol", age: 30, position: "Designer" }
+    ];
+
+    // Convert to array of names
+    const names = employees6.map(employee => employee.name);
+
+    // Display names in the page
+    const nameList = document.getElementById("nameList");
+
+    names.forEach(name => {
+        const li = document.createElement("li");
+        li.textContent = name;
+        nameList.appendChild(li);
+    });
+    // Array of employees
+    const employees7 = [
+        { name: "Alice", age: 28, position: "Developer" },
+        { name: "Bob", age: 35, position: "Manager" },
+        { name: "Carol", age: 30, position: "Designer" }
+    ];
+
+    const employeeList = document.getElementById("employeeList");
+
+    // Function to display employees
+    function displayEmployees() {
+        employeeList.innerHTML = "";
+        employees7.forEach(emp => {
+            const card = document.createElement("div");
+            card.className = "employee-card";
+            card.innerHTML = `
+                <p><strong>Name:</strong> ${emp.name}</p>
+                <p><strong>Age:</strong> ${emp.age}</p>
+                <p><strong>Position:</strong> ${emp.position}</p>
+            `;
+            employeeList.appendChild(card);
+        });
+    }
+
+    // Function to update employee position
+    function updateEmployee() {
+        const name = document.getElementById("employeeName").value.trim();
+        const newPosition = document.getElementById("newPosition").value.trim();
+
+        const employee = employees7.find(emp => emp.name.toLowerCase() === name.toLowerCase());
+
+        if (employee) {
+            employee.position = newPosition;
+            displayEmployees();
+            alert(`${employee.name}'s position has been updated to ${newPosition}.`);
+        } else {
+            alert("Employee not found!");
+        }
+
+        // Clear input fields
+        document.getElementById("employeeName").value = "";
+        document.getElementById("newPosition").value = "";
+    }
+
+    // Initial display
+    displayEmployees();
+
+
+    const students8 = [
+        { name: "Alice", grade: "A" },
+        { name: "Bob", grade: "B" },
+        { name: "Carol", grade: "A" },
+        { name: "David", grade: "C" }
+    ];
+
+    // Count students with grade 'A'
+    const gradeAStudents8 = students8.filter(student => student.grade === "A");
+    const count = gradeAStudents8.length;
+
+    // Display count
+    document.getElementById("countBox").textContent =
+        `Total Students with Grade 'A': ${count}`;
+
+    // Display students with grade 'A'
+    const studentList = document.getElementById("studentList");
+
+    gradeAStudents8.forEach(student => {
+        const card = document.createElement("div");
+        card.className = "student-card";
+        card.innerHTML = `
+            <p><strong>Name:</strong> ${student.name}</p>
+            <p><strong>Grade:</strong> ${student.grade}</p>
+        `;
+        studentList.appendChild(card);
+    });
+       // Array of objects
+    const students9 = [
+        { name: "Alice", grade: "A" },
+        { name: "Bob", grade: "B" },
+        { name: "Carol", grade: "A" },
+        { name: "David", grade: "C" },
+        { name: "Eve", grade: "B" }
+    ];
+
+    const resultContainer = document.getElementById("resultContainer");
+
+    // Display all students initially
+    displayResults(students9);
+
+    function searchStudents() {
+        const query = document.getElementById("searchInput").value.toLowerCase();
+
+        const filteredStudents = students9.filter(student =>
+            student.name.toLowerCase().includes(query) ||
+            student.grade.toLowerCase().includes(query)
+        );
+
+        displayResults(filteredStudents);
+    }
+
+    function displayResults(data) {
+        resultContainer.innerHTML = "";
+
+        if (data.length === 0) {
+            resultContainer.innerHTML =
+                "<p class='no-result'>No results found</p>";
+            return;
+        }
+
+        data.forEach(student => {
+            const card = document.createElement("div");
+            card.className = "card";
+            card.innerHTML = `
+                <p><strong>Name:</strong> ${student.name}</p>
+                <p><strong>Grade:</strong> ${student.grade}</p>
+            `;
+            resultContainer.appendChild(card);
+        });
+    }
+     // Array of students
+    const students10 = [
+        { name: "Alice", grade: "A" },
+        { name: "Bob", grade: "B" },
+        { name: "Carol", grade: "A" },
+        { name: "David", grade: "C" },
+        { name: "Eve", grade: "B" }
+    ];
+
+    // Group students by grade
+    const groupedStudents = students10.reduce((groups, student) => {
+        if (!groups[student.grade]) {
+            groups[student.grade] = [];
+        }
+        groups[student.grade].push(student);
+        return groups;
+    }, {});
+
+    const groupsContainer = document.getElementById("groupsContainer");
+
+    // Display grouped students
+    for (const grade in groupedStudents) {
+        const groupDiv = document.createElement("div");
+        groupDiv.className = "group";
+
+        const title = document.createElement("div");
+        title.className = "group-title";
+        title.textContent = `Grade ${grade}`;
+
+        groupDiv.appendChild(title);
+
+        groupedStudents[grade].forEach(student => {
+            const card = document.createElement("div");
+            card.className = "student-card";
+            card.textContent = student.name;
+            groupDiv.appendChild(card);
+        });
+
+        groupsContainer.appendChild(groupDiv);
+    }
+     // Array of products
+    let products11 = [
+        { name: "Laptop", price: 1200 },
+        { name: "Phone", price: 800 },
+        { name: "Tablet", price: 500 }
+    ];
+
+    const productList11 = document.getElementById("ProductList");
+
+    // Display products
+    function displayProducts() {
+        productList11.innerHTML = "";
+
+        products11.forEach(product => {
+            const card = document.createElement("div");
+            card.className = "product-card";
+
+            card.innerHTML = `
+                <span>${product.name} - $${product.price}</span>
+                <button onclick="removeProduct('${product.name}')">Delete</button>
+            `;
+
+            productList11.appendChild(card);
+        });
+    }
+
+    // Remove product by name
+    function removeProduct(productName) {
+        products11 = products11.filter(p => p.name !== productName);
+        displayProducts();
+    }
+
+    // Initial display
+    displayProducts();
+     // Array of products
+
+
+    let products12 = [
+        { name: "Laptop", price: 1200 },
+        { name: "Phone", price: 800 }
+    ];
+
+    const productList12 = document.getElementById("productList12");
+
+    // Display products
+    function displayProducts12() {
+        productList12.innerHTML = "";
+        products12.forEach(product => {
+            const card = document.createElement("div");
+            card.className = "product-card";
+            card.innerHTML = `
+                <span>${product.name} - $${product.price}</span>
+            `;
+            productList12.appendChild(card);
+        });
+    }
+
+    // Add new product dynamically
+    function addProduct() {
+        const name = document.getElementById("productName").value.trim();
+        const price = document.getElementById("productPrice").value;
+
+        if (!name || !price) {
+            alert("Please enter product name and price");
+            return;
+        }
+
+        const newProduct = {
+            name: name,
+            price: Number(price)
+        };
+
+        products12.push(newProduct);
+        displayProducts12();
+
+        // Clear inputs
+        document.getElementById("productName").value = "";
+        document.getElementById("productPrice").value = "";
+    }
+
+    // Initial display
+    displayProducts12();
+
+    const teamOne = [
+        { code: "A1", person: "Nina Brown", duty: "Support" },
+        { code: "A2", person: "Oliver Stone", duty: "Analyst" }
+    ];
+
+    const teamTwo = [
+        { code: "B1", person: "Kevin Wright", duty: "DevOps" },
+        { code: "B2", person: "Emma Wilson", duty: "HR" }
+    ];
+
+    function combineTeams() {
+        const finalTeam = [...teamOne, ...teamTwo];
+        const output = document.getElementById("teamOutput");
+        output.innerHTML = "";
+
+        finalTeam.forEach(member => {
+            const div = document.createElement("div");
+            div.className = "member";
+            div.textContent = `${member.person} - ${member.duty}`;
+            output.appendChild(div);
+        });
+    }
+     // Original array
+    const employees14 = [
+        { id: 1, name: "Aliie", role: "Developer" },
+        { id: 2, name: "Bobi", role: "Designer" }
+    ];
+
+    // Clone the array (deep clone)
+    let clonedEmployees = JSON.parse(JSON.stringify(employees14));
+
+    const originalDiv = document.getElementById("originalArray");
+    const clonedDiv = document.getElementById("clonedArray");
+
+    // Function to display arrays
+    function displayArrays14() {
+        originalDiv.innerHTML = "";
+        clonedDiv.innerHTML = "";
+
+        employees14.forEach(emp => {
+            const div = document.createElement("div");
+            div.className = "item";
+            div.textContent = `${emp.name} - ${emp.role}`;
+            originalDiv.appendChild(div);
+        });
+
+        clonedEmployees.forEach(emp => {
+            const div = document.createElement("div");
+            div.className = "item";
+            div.textContent = `${emp.name} - ${emp.role}`;
+            clonedDiv.appendChild(div);
+        });
+    }
+
+    // Modify the cloned array
+    function modifyClone() {
+        clonedEmployees[0].name = "Carol";
+        clonedEmployees.push({ id: 3, name: "David", role: "Tester" });
+        displayArrays();
+    }
+
+    // Initial display
+    displayArrays14();
+     const inventory = [
+        { item: "Laptop", quantity: 10 },
+        { item: "Phone", quantity: 25 },
+        { item: "Tablet", quantity: 15 },
+        { item: "Headphones", quantity: 30 }
+    ];
+
+    function calculateTotalStock(items) {
+        return items.reduce((total, product) => total + product.quantity, 0);
+    }
+
+    function showTotalStock() {
+        const total = calculateTotalStock(inventory);
+        document.getElementById("totalStock").textContent =
+            `Total stock in inventory: ${total}`;
+    }
+    
+</script>
+
+</body>
+</html>
