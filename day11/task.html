@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript 35 Tasks</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        h2 { color: #2c3e50; }
+        hr { margin: 20px 0; }
+    </style>
+</head>
+<body>
+
+<script>
+
+/* ================= TASK 1 ================= */
+document.write("<h2>Task 1: Add Two Numbers</h2>");
+let a1 = 5, b1 = 3;
+document.write("Number 1 = " + a1 + "<br>");
+document.write("Number 2 = " + b1 + "<br>");
+document.write("Result = " + (a1 + b1));
+document.write("<hr>");
+
+/* ================= TASK 2 ================= */
+document.write("<h2>Task 2: Positive / Negative / Zero</h2>");
+let n0 = -7;
+document.write("Number = " + n0 + "<br>");
+document.write(n0 > 0 ? "Positive" : n0 < 0 ? "Negative" : "Zero");
+document.write("<hr>");
+
+/* ================= TASK 3 ================= */
+document.write("<h2>Task 3: Print 1 to 10</h2>");
+document.write("Numbers: ");
+for (let i = 1; i <= 10; i++) document.write(i + " ");
+document.write("<hr>");
+
+/* ================= TASK 4 ================= */
+document.write("<h2>Task 4: Countdown 5 to 1</h2>");
+let c = 5;
+document.write("Countdown: ");
+while (c >= 1) { document.write(c + " "); c--; }
+document.write("<hr>");
+
+/* ================= TASK 5 ================= */
+document.write("<h2>Task 5: Car Object</h2>");
+let car = { model: "Honda", year: 2023, color: "Blue" };
+document.write("Model = " + car.model + "<br>");
+document.write("Year = " + car.year + "<br>");
+document.write("Color = " + car.color);
+document.write("<hr>");
+
+/* ================= TASK 6 ================= */
+document.write("<h2>Task 6: Array Add & Remove</h2>");
+let fruits = ["Apple", "Banana"];
+document.write("Initial Array = " + fruits + "<br>");
+fruits.push("Mango");
+document.write("After Add = " + fruits + "<br>");
+fruits.pop();
+document.write("After Remove = " + fruits);
+document.write("<hr>");
+
+/* ================= TASK 7 ================= */
+document.write("<h2>Task 7: Prime Number</h2>");
+let p = 7;
+document.write("Number = " + p + "<br>");
+let prime = p > 1;
+for (let i = 2; i < p; i++) if (p % i === 0) prime = false;
+document.write("Is Prime? " + prime);
+document.write("<hr>");
+
+/* ================= TASK 8 ================= */
+document.write("<h2>Task 8: Factorial</h2>");
+let f = 5, fact = 1;
+document.write("Number = " + f + "<br>");
+for (let i = 1; i <= f; i++) fact *= i;
+document.write("Factorial = " + fact);
+document.write("<hr>");
+
+/* ================= TASK 9 ================= */
+document.write("<h2>Task 9: Largest in Array</h2>");
+let arr = [10, 45, 23, 89];
+document.write("Array = " + arr + "<br>");
+document.write("Largest = " + Math.max(...arr));
+document.write("<hr>");
+
+/* ================= TASK 10 ================= */
+document.write("<h2>Task 10: Nested Object</h2>");
+let student = { name: "Rahul", address: { city: "Mumbai", pin: 400001 } };
+document.write("City = " + student.address.city);
+document.write("<hr>");
+
+/* ================= TASK 11 ================= */
+document.write("<h2>Task 11: Day of Week</h2>");
+let day = 4;
+document.write("Day Number = " + day + "<br>");
+switch(day){
+    case 1: document.write("Monday"); break;
+    case 2: document.write("Tuesday"); break;
+    case 3: document.write("Wednesday"); break;
+    case 4: document.write("Thursday"); break;
+    default: document.write("Invalid");
+}
+document.write("<hr>");
+
+/* ================= TASK 12 ================= */
+document.write("<h2>Task 12: Dice Roll</h2>");
+let dice = Math.floor(Math.random() * 6) + 1;
+document.write("Dice Value = " + dice);
+document.write("<hr>");
+
+/* ================= TASK 13 ================= */
+document.write("<h2>Task 13: Reverse String</h2>");
+let str = "Hello";
+document.write("Original = " + str + "<br>");
+document.write("Reversed = " + str.split("").reverse().join(""));
+document.write("<hr>");
+
+/* ================= TASK 14 ================= */
+document.write("<h2>Task 14: Increment & Decrement</h2>");
+let inc = 5;
+document.write("Initial Value = " + inc + "<br>");
+document.write("After ++ = " + (++inc) + "<br>");
+document.write("After -- = " + (--inc));
+document.write("<hr>");
+
+/* ================= TASK 15 ================= */
+document.write("<h2>Task 15: Swap Two Numbers</h2>");
+let s1 = 10, s2 = 20;
+document.write("Before Swap: " + s1 + ", " + s2 + "<br>");
+let temp = s1; s1 = s2; s2 = temp;
+document.write("After Swap: " + s1 + ", " + s2);
+document.write("<hr>");
+
+/* ================= TASK 16 ================= */
+document.write("<h2>Task 16: Largest of 3 Numbers</h2>");
+let l1=10,l2=50,l3=30;
+document.write("Numbers = " + l1 + ", " + l2 + ", " + l3 + "<br>");
+document.write("Largest = " + (l1>l2 && l1>l3 ? l1 : l2>l3 ? l2 : l3));
+document.write("<hr>");
+
+/* ================= TASK 17 ================= */
+document.write("<h2>Task 17: Calculator (if-else)</h2>");
+let n1=20,n2=5,op="+";
+document.write("n1 = " + n1 + "<br>n2 = " + n2 + "<br>Operator = " + op + "<br>");
+if(op==="+") document.write("Result = " + (n1+n2));
+document.write("<hr>");
+
+/* ================= TASK 18 ================= */
+document.write("<h2>Task 18: Even or Odd</h2>");
+let eo = 11;
+document.write("Number = " + eo + "<br>");
+document.write(eo%2===0?"Even":"Odd");
+document.write("<hr>");
+
+/* ================= TASK 19 ================= */
+document.write("<h2>Task 19: Voting Eligibility</h2>");
+let age = 17;
+document.write("Age = " + age + "<br>");
+document.write(age>=18?"Eligible":"Not Eligible");
+document.write("<hr>");
+
+/* ================= TASK 20 ================= */
+document.write("<h2>Task 20: == vs ===</h2>");
+document.write("5 == '5' → " + (5=="5") + "<br>");
+document.write("5 === '5' → " + (5==="5"));
+document.write("<hr>");
+
+/* ================= TASK 21 ================= */
+document.write("<h2>Task 21: Divisible by 3 & 5</h2>");
+let d = 15;
+document.write("Number = " + d + "<br>");
+document.write(d%3===0 && d%5===0);
+document.write("<hr>");
+
+/* ================= TASK 22 ================= */
+document.write("<h2>Task 22: Assignment Operators</h2>");
+let sum=0;
+for(let i=1;i<=5;i++) sum+=i;
+document.write("Sum = " + sum);
+document.write("<hr>");
+
+/* ================= TASK 23 ================= */
+document.write("<h2>Task 23: Square & Cube</h2>");
+let sq = 4;
+document.write("Number = " + sq + "<br>");
+document.write("Square = " + sq**2 + "<br>");
+document.write("Cube = " + sq**3);
+document.write("<hr>");
+
+/* ================= TASK 24 ================= */
+document.write("<h2>Task 24: Century Year</h2>");
+let yr = 2000;
+document.write("Year = " + yr + "<br>");
+document.write(yr%400===0);
+document.write("<hr>");
+
+/* ================= TASK 25 ================= */
+document.write("<h2>Task 25: Vowel or Consonant</h2>");
+let ch = "e";
+document.write("Character = " + ch + "<br>");
+document.write("aeiou".includes(ch)?"Vowel":"Consonant");
+document.write("<hr>");
+
+/* ================= TASK 26 ================= */
+document.write("<h2>Task 26: Multiple of 10</h2>");
+let m = 70;
+document.write("Number = " + m + "<br>");
+document.write(m%10===0);
+document.write("<hr>");
+
+/* ================= TASK 27 ================= */
+document.write("<h2>Task 27: Greater Number</h2>");
+let g1=40,g2=25;
+document.write("Numbers = " + g1 + ", " + g2 + "<br>");
+document.write("Greater = " + (g1>g2?g1:g2));
+document.write("<hr>");
+
+/* ================= TASK 28 ================= */
+document.write("<h2>Task 28: Calculator (Switch)</h2>");
+let a=8,b=4,op2="*";
+document.write("a=" + a + ", b=" + b + "<br>");
+switch(op2){ case "*": document.write("Result = " + (a*b)); }
+document.write("<hr>");
+
+/* ================= TASK 29 ================= */
+document.write("<h2>Task 29: Negative Check</h2>");
+let neg=-9;
+document.write("Number = " + neg + "<br>");
+document.write(neg<0?"Negative":"Not Negative");
+document.write("<hr>");
+
+/* ================= TASK 30 ================= */
+document.write("<h2>Task 30: Age Category</h2>");
+let ag=65;
+document.write("Age = " + ag + "<br>");
+document.write(ag<13?"Child":ag<=19?"Teen":ag<=59?"Adult":"Senior");
+document.write("<hr>");
+
+/* ================= TASK 31 ================= */
+document.write("<h2>Task 31: Empty String</h2>");
+let st="";
+document.write("String = '" + st + "'<br>");
+document.write(st===""?"Empty":"Not Empty");
+document.write("<hr>");
+
+/* ================= TASK 32 ================= */
+document.write("<h2>Task 32: Days in Month</h2>");
+let mon="February";
+document.write("Month = " + mon + "<br>");
+document.write(mon==="February"?"28/29 Days":"30/31 Days");
+document.write("<hr>");
+
+/* ================= TASK 33 ================= */
+document.write("<h2>Task 33: Valid Triangle</h2>");
+let x=60,y=60,z=60;
+document.write("Angles = " + x + ", " + y + ", " + z + "<br>");
+document.write(x+y+z===180);
+document.write("<hr>");
+
+/* ================= TASK 34 ================= */
+document.write("<h2>Task 34: First 10 Multiples of 3</h2>");
+for(let i=1;i<=10;i++) document.write(i*3 + " ");
+document.write("<hr>");
+
+/* ================= TASK 35 ================= */
+document.write("<h2>Task 35: Countdown 10 to 1</h2>");
+let t=10;
+while(t>=1){ document.write(t + " "); t--; }
+
+</script>
+
+</body>
+</html>

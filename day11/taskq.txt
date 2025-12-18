@@ -1,0 +1,38 @@
+1.Write a function to add two numbers and return the result.
+2.Create a program that checks if a number is positive, negative, or zero.
+3.Use a for loop to print numbers from 1 to 10.
+4.Use a while loop to count down from 5 to 1.
+5.Create an object representing a car (model, year, color), and display its properties.
+6.Add and remove elements from an array of fruits.
+7.Write a function to check if a number is prime.
+8.Create a program that calculates the factorial of a number.
+9.Create a function that returns the largest number in an array.
+10.Create a nested object, and access inner values.
+11.Use switch to display the day of the week based on a number (1–7).
+12.Use Math.random() to simulate a dice roll (1 to 6).
+13.Create a function that reverses a string and prints it.
+14.Use increment (++) and decrement (--) operators on a variable.
+15.Write a program to swap two numbers using a third variable.
+16.Write a program to find the largest of 3 numbers using logical operators.
+17.Create a calculator that supports +, -, *, /, and % operators using if-else.
+18.Check whether a number is even or odd using modulus operator.
+19.Use ternary operator to check if age >= 18 (Eligible for vote).
+20.Demonstrate the difference between == and === operators.
+21.Create a program to check if a number is divisible by both 3 and 5.
+22.Use assignment operators (+=, -=) to modify values inside a loop.
+23.Find the square and cube of a number using the ** operator.
+24.Check if a given year is a century year (ends with 00 and divisible by 400).
+25.Write a program to check if a character is a vowel or consonant.
+26.Use if-else to check if a number is a multiple of 10.
+27.Compare two numbers and print the greater one.
+28.Use switch to build a simple calculator (+, -, *, /).
+29.Use ternary operator to determine if a number is negative or not.
+30.Create a program to categorize age: child (<13), teen (13–19), adult (20–59), senior (60+).
+31.Check if a string is empty using if statement.
+32.Use switch to determine the number of days in a given month (by name).
+33.Use if-else to check whether a triangle is valid (sum of 3 angles = 180).
+34.Print the first 10 multiples of 3
+35.Create a countdown timer (from 10 to 1 using while loop)
+
+
+
