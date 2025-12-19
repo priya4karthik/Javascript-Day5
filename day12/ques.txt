@@ -1,0 +1,35 @@
+1.Convert a JavaScript object to a JSON string using JSON.stringify().  
+2.Convert a JSON string back to a JavaScript object using JSON.parse().  
+3.Create a JSON file (data.json) and fetch it using JavaScript.  
+4.Store an array of objects in LocalStorage as JSON and retrieve it.  
+5.Fetch JSON data from an API and display it in a table.  
+6.Modify a JSON object inside an array and update it.  
+7.Filter JSON data to display only objects matching a specific condition.  
+8.Sort an array of objects stored in JSON by a specific property (e.g., price, age).  
+9.Find an object inside a JSON array based on a property value.  
+10.Create a function that adds new objects to an existing JSON file.  
+11.Remove a specific object from an array inside a JSON file.  
+12.Fetch data from a JSON file and display it in a dropdown list.  
+13.Fetch data from an API using fetch() and handle errors gracefully using .catch().
+14.Convert a nested JavaScript object into a JSON string using JSON.stringify().
+15.Parse a JSON string that contains an array of objects and log each object.
+16.Fetch a list of users from an API and display only those with a specific role.
+17.Store a JSON object in LocalStorage and retrieve it after page refresh.
+18.Use fetch() with async/await to retrieve data from a public API and display it.
+19.Fetch weather data for multiple cities and display them in separate cards.
+20.Implement pagination (next/prev) while fetching large JSON datasets.
+21.Fetch a random joke from an API and show it on the page.  
+22.Fetch posts from an API and display them in a list.  
+23.Use Fetch API to submit a form to an API.  
+24.Fetch real-time weather data using an API.  
+25.Fetch and display GitHub user profiles.  
+26.Create an image gallery using the Fetch API.  
+27.Implement pagination using Fetch API.
+28.Use AJAX to fetch and display comments dynamically.  
+29.Fetch and display currency exchange rates.
+30.Load data from an API when a button is clicked.  
+31.Handle API errors gracefully.  
+32.Implement search functionality using Fetch API.
+33.Use Fetch API to get a list of users from an API and display in a table.
+34.Fetch a list of countries and populate a <select> dropdown.
+35.Fetch data from an API and show a loading spinner while loading.
