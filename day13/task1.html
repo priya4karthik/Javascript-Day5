@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JavaScript 50 Tasks with Values</title>
+<style>
+  body{
+    font-family: Arial, sans-serif;
+    padding:20px;
+    line-height:1.6;
+  }
+  h3{
+    color:#2c3e50;
+    margin-bottom:5px;
+  }
+  .task p{
+    margin:3px 0;
+  }
+  hr{
+    border:1px solid #ccc;
+  }
+</style>
+</head>
+<body>
+
+<div id="output"></div>
+
+<script>
+const out = document.getElementById("output");
+
+function task(title, question, result){
+  out.innerHTML += `
+    <div class="task">
+      <h3>${title}</h3>
+      <p><strong>Question / Values Used:</strong> ${question}</p>
+      <p><strong>Output:</strong> ${result}</p>
+    </div>
+    <hr>
+  `;
+}
+
+/* ---------- CONDITIONS ---------- */
+
+let num = 10;
+task(
+  "1. Positive / Negative / Zero",
+  "Number = 10",
+  num > 0 ? "Positive" : num < 0 ? "Negative" : "Zero"
+);
+
+task(
+  "2. Even or Odd",
+  "Number = 10",
+  num % 2 === 0 ? "Even" : "Odd"
+);
+
+let age = 20;
+task(
+  "3. Voting Eligibility",
+  "Age = 20",
+  age >= 18 ? "Eligible to Vote" : "Not Eligible"
+);
+
+let a = 15, b = 25;
+task(
+  "4. Greater Number",
+  "Numbers = 15, 25",
+  Math.max(a, b)
+);
+
+let year = 2024;
+task(
+  "5. Leap Year Check",
+  "Year = 2024",
+  (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0 ? "Leap Year" : "Not a Leap Year"
+);
+
+let username = "Priya123";
+task(
+  "6. Username Length Validation",
+  "Username = Priya123",
+  username.length >= 5 ? "Valid Username" : "Invalid Username"
+);
+
+let char = "a";
+task(
+  "7. Vowel or Consonant",
+  "Character = a",
+  "aeiou".includes(char.toLowerCase()) ? "Vowel" : "Consonant"
+);
+
+let marks = 85;
+let grade = marks >= 90 ? "A" : marks >= 75 ? "B" : marks >= 60 ? "C" : "Fail";
+task(
+  "8. Grade Based on Marks",
+  "Marks = 85",
+  grade
+);
+
+let n1 = 15;
+task(
+  "9. Divisible by 3 and 5",
+  "Number = 15",
+  n1 % 3 === 0 && n1 % 5 === 0 ? "Yes, divisible by both" : "No"
+);
+
+let hour = 14;
+task(
+  "10. AM or PM",
+  "Hour = 14",
+  hour >= 12 ? "PM" : "AM"
+);
+
+/* ---------- LOOPS ---------- */
+
+let numbers = "";
+for(let i=1;i<=10;i++) numbers += i + " ";
+task(
+  "11. Print Numbers 1 to 10",
+  "Loop from 1 to 10",
+  numbers
+);
+
+let evens = "";
+for(let i=1;i<=50;i++) if(i%2===0) evens += i + " ";
+task(
+  "12. Even Numbers 1 to 50",
+  "Range = 1 to 50",
+  evens
+);
+
+let sum = 0, n = 10;
+for(let i=1;i<=n;i++) sum += i;
+task(
+  "13. Sum from 1 to N",
+  "N = 10",
+  sum
+);
+
+let table = "";
+for(let i=1;i<=10;i++) table += `5 × ${i} = ${5*i}<br>`;
+task(
+  "14. Multiplication Table",
+  "Number = 5",
+  table
+);
+
+let rev = 0, temp = 1234;
+while(temp>0){
+  rev = rev*10 + temp%10;
+  temp = Math.floor(temp/10);
+}
+task(
+  "15. Reverse a Number",
+  "Number = 1234",
+  rev
+);
+
+let count = 0, d = 9876;
+while(d>0){ count++; d=Math.floor(d/10); }
+task(
+  "16. Count Digits",
+  "Number = 9876",
+  count
+);
+
+let arr = [10,20,30];
+task(
+  "17. Print Array Elements",
+  "Array = [10, 20, 30]",
+  arr.join(", ")
+);
+
+let fact = 1;
+for(let i=1;i<=5;i++) fact *= i;
+task(
+  "18. Factorial",
+  "Number = 5",
+  fact
+);
+
+let fib = [0,1];
+for(let i=2;i<7;i++) fib[i] = fib[i-1] + fib[i-2];
+task(
+  "19. Fibonacci Series",
+  "Terms = 7",
+  fib.join(", ")
+);
+
+task(
+  "20. Largest Number in Array",
+  "Array = [10, 20, 30]",
+  Math.max(...arr)
+);
+
+/* ---------- STRING ---------- */
+
+let str = "JavaScript Programming";
+task(
+  "21. String Length",
+  `String = "${str}"`,
+  str.length
+);
+
+task(
+  "22. Convert to Uppercase",
+  `String = "${str}"`,
+  str.toUpperCase()
+);
+
+task(
+  "23. Check Word 'JavaScript'",
+  `String = "${str}"`,
+  str.includes("JavaScript") ? "Found" : "Not Found"
+);
+
+task(
+  "24. Reverse String",
+  `String = "${str}"`,
+  str.split("").reverse().join("")
+);
+
+let vowelCount = str.match(/[aeiou]/gi)?.length || 0;
+task(
+  "25. Count Vowels",
+  `String = "${str}"`,
+  vowelCount
+);
+
+task(
+  "26. Replace Spaces with Hyphens",
+  `String = "${str}"`,
+  str.replace(/ /g,"-")
+);
+
+let pal = "madam";
+task(
+  "27. Palindrome Check",
+  `String = "${pal}"`,
+  pal === pal.split("").reverse().join("") ? "Palindrome" : "Not Palindrome"
+);
+
+task(
+  "28. First 5 Characters",
+  `String = "${str}"`,
+  str.slice(0,5)
+);
+
+let spaced = "  hello   world  ";
+task(
+  "29. Remove Extra Spaces",
+  `String = "${spaced}"`,
+  spaced.trim().replace(/\s+/g," ")
+);
+
+task(
+  "30. Index of Character",
+  `String = "${str}", Character = 'a'`,
+  str.indexOf("a")
+);
+
+/* ---------- ARRAY ---------- */
+
+let arr2 = [1,2,3];
+arr2.push(4);
+task(
+  "31. Add Element to Array",
+  "Array = [1,2,3], Add = 4",
+  arr2.join(", ")
+);
+
+arr2.shift();
+task(
+  "32. Remove First Element",
+  "Array after removal",
+  arr2.join(", ")
+);
+
+task(
+  "33. Length of Array",
+  "Array = [2,3,4]",
+  arr2.length
+);
+
+task(
+  "34. Check Element Exists",
+  "Array = [2,3,4], Element = 3",
+  arr2.includes(3) ? "Exists" : "Does not exist"
+);
+
+task(
+  "35. Sort Array",
+  "Array = [5,3,8,1]",
+  [5,3,8,1].sort((a,b)=>a-b).join(", ")
+);
+
+task(
+  "36. Reverse Array",
+  "Array = [2,3,4]",
+  arr2.reverse().join(", ")
+);
+
+task(
+  "37. Sum of Array",
+  "Array = [4,3,2]",
+  arr2.reduce((a,b)=>a+b,0)
+);
+
+task(
+  "38. Smallest Number",
+  "Array = [4,3,2]",
+  Math.min(...arr2)
+);
+
+task(
+  "39. Merge Two Arrays",
+  "Arrays = [1,2] & [3,4]",
+  [1,2].concat([3,4]).join(", ")
+);
+
+task(
+  "40. Remove Duplicates",
+  "Array = [1,2,2,3,4,4]",
+  [...new Set([1,2,2,3,4,4])].join(", ")
+);
+
+/* ---------- STORAGE ---------- */
+
+localStorage.setItem("username","Priya");
+task(
+  "41. Store Username",
+  "Username = Priya",
+  "Stored in localStorage"
+);
+
+task(
+  "42. Retrieve Username",
+  "Key = username",
+  localStorage.getItem("username")
+);
+
+localStorage.removeItem("username");
+task(
+  "43. Remove Specific Item",
+  "Key = username",
+  "Removed"
+);
+
+sessionStorage.clear();
+task(
+  "44. Clear sessionStorage",
+  "All session data",
+  "Cleared"
+);
+
+localStorage.setItem("array", JSON.stringify([10,20,30]));
+task(
+  "45. Store Array using JSON",
+  "Array = [10,20,30]",
+  "Stored Successfully"
+);
+
+let obj = {name:"Priya", age:22};
+let jsonStr = JSON.stringify(obj);
+task(
+  "46. Object to JSON",
+  "Object = {name:'Priya', age:22}",
+  jsonStr
+);
+
+let parsed = JSON.parse(jsonStr);
+task(
+  "47. JSON to Object",
+  "JSON String",
+  parsed.name
+);
+
+task(
+  "48. Access JSON Value",
+  "Key = age",
+  parsed.age
+);
+
+/* ---------- ERROR HANDLING ---------- */
+
+try{
+  let x = 10 / 0;
+  if(!isFinite(x)) throw "Division by zero error";
+}catch(e){
+  task(
+    "49. Division by Zero Handling",
+    "10 / 0",
+    e
+  );
+}
+
+try{
+  let input = "";
+  if(input === "") throw "Input cannot be empty";
+}catch(e){
+  task(
+    "50. Custom Error Message",
+    "Input = empty",
+    e
+  );
+}
+</script>
+
+</body>
+</html>

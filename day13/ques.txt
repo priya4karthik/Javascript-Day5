@@ -1,0 +1,50 @@
+1.Check whether a number is positive, negative, or zero.
+2.Find if a given number is even or odd.
+3.Check if a person is eligible to vote based on age.
+4.Compare two numbers and print the greater one.
+5.Check whether a year is a leap year.
+6.Validate username length (minimum 5 characters).
+7.Check if a given character is a vowel or consonant.
+8.Print grade based on marks using conditions.
+9.Check if a number is divisible by both 3 and 5.
+10.Display "AM" or "PM" based on hour value.
+11.Print numbers from 1 to 10 using a loop.
+12.Print all even numbers between 1 and 50.
+13.Calculate the sum of numbers from 1 to n.
+14.Print multiplication table of a given number.
+15.Reverse a number using a loop.
+16.Count digits in a given number.
+17.Print all elements of an array using a loop.
+18.Find factorial of a number using a loop.
+19.Print Fibonacci series up to n terms.
+20.Find the largest number in an array using a loop.
+21.Find the length of a given string.
+22.Convert a string to uppercase.
+23.Check whether a string contains the word "JavaScript".
+24.Reverse a given string.
+25.Count number of vowels in a string.
+26.Replace all spaces in a string with hyphens.
+27.Check if a string is a palindrome.
+28.Extract first 5 characters from a string.
+29.Remove extra spaces from a string.
+30.Find the index of a specific character in a string.
+31.Add a new element to the end of an array.
+32.Remove the first element from an array.
+33.Find the length of an array.
+34.Check if an element exists in an array.
+35.Sort an array of numbers in ascending order.
+36.Reverse an array.
+37.Find the sum of all elements in an array.
+38.Find the smallest number in an array.
+39.Merge two arrays into one.
+40.Remove duplicate values from an array.
+41.Store a username in localStorage.
+42.Retrieve and display data from localStorage.
+43.Remove a specific item from localStorage.
+44.Clear all data from sessionStorage.
+45.Store an array in localStorage using JSON.
+46.Convert a JavaScript object into JSON string.
+47.Convert a JSON string back to JavaScript object.
+48.Access a specific value from a JSON object.
+49.Handle a division by zero error using try-catch.
+50.Display a custom error message when input is empty.
