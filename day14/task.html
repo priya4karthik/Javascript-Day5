@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Tasks</title>
+</head>
+<body>
+  <h1>JavaScript Practice Tasks</h1>
+
+  <div id="output"></div>
+
+  <script>
+    const out = document.getElementById("output");
+    function print(taskNo, title, content) {
+      out.innerHTML += `<h2>Task ${taskNo}: ${title}</h2><pre>${content}</pre><hr>`;
+    }
+
+    // 1. var, let, const
+    var nameVar = "Alice";
+    let nameLet = "Bob";
+    const nameConst = "Charlie";
+    print(1, "Variables and Greeting", `Hello ${nameVar}, ${nameLet}, ${nameConst}!`);
+
+    // 2. Different types
+    let num = 42;
+    let str = "Hello";
+    let bool = true;
+    let obj = {a:1};
+    let arr = [1,2,3];
+    print(2, "Types", 
+      `num: ${typeof num}\nstr: ${typeof str}\nbool: ${typeof bool}\nobj: ${typeof obj}\narr: ${typeof arr}`);
+
+    // 3. Arithmetic
+    let a=10, b=3;
+    print(3, "Arithmetic", 
+      `a+b=${a+b}\na-b=${a-b}\na*b=${a*b}\na/b=${a/b}\na%b=${a%b}`);
+
+    // 4. String operations
+    let s="JavaScript";
+    print(4, "String Ops", 
+      `Concat: ${s+" Rocks"}\nLength: ${s.length}\nSlice(0,4): ${s.slice(0,4)}`);
+
+    // 5. Template literals
+    let age=25;
+    print(5, "Template Literals", `My name is ${nameVar} and I am ${age} years old.`);
+
+    // 6. Even/Odd
+    function evenOdd(n){return n%2===0?"Even":"Odd";}
+    print(6, "Even/Odd", `7 is ${evenOdd(7)}, 8 is ${evenOdd(8)}`);
+
+    // 7. Grade
+    function grade(score){
+      if(score>=90) return "A";
+      else if(score>=80) return "B";
+      else if(score>=70) return "C";
+      else if(score>=60) return "D";
+      else return "F";
+    }
+    print(7, "Grade", `Score 85: ${grade(85)}`);
+
+    // 8. Switch day
+    function dayName(n){
+      switch(n){
+        case 1:return "Monday";
+        case 2:return "Tuesday";
+        case 3:return "Wednesday";
+        case 4:return "Thursday";
+        case 5:return "Friday";
+        case 6:return "Saturday";
+        case 7:return "Sunday";
+        default:return "Invalid";
+      }
+    }
+    print(8, "Day Name", `3 -> ${dayName(3)}`);
+
+    // 9. Leap year
+    function leap(y){return (y%4===0 && y%100!==0)||y%400===0;}
+    print(9, "Leap Year", `2024: ${leap(2024)}, 2023: ${leap(2023)}`);
+
+    // 10. Age category
+    function category(age){
+      if(age<13) return "Child";
+      else if(age<20) return "Teenager";
+      else if(age<60) return "Adult";
+      else return "Senior";
+    }
+    print(10, "Age Category", `15 -> ${category(15)}, 65 -> ${category(65)}`);
+
+    // 11. Multiplication table
+    let table="";
+    for(let i=1;i<=10;i++) table+=`5 x ${i} = ${5*i}\n`;
+    print(11, "Multiplication Table", table);
+
+    // 12. Pyramid
+    let pyramid="";
+    for(let i=1;i<=5;i++){
+      for(let j=1;j<=i;j++) pyramid+=j+" ";
+      pyramid+="\n";
+    }
+    print(12, "Pyramid", pyramid);
+
+    // 13. Sum 1..N
+    let N=10, sum=0;
+    for(let i=1;i<=N;i++) sum+=i;
+    print(13, "Sum 1..N", `Sum 1..${N} = ${sum}`);
+
+    // 14. FizzBuzz
+    let fb="";
+    for(let i=1;i<=20;i++){
+      if(i%15===0) fb+="FizzBuzz ";
+      else if(i%3===0) fb+="Fizz ";
+      else if(i%5===0) fb+="Buzz ";
+      else fb+=i+" ";
+    }
+    print(14, "FizzBuzz", fb);
+
+    // 15. Reverse string
+    let strRev="hello", rev="";
+    for(let i=strRev.length-1;i>=0;i--) rev+=strRev[i];
+    print(15, "Reverse String", rev);
+
+    // 16. Array ops
+    let arr1=[1,2,3];
+    arr1.push(4);
+    arr1.shift();
+    print(16, "Array Ops", `Array: ${arr1}, Length: ${arr1.length}, Element[1]: ${arr1[1]}`);
+
+    // 17. Largest
+    let arr2=[5,9,2,7];
+    let max=Math.max(...arr2);
+    print(17, "Largest", `Largest: ${max}`);
+
+    // 18. Sum & Avg
+    let sumArr=arr2.reduce((a,b)=>a+b,0);
+    let avg=sumArr/arr2.length;
+    print(18, "Sum & Avg", `Sum=${sumArr}, Avg=${avg}`);
+
+    // 19. Even array
+    let evens=arr2.filter(x=>x%2===0);
+    print(19, "Even Array", evens);
+
+    // 20. Value exists
+    print(20, "Value Exists", arr2.includes(7));
+
+    // 21. Palindrome
+    function palindrome(str){return str===str.split("").reverse().join("");}
+    print(21, "Palindrome", palindrome("madam"));
+
+    // 22. Factorial
+    function factIter(n){let f=1;for(let i=1;i<=n;i++)f*=i;return f;}
+    function factRec(n){return n<=1?1:n*factRec(n-1);}
+    print(22, "Factorial", `Iter: ${factIter(5)}, Rec: ${factRec(5)}`);
+
+    // 23. Prime
+    function prime(n){if(n<2)return false;for(let i=2;i<=Math.sqrt(n);i++)if(n%i===0)return false;return true;}
+    print(23, "Prime", `7: ${prime(7)}, 8: ${prime(8)}`);
+
+    // 24. Fibonacci
+    function fib(n){let seq=[0,1];for(let i=2;i<n;i++)seq.push(seq[i-1]+seq[i-2]);return seq;}
+    print(24, "Fibonacci", fib(10));
+
+    // 25. Password validation
+    function validate(p){return p.length>=8 && /[A-Z]/.test(p)&&/[a-z]/.test(p)&&/[0-9]/.test(p);}
+    print(25, "Password Validation", validate("Pass1234"));
+
+    // 26. Remove duplicates
+    let dup=[1,2,2,3,3,4];
+    let unique=[...new Set(dup)];
+    print(26, "Remove Duplicates", unique);
+
+    // 27. Sort without sort
+    let unsorted=[3,1,4,2];
+    for(let i=0;i<unsorted.length;i++){
+      for(let j=i+1;j<unsorted.length;j++){
+        if(unsorted[i]>unsorted[j]){
+          let tmp=unsorted[i];unsorted[i]=unsorted[j];unsorted[j]=tmp;
+        }
+      }
+    }
+    print(27, "Sort", unsorted);
+
+    // 28. Two sum
+    function twoSum(arr,target){
+      for(let i=0;i<arr.length;i++){
+        for(let j=i+1;j<arr.length;j++){
+          if(arr[i]+arr[j]===target) return [arr[i],arr[j]];
+        }
+      }
+      return null;
+    }
+    print(28, "Two Sum", twoSum([2,7,11,15],9));
+
+    // 29. 2D array
+    let matrix=[[1,2],[3,4]];
+    matrix[0][1]=5;
+    print(29, "2D Array", matrix);
+
+    // 30. Split chunks
+    function chunks(arr,size){
+      let res=[];
+      for(let i=0;i<arr.length;i+=size) res.push(arr.slice(i,i+size));
+      return res;
+    }
+    // 31. Person object
+    let person = {
+      name: "Alice",
+      age: 30,
+      greet: function(){ return `Hi, I'm ${this.name}`; }
+    };
+    person.age = 31;
+    delete person.name;
+    let props="";
+    for(let key in person){props+=`${key}: ${person[key]}\n`;}
+    print(31, "Person Object", props);
+
+    // 32. Product objects
+    let products=[{name:"Pen",price:2,qty:10},{name:"Book",price:5,qty:4}];
+    let total=products.reduce((sum,p)=>sum+p.price*p.qty,0);
+    print(32, "Products Total", `Total value=${total}`);
+
+    // 33. Grades object
+    let student={grades:[80,90,70,85]};
+    let avgGrade=student.grades.reduce((a,b)=>a+b,0)/student.grades.length;
+    let high=Math.max(...student.grades);
+    let low=Math.min(...student.grades);
+    print(33, "Grades", `Avg=${avgGrade}, High=${high}, Low=${low}`);
+
+    // 34. Deep copy
+    function deepCopy(obj){return JSON.parse(JSON.stringify(obj));}
+    let original={a:1,b:{c:2}};
+    let copy=deepCopy(original);
+    copy.b.c=5;
+    print(34, "Deep Copy", `Original=${JSON.stringify(original)}, Copy=${JSON.stringify(copy)}`);
+
+    // 35. Combine objects
+    let o1={a:1}, o2={b:2}, o3={c:3};
+    let combined={...o1,...o2,...o3};
+    print(35, "Combine Objects", combined);
+
+    // 36. Interactive list (simple demo)
+    let list=["item1"];
+    list.push("item2");
+    list.splice(0,1);
+    print(36, "Interactive List", list);
+
+    // 37. Dark/Light toggle (demo variable)
+    let mode="light";
+    mode=mode==="light"?"dark":"light";
+    print(37, "Dark/Light Mode", `Mode=${mode}`);
+
+    // 38. Form validation (demo)
+    function validateForm(name,email){
+      let valid=name.length>0 && email.includes("@");
+      return valid?"Valid":"Invalid";
+    }
+    print(38, "Form Validation", validateForm("Alice","alice@mail.com"));
+
+    // 39. Counter
+    let counter=0;
+    counter++;
+    counter--;
+    print(39, "Counter", counter);
+
+    // 40. Gallery
+    let gallery=["img1","img2","img3"];
+    let index=0;
+    index=(index+1)%gallery.length;
+    print(40, "Gallery", gallery[index]);
+
+    // 41. Spread/Rest
+    let arrA=[1,2], arrB=[3,4];
+    let merged=[...arrA,...arrB];
+    function sumAll(...nums){return nums.reduce((a,b)=>a+b,0);}
+    print(41, "Spread/Rest", `Merged=${merged}, Sum=${sumAll(1,2,3)}`);
+
+    // 42. Destructuring
+    let [x,y]=[10,20];
+    let {b1}= {a:1,b1:2};
+    print(42, "Destructuring", `x=${x}, y=${y}, b=${b}`);
+
+    // 43. Map & Set
+    let map=new Map([["a",1],["b",2]]);
+    let set=new Set([1,2,2,3]);
+    print(43, "Map & Set", `Map a=${map.get("a")}, Set=${[...set]}`);
+
+    // 44. Promise
+    function checkNum(n){
+      return new Promise((resolve,reject)=>{
+        if(n>0) resolve("Positive");
+        else reject("Non-positive");
+      });
+    }
+    checkNum(5).then(res=>print(44,"Promise",res)).catch(err=>print(44,"Promise",err));
+
+    // 45. Fetch mock API (demo with async/await)
+    async function fetchData(){
+      try{
+        let res=await fetch("https://jsonplaceholder.typicode.com/posts/1");
+        let data=await res.json();
+        print(45, "Fetch API", JSON.stringify(data,null,2));
+      }catch(e){print(45,"Fetch API","Error");}
+    }
+    fetchData();
+
+  </script>
+</body>
+</html>
