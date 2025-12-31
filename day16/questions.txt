@@ -1,0 +1,50 @@
+1.Create a webpage that displays your name and changes color when clicked.
+2.Create two buttons and show different messages for each button click.
+3.Create an input field and display its value when a button is clicked.
+4.Change the background color of a div when mouse enters it.
+5.Create a form with two input fields and reset the form using JavaScript.
+6.Show and hide an image using two separate buttons.
+7.Create a paragraph and make the text bold using JavaScript.
+8.Create a simple unordered list and style it using CSS.
+9.Count the number of characters typed in an input field.
+10.Create a button that toggles text visibility.
+11.Change the border color of an input field on focus.
+12.Display today’s day (Monday, Tuesday, etc.) using JavaScript.
+13.Create a checkbox and enable a button only when it is checked.
+14.Change the font family of text using JavaScript.
+15.Create a simple card layout using HTML and CSS.
+16.Show a confirmation message before submitting a form.
+17.Change the value of one input field based on another input.
+18.Create a button that clears the content of a paragraph.
+19.Display even or odd based on a number entered by the user.
+20.Create a dropdown menu and change page background based on selection.
+21.Print the length of a string entered by the user.
+22.Create a submit button that is disabled by default.
+23.Add multiple CSS classes to an element using JavaScript.
+24.Create a simple footer using HTML and CSS.
+25.Display a message when the page finishes loading.
+26.Validate a form to allow only numbers in an input field.
+27.Create a list and remove an item when it is clicked.
+28.Display an error message if password is less than 8 characters.
+29.Create a layout using CSS Grid.
+30.Change multiple elements styles using a single JavaScript function.
+31.Store a username in localStorage and display it on page load.
+32.Disable right-click on a webpage using JavaScript.
+33.Count vowels in a text entered by the user.
+34.Create a simple modal box using HTML, CSS, and JavaScript.
+35.Sort a list of numbers entered by the user.
+36.Change an image source based on dropdown selection.
+37.Highlight the active menu item using JavaScript.
+38.Validate that two password fields match.
+39.Display a warning message when input length exceeds a limit.
+40.Create a button that scrolls the page to a specific section.
+41.Create a form and log all input values to the console on submit.
+42.Toggle between two text values on button click.
+43.Create a simple FAQ section with show/hide answers.
+44.Display a message when the user copies text from the page.
+45.Convert text entered by the user to uppercase using JavaScript.
+46.Count the number of words in a textarea.
+47.Disable all input fields using a single button.
+48.Create a basic page layout using header, section, and footer tags.
+49.Display a success message after form submission without page reload.
+50.Change the page title dynamically using JavaScript.
