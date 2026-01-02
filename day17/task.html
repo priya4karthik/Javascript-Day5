@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Tasks 1–10</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    section { border:1px solid #ccc; padding:10px; margin-bottom:15px; }
+    .styled-list { color: blue; /* text color */ font-weight: bold; /* bold text */ padding-left: 30px; /* spacing from left */ } .styled-list li { margin: 5px 0; /* spacing between list items */ }
+  .bordered-table, .bordered-table th, .bordered-table td { border: 1px solid black; border-collapse: collapse; padding: 8px; }
+  nav a { margin: 5px; padding: 5px 10px; text-decoration: none; color: black; border: 1px solid #ccc; cursor: pointer; } nav a.active { background-color: yellow; font-weight: bold; }
+  .flex-container { display: flex; /* enables flexbox */ gap: 10px; /* spacing between items */ justify-content: center; /* center items horizontally */ } .flex-item { background: lightgray; padding: 20px; flex: 1; /* each box grows equally */ text-align: center; }
+  </style>
+</head>
+<body onload="welcomeMessage()">
+
+  <section><h3>Task 1: Welcome Message</h3>
+    <h2 id="welcome"></h2>
+  </section>
+
+  <section><h3>Task 2: Change Paragraph Color</h3>
+    <p id="para">This is a paragraph.</p>
+    <button onclick="document.getElementById('para').style.color='red'">Make Red</button>
+  </section>
+
+  <section><h3>Task 3: Clear Input Field</h3>
+    <input id="input1" type="text" placeholder="Type something">
+    <button onclick="document.getElementById('input1').value=''">Clear Input</button>
+  </section>
+
+  <section><h3>Task 4: Show Current Year</h3>
+    <p>Current Year: <span id="year"></span></p>
+  </section>
+
+  <section><h3>Task 5: Hide Paragraph</h3>
+    <p id="p1">Paragraph 1</p>
+    <p id="p2">Paragraph 2</p>
+    <button onclick="document.getElementById('p2').style.display='none'">Hide Paragraph 2</button>
+  </section>
+
+  <section><h3>Task 6: Increase Div Width</h3>
+    <div id="myDiv" style="background:lightblue;width:100px;height:50px;">Resizable Div</div>
+    <button onclick="increaseWidth()">Increase Width</button>
+  </section>
+
+  <section><h3>Task 7: Count Characters in Textarea</h3>
+    <textarea id="ta1" oninput="countChars()"></textarea>
+    <p>Characters: <span id="charCount"></span></p>
+  </section>
+
+  <section><h3>Task 8: Print Form Values</h3>
+    <form id="form1" onsubmit="printForm(event)">
+      <input name="fname" placeholder="First Name">
+      <input name="lname" placeholder="Last Name">
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <section><h3>Task 9: Change Background with Checkbox</h3>
+    <input type="checkbox" onchange="toggleBg(this)"> Change Background
+  </section>
+
+  <section><h3>Task 10: Change Text Alignment</h3>
+    <button onclick="document.getElementById('para').style.textAlign='center'">Center Align</button>
+    <p >Check task2 paragraph</p>
+  </section>
+    <section><h3>Task 11: Ordered List Styled</h3>
+    <ol class="styled-list">
+      <li>Item 1</li><li>Item 2</li><li>Item 3</li>
+    </ol>
+  </section>
+
+  <section><h3>Task 12: Input Length</h3>
+    <input id="input2" type="text">
+    <button onclick="alert('Length: '+document.getElementById('input2').value.length)">Show Length</button>
+  </section>
+
+  <section><h3>Task 13: Password Empty Check</h3>
+    <input id="pwd" type="password">
+    <button onclick="checkPwd()">Check Password</button>
+    <p id="pwdMsg"></p>
+  </section>
+
+  <section><h3>Task 14: Enable Disabled Input</h3>
+    <input id="disabledInput" disabled value="Disabled">
+    <button onclick="document.getElementById('disabledInput').disabled=false">Enable Input</button>
+  </section>
+
+  <section><h3>Task 15: Change Font Size of Multiple Elements</h3>
+    <p class="multi">Text A</p><p class="multi">Text B</p>
+    <button onclick="changeFontSize()">Increase Font Size</button>
+  </section>
+
+  <section><h3>Task 16: Show Today's Date</h3>
+    <p>Today's Date: <span id="today"></span></p>
+  </section>
+
+  <section><h3>Task 17: Toggle Div Background</h3>
+    <div id="toggleDiv" style="width:100px;height:50px;background:orange;">Toggle Div</div>
+    <button onclick="toggleDivBg()">Toggle BG</button>
+  </section>
+
+  <section><h3>Task 18: Show Input Value in Paragraph</h3>
+    <input id="input3" oninput="showValue()">
+    <p id="showVal"></p>
+  </section>
+
+  <section><h3>Task 19: Table with Borders</h3>
+    <table class="bordered-table">
+      <tr><th>Name</th><th>Age</th></tr>
+      <tr><td>Alice</td><td>25</td></tr>
+    </table>
+  </section>
+
+  <section><h3>Task 20: Mouse Leave Message</h3>
+    <div id="leaveDiv" style="background:lightgreen;width:100px;height:50px;" 
+         onmouseleave="alert('Mouse left div!')">Hover me</div>
+  </section>
+  <section><h3>Task 21: Alert Before Form Submission</h3>
+    <form onsubmit="alert('Submitting...');">
+      <button type="submit">Submit with Alert</button>
+    </form>
+  </section>
+
+  <section><h3>Task 22: Underline Paragraph</h3>
+    <p id="underlineP">Underline me</p>
+    <button onclick="document.getElementById('underlineP').style.textDecoration='underline'">Underline</button>
+  </section>
+
+  <section><h3>Task 23: Count Words in Textarea</h3>
+    <textarea id="ta2" oninput="countWords()"></textarea>
+    <p>Words: <span id="wordCount"></span></p>
+  </section>
+
+  <section><h3>Task 24: Hide All Paragraphs</h3>
+    <button onclick="hideAllParas()">Hide All Paragraphs</button>
+  </section>
+
+  <section><h3>Task 25: Key Press Message</h3>
+    <input id="input4" onkeydown="alert('Key pressed!')">
+  </section>
+
+  <section><h3>Task 26: Validate Minimum Length</h3>
+    <form onsubmit="return validateMinLength()">
+      <input id="minInput" type="text">
+      <button type="submit">Validate Length</button>
+    </form>
+  </section>
+
+  <section><h3>Task 27: Reset All Inputs</h3>
+    <button onclick="resetInputs()">Reset Inputs</button>
+  </section>
+
+  <section><h3>Task 28: Style All Buttons</h3>
+    <button onclick="styleButtons()">Style All Buttons</button>
+  </section>
+
+  <section><h3>Task 29: Dropdown Selected Value</h3>
+    <select id="dropdown" onchange="showSelected()">
+      <option>Option 1</option><option>Option 2</option>
+    </select>
+    <p id="selectedVal"></p>
+  </section>
+
+  <section><h3>Task 30: Right Click Message</h3>
+    <p oncontextmenu="alert('Right click detected!');return false;">Right-click here</p>
+  </section>
+  <section><h3>Task 31: Store Age in LocalStorage</h3>
+    <input id="ageInput" type="number" placeholder="Enter age">
+    <button onclick="storeAge()">Store Age</button>
+    <p id="ageDisplay"></p>
+  </section>
+
+  <section><h3>Task 32: Allow Only Letters</h3>
+    <input id="lettersOnly" oninput="lettersOnlyFunc(this)">
+  </section>
+
+  <section><h3>Task 33: Toggle Between Two Images</h3>
+    <img id="imgToggle" src="https://png.pngtree.com/thumb_back/fh260/background/20241010/pngtree-the-bengal-tiger-emblem-of-wild-image_16362570.jpg">
+    <button onclick="toggleImage()">Toggle Image</button>
+  </section>
+
+  <section><h3>Task 34: Navigation Menu Highlight</h3>
+    <nav>
+      <a onclick="highlight(this)">Home</a>
+      <a onclick="highlight(this)">About</a>
+      <a onclick="highlight(this)">Contact</a>
+    </nav>
+  </section>
+
+  <section><h3>Task 35: Textarea with Character Limit</h3>
+    <textarea id="limitTA" maxlength="20"></textarea>
+  </section>
+
+  <section><h3>Task 36: Sum of Two Numbers</h3>
+    <input id="num1" type="number"><input id="num2" type="number">
+    <button onclick="sumNumbers()">Sum</button>
+    <p id="sumResult"></p>
+  </section>
+
+  <section><h3>Task 37: Change Page Font Family</h3>
+    <button onclick="document.body.style.fontFamily='Courier New'">Change Font Family</button>
+  </section>
+
+  <section><h3>Task 38: Email Empty Check</h3>
+    <input id="email" type="email">
+    <button onclick="checkEmail()">Check Email</button>
+    <p id="emailMsg"></p>
+  </section>
+
+  <section><h3>Task 39: Scroll to Top</h3>
+    <button onclick="window.scrollTo(0,0)">Scroll to Top</button>
+  </section>
+
+  <section><h3>Task 40: Current Time Updating</h3>
+    <p>Current Time: <span id="time"></span></p>
+  </section>
+  <section><h3>Task 41: Prevent Form Submission if Empty</h3>
+    <form onsubmit="return validateEmpty()">
+      <input id="field1"><input id="field2">
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <section><h3>Task 42: Hide and Show Table</h3>
+    <button onclick="toggleTable()">Hide/Show Table</button>
+  </section>
+
+  <section><h3>Task 43: Window Resize Message</h3>
+    <script>
+      window.onresize = () => alert('Window resized!');
+    </script>
+  </section>
+
+  <section><h3>Task 44: Convert Input to Lowercase</h3>
+    <input id="lowerInput" oninput="toLower(this)">
+  </section>
+
+  <section><h3>Task 45: Change Div Height</h3>
+    <button onclick="document.getElementById('myDiv').style.height='100px'">Increase Height</button>
+  </section>
+
+  <section><h3>Task 46: Count Input Fields</h3>
+    <button onclick="countInputs()">Count Inputs</button>
+  </section>
+
+  <section> <h3>Task 47: Message on Text Selection</h3> <p id="selectable"> Try selecting some of this text with your mouse. </p> </section>
+
+  <section><h3>Task 48: Flexbox Layout</h3>
+    <div class="flex-container">
+      <div class="flex-item">Box 1</div>
+      <div class="flex-item">Box 2</div>
+      <div class="flex-item">Box 3</div>
+    </div>
+  </section>
+
+  <section><h3>Task 49: Successful Form Validation Message</h3>
+    <form onsubmit="return successMsg()">
+      <input id="val1"><input id="val2">
+      <button type="submit">Validate</button>
+    </form>
+  </section>
+
+  <section><h3>Task 50: Change Favicon</h3>
+    <button onclick="changeFavicon()">Change Favicon</button>
+  </section>
+
+<script>
+function welcomeMessage(){
+  document.getElementById('welcome').innerText = "Welcome to the page!";
+  document.getElementById('year').innerText = new Date().getFullYear();
+  let d = new Date();
+  document.getElementById('today').innerText =
+    ("0"+d.getDate()).slice(-2)+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+d.getFullYear();
+  updateTime();
+  setInterval(updateTime,1000);
+  if(localStorage.getItem('age')){
+    document.getElementById('ageDisplay').innerText = "Stored Age: "+localStorage.getItem('age');
+  }
+}
+function increaseWidth(){ let div=document.getElementById('myDiv'); div.style.width=(div.offsetWidth+20)+"px"; }
+function countChars(){ document.getElementById('charCount').innerText=document.getElementById('ta1').value.length; }
+function printForm(e){ e.preventDefault(); let form=document.getElementById('form1'); console.log("First Name:",form.fname.value); console.log("Last Name:",form.lname.value); }
+function toggleBg(cb){ document.body.style.background=cb.checked?"lightyellow":""; }
+function checkPwd(){ let val=document.getElementById('pwd').value; document.getElementById('pwdMsg').innerText=val===""?"Password is empty!":"Password entered."; }
+function changeFontSize(){ document.querySelectorAll('.multi').forEach(el=>el.style.fontSize="20px"); }
+function toggleDivBg(){ let div=document.getElementById('toggleDiv'); div.style.background=div.style.background==="orange"?"purple":"orange"; }
+function showValue(){ document.getElementById('showVal').innerText=document.getElementById('input3').value; }
+function countWords(){ let text=document.getElementById('ta2').value.trim(); let words=text===""?0:text.split(/\s+/).length; document.getElementById('wordCount').innerText=words; }
+function hideAllParas(){ document.querySelectorAll('p').forEach(p=>p.style.display="none"); }
+function validateMinLength(){ let val=document.getElementById('minInput').value; if(val.length<5){ alert("Minimum length is 5"); return false; } return true; }
+function resetInputs(){ document.querySelectorAll('input').forEach(i=>i.value=""); }
+function styleButtons(){ document.querySelectorAll('button').forEach(b=>{ b.style.background="black"; b.style.color="white"; }); }
+function showSelected(){ document.getElementById('selectedVal').innerText=document.getElementById('dropdown').value; }
+function storeAge(){ let age=document.getElementById('ageInput').value; localStorage.setItem('age',age); document.getElementById('ageDisplay').innerText="Stored Age: "+age; }
+function lettersOnlyFunc(el){ el.value=el.value.replace(/[^a-zA-Z]/g,''); }
+function toggleImage(){ let img=document.getElementById('imgToggle'); img.src=img.src.includes("Img1")?"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyJKgyyLrCL8qzSOBCNCsmPP0Ld5aOJ_p1ew&s":"https://png.pngtree.com/thumb_back/fh260/background/20241010/pngtree-the-bengal-tiger-emblem-of-wild-image_16362570.jpg"; }
+function highlight(el){ document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active')); el.classList.add('active'); }
+function sumNumbers(){ let n1=parseFloat(document.getElementById('num1').value)||0; let n2=parseFloat(document.getElementById('num2').value)||0; document.getElementById('sumResult').innerText=n1+n2; }
+function checkEmail(){ let val=document.getElementById('email').value; document.getElementById('emailMsg').innerText=val===""?"Email is empty":"Email entered"; }
+function updateTime(){ let d=new Date(); document.getElementById('time').innerText=d.toLocaleTimeString(); }
+function validateEmpty(){ if(document.getElementById('field1').value===""||document.getElementById('field2').value===""){ alert("Fields cannot be empty"); return false; } return true; }
+function toggleTable(){ let table=document.querySelector('table'); table.style.display=table.style.display==="none"?"table":"none"; }
+function toLower(el){ el.value=el.value.toLowerCase(); }
+function countInputs(){ alert("Total inputs: "+document.querySelectorAll('input').length); }
+function successMsg(){ if(document.getElementById('val1').value===""||document.getElementById('val2').value===""){ alert("Fill all fields"); return false; } alert("Form validated successfully!"); return true; }
+function changeFavicon(){ let link=document.querySelector("link[rel*='icon']")||document.createElement('link'); link.type='image/x-icon'; link.rel='shortcut icon'; link.href='https://thumbs.dreamstime.com/b/image-shows-stack-zen-stones-yellow-flower-top-spa-environment-decor-stones-flowers-water-droplets-create-peaceful-vibe-385727084.jpg'; document.head.appendChild(link); }
+document.getElementById("selectable").addEventListener("mouseup", function() { let selectedText = window.getSelection().toString(); if (selectedText.length > 0) { alert("You selected: " + selectedText); } });
+</script>
+</body>
+</html>
+
+
+

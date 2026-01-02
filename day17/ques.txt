@@ -1,0 +1,50 @@
+1.Create a webpage that shows a welcome message when it loads.
+2.Create a button that changes the text color of a paragraph to red.
+3.Create an input field and clear its value using a button.
+4.Show the current year using JavaScript.
+5.Create two paragraphs and hide one of them using JavaScript.
+6.Create a button that increases the width of a div.
+7.Display the total number of characters typed in a textarea.
+8.Create a simple form and print form values in the console.
+9.Change the background color of the body when a checkbox is checked.
+10.Create a button that changes the text alignment of a paragraph.
+11.Create an ordered list and style it using CSS.
+12.Display the length of the input value when a button is clicked.
+13.Create a password field and display a message when input is empty.
+14.Create a button that enables a disabled input field.
+15.Change the font size of multiple elements at the same time.
+16.Display today's date in DD-MM-YYYY format.
+17.Create a button that toggles background color of a div.
+18.Create an input field and show its value inside a paragraph.
+19.Create a simple table and add borders using CSS.
+20.Display a message when the mouse leaves a div.
+21.Create a submit button that shows an alert before submission.
+22.Create a paragraph and underline the text using JavaScript.
+23.Display the number of words typed in a textarea.
+24.Create a button that hides all paragraphs on the page.
+25.Display a message when the user presses a key inside an input field.
+26.Validate a form to check minimum length for an input field.
+27.Create a button that resets all input fields on the page.
+28.Change styles of all buttons using JavaScript.
+29.Create a simple dropdown menu and show selected value below it.
+30.Display a message when the user right-clicks on the page.
+31.Store user age in localStorage and display it on page reload.
+32.Validate input to allow only letters.
+33.Create a button that toggles between two images.
+34.Create a navigation menu and highlight the clicked item.
+35.Create a textarea and limit maximum characters allowed.
+36.Display the sum of two numbers entered by the user.
+37.Create a button that changes the page font family.
+38.Show an error message if email input is empty.
+39.Create a button that scrolls the page to the top.
+40.Display current time and update it every second.
+41.Create a form and prevent submission if any field is empty.
+42.Create a button that hides and shows a table.
+43.Display a message when the window is resized.
+44.Convert user input text to lowercase using JavaScript.
+45.Create a button that changes the height of a div.
+46.Count how many input fields are present on the page.
+47.Display a message when the user selects text on the page.
+48.Create a simple page layout using CSS Flexbox.
+49.Display a message after successful form validation.
+50.Change the favicon of the webpage dynamically.
