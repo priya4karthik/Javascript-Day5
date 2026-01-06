@@ -1,0 +1,50 @@
+1.Create a webpage with a heading and change its text when a button is clicked.
+2.Create an input field and display a message when it gains focus.
+3.Create a button that changes the text background color of a paragraph.
+4.Display the current month using JavaScript.
+5.Create two buttons to increase and decrease text size.
+6.Create a paragraph and hide it when double-clicked.
+7.Create an input field and disable it using a button.
+8.Display the total number of buttons present on the page.
+9.Create a button that changes the font style to italic.
+10.Create a simple form and clear all fields on submit.
+11.Create a div and change its background color on mouse over.
+12.Display the value of a range slider.
+13.Create a paragraph and change its font weight using JavaScript.
+14.Create a button that shows a message below it when clicked.
+15.Create an input field and convert its value to uppercase on blur.
+16.Create a checkbox and display a message when it is unchecked.
+17.Create a button that hides a specific div.
+18.Display the current time in HH:MM format.
+19.Create a paragraph and add a line-through style using JavaScript.
+20.Create a button that toggles visibility of an image.
+21.Create a simple list and change its text color using CSS.
+22.Display the length of text when user types in a textarea.
+23.Create a button that changes page background to a light color.
+24.Create an input field and show a warning if it is empty.
+25.Display a message when the mouse button is released.
+26.Validate an input field to allow only uppercase letters.
+27.Create a button that enables all disabled inputs.
+28.Change the style of all paragraphs using JavaScript.
+29.Create a dropdown and disable it using a button.
+30.Display an error message if number entered is negative.
+31.Store and retrieve a theme color using localStorage.
+32.Create a button that changes multiple CSS properties at once.
+33.Display a message when the user scrolls to the bottom of the page.
+34.Create a form and show submitted values inside a div.
+35.Create a button that toggles between two different texts.
+36.Validate input length and show remaining characters.
+37.Create a button that adds a new list item dynamically.
+38.Display a message when the page goes offline.
+39.Create a button that removes the last item from a list.
+40.Create a simple page layout using CSS Grid.
+41.Create a button that changes border style of a div.
+42.Display a message when the user pastes text into an input field.
+43.Create a form and reset it using a reset button.
+44.Convert input text to sentence case using JavaScript.
+45.Create a button that disables itself after clicking once.
+46.Display the total number of characters in multiple inputs.
+47.Create a button that hides all images on the page.
+48.Display a message when the window gains focus.
+49.Create a simple content section and style it using Flexbox.
+50.Dynamically change the meta title of the webpage.
