@@ -1,0 +1,50 @@
+1.Create a webpage and display a greeting message based on time (morning / afternoon / evening).
+2.Create a button that changes the text color of all headings on the page.
+3.Create an input field and display a message when the user presses Enter.
+4.Show the browser name using JavaScript.
+5.Create a paragraph and change its letter spacing using JavaScript.
+6.Create a button that changes the background color of only one section.
+7.Display the total number of links present on the page.
+8.Create a text input and show the reversed value of the text.
+9.Create a button that hides the first list item.
+10.Display the screen width and height on the page.
+11.Create a paragraph and change its text direction (LTR / RTL).
+12.Create an input field and display a message when it loses focus.
+13.Create a button that changes the font color of only even paragraphs.
+14.Display the number of images present on the page.
+15.Create a button that changes the text to uppercase and lowercase alternately.
+16.Create a simple form and display a thank-you message after submission.
+17.Create a div and change its border width using JavaScript.
+18.Display the current URL on the webpage.
+19.Create a button that resets only one specific input field.
+20.Create a paragraph and add extra spacing between words.
+21.Create a button that changes the background color randomly.
+22.Display the number of characters excluding spaces in an input field.
+23.Create a button that hides all input fields on the page.
+24.Display a message when the user clicks anywhere on the page.
+25.Create a simple header and change its height using JavaScript.
+26.Validate input to allow only numbers and decimal values.
+27.Create a button that copies text from an input field to the clipboard.
+28.Display the total number of form elements present on the page.
+29.Create a button that toggles border visibility of all divs.
+30.Store and display the last visited time using localStorage.
+31.Create a button that sorts a list of names alphabetically.
+32.Validate that a number entered is within a given range.
+33.Create a button that changes the page language direction (LTR / RTL).
+34.Display a message when the user switches browser tabs.
+35.Create a form and highlight empty fields on submit.
+36.Create a button that removes all child elements inside a div.
+37.Display the total word count from multiple input fields.
+38.Create a button that locks and unlocks a form.
+39.Display a warning when the user tries to refresh the page.
+40.Create a simple layout using semantic HTML tags.
+41.Create a button that toggles visibility of multiple sections.
+42.Convert user input to title case using JavaScript.
+43.Create a button that changes the background color based on time of day.
+44.Display a message when the browser goes online again.
+45.Create a button that highlights all required input fields.
+46.Display the total number of checked checkboxes.
+47.Create a button that disables page scrolling.
+48.Create a simple two-column layout using CSS.
+49.Display a message after successfully copying text.
+50.Dynamically change the meta description of the webpage.

@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Day 19 JavaScript Tasks</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    section { border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; }
+    h2 { color: #0078d7; }
+  </style>
+</head>
+<body>
+
+<!-- Task 1 -->
+<section>
+  <h2>Task 1: Greeting Message Based on Time</h2>
+  <p id="greeting"></p>
+</section>
+
+<!-- Task 2 -->
+<section>
+  <h2>Task 2: Change Heading Text Color</h2>
+  <button onclick="document.querySelectorAll('h2').forEach(h=>h.style.color='red')">Change Headings Color</button>
+</section>
+
+<!-- Task 3 -->
+<section>
+  <h2>Task 3: Input Enter Message</h2>
+  <input id="enterInput" placeholder="Press Enter">
+  <p id="enterMsg"></p>
+</section>
+
+<!-- Task 4 -->
+<section>
+  <h2>Task 4: Show Browser Name</h2>
+  <p id="browserName"></p>
+</section>
+
+<!-- Task 5 -->
+<section>
+  <h2>Task 5: Change Letter Spacing</h2>
+  <p id="letterPara">This is a sample paragraph.</p>
+  <button onclick="document.getElementById('letterPara').style.letterSpacing='5px'">Increase Spacing</button>
+</section>
+
+<!-- Task 6 -->
+<section id="colorSection">
+  <h2>Task 6: Change Background of One Section</h2>
+  <button onclick="document.getElementById('colorSection').style.background='lightblue'">Change Background</button>
+</section>
+
+<!-- Task 7 -->
+<section>
+  <h2>Task 7: Count Links</h2>
+  <a href="#">Link1</a> <a href="#">Link2</a>
+  <p id="linkCount"></p>
+</section>
+
+<!-- Task 8 -->
+<section>
+  <h2>Task 8: Reverse Text Input</h2>
+  <input id="reverseInput" oninput="document.getElementById('reverseOutput').textContent=this.value.split('').reverse().join('')">
+  <p id="reverseOutput"></p>
+</section>
+
+<!-- Task 9 -->
+<section>
+  <h2>Task 9: Hide First List Item</h2>
+  <ul id="listTask9"><li>Item1</li><li>Item2</li></ul>
+  <button onclick="document.querySelector('#listTask9 li').style.display='none'">Hide First Item</button>
+</section>
+
+<!-- Task 10 -->
+<section>
+  <h2>Task 10: Screen Width & Height</h2>
+  <p id="screenSize"></p>
+</section>
+<!-- Task 11 -->
+<section>
+  <h2>Task 11: Change Text Direction</h2>
+  <p id="dirPara">This is directional text.</p>
+  <button onclick="document.getElementById('dirPara').dir='rtl'">RTL</button>
+  <button onclick="document.getElementById('dirPara').dir='ltr'">LTR</button>
+</section>
+
+<!-- Task 12 -->
+<section>
+  <h2>Task 12: Input Blur Message</h2>
+  <input id="blurInput" onblur="document.getElementById('blurMsg').textContent='Input lost focus!'">
+  <p id="blurMsg"></p>
+</section>
+
+<!-- Task 13 -->
+<section>
+  <h2>Task 13: Change Even Paragraphs Color</h2>
+  <p>Para1</p><p>Para2</p><p>Para3</p><p>Para4</p>
+  <button onclick="document.querySelectorAll('p:nth-of-type(even)').forEach(p=>p.style.color='blue')">Change Even Paragraphs</button>
+</section>
+
+<!-- Task 14 -->
+<section>
+  <h2>Task 14: Count Images</h2>
+  <img src="https://www.shutterstock.com/shutterstock/photos/2198245029/display_1500/stock-photo-autumn-nature-landscape-lake-bridge-in-fall-forest-path-way-in-gold-woods-romantic-view-image-2198245029.jpg" alt="img1" width="250"><img src="https://thumbs.dreamstime.com/b/colorful-peacock-zbrush-garden-captivating-visual-mike-campau-peacock-hd-wallpaper-showcasing-best-pictures-296614180.jpg" alt="img2" width="250">
+  <p id="imgCount"></p>
+</section>
+
+<!-- Task 15 -->
+<section>
+  <h2>Task 15: Toggle Upper/Lowercase</h2>
+  <p id="casePara">Toggle Me</p>
+  <button onclick="toggleCase()">Toggle Case</button>
+</section>
+
+<!-- Task 16 -->
+<section>
+  <h2>Task 16: Form Thank You</h2>
+  <form onsubmit="event.preventDefault();document.getElementById('thankMsg').textContent='Thank you!'">
+    <input required><button type="submit">Submit</button>
+  </form>
+  <p id="thankMsg"></p>
+</section>
+
+<!-- Task 17 -->
+<section>
+  <h2>Task 17: Change Div Border Width</h2>
+  <div id="borderDiv" style="border:2px solid black;width:100px;height:50px;"></div>
+  <button onclick="document.getElementById('borderDiv').style.borderWidth='10px'">Change Border</button>
+</section>
+
+<!-- Task 18 -->
+<section>
+  <h2>Task 18: Current URL</h2>
+  <p id="currentURL"></p>
+</section>
+
+<!-- Task 19 -->
+<section>
+  <h2>Task 19: Reset Specific Input</h2>
+  <input id="resetInput"><button onclick="document.getElementById('resetInput').value=''">Reset</button>
+</section>
+
+<!-- Task 20 -->
+<section>
+  <h2>Task 20: Word Spacing</h2>
+  <p id="wordPara">This is spaced text.</p>
+  <button onclick="document.getElementById('wordPara').style.wordSpacing='20px'">Increase Word Spacing</button>
+</section>
+<!-- Task 21 -->
+<section>
+  <h2>Task 21: Random Background Color</h2>
+  <button onclick="randomBG()">Random BG</button>
+</section>
+
+<!-- Task 22 -->
+<section>
+  <h2>Task 22: Character Count Excluding Spaces</h2>
+  <input id="charInput" oninput="countChars()">
+  <p id="charCount"></p>
+</section>
+
+<!-- Task 23 -->
+<section>
+  <h2>Task 23: Hide All Inputs</h2>
+  <input><input><button onclick="hideInputs()">Hide Inputs</button>
+</section>
+
+<!-- Task 24 -->
+<section>
+  <h2>Task 24: Click Anywhere Message</h2>
+  <p id="clickMsg"></p>
+</section>
+
+<!-- Task 25 -->
+<section>
+  <h2>Task 25: Change Header Height</h2>
+  <header id="headerTask" style="background:#ccc;height:50px;">Header</header>
+  <button onclick="document.getElementById('headerTask').style.height='150px'">Increase Height</button>
+</section>
+
+<!-- Task 26 -->
+<section>
+  <h2>Task 26: Validate Numbers & Decimals</h2>
+  <input id="numInput" placeholder="Enter a number or decimal" oninput="validateNumber(this)">
+</section>
+
+
+<!-- Task 27 -->
+<section>
+  <h2>Task 27: Copy to Clipboard</h2>
+  <input id="copyInput"><button onclick="copyText()">Copy</button>
+</section>
+
+<!-- Task 28 -->
+<section>
+  <h2>Task 28: Count Form Elements</h2>
+  <form id="formTask">
+    <input type="text" placeholder="Name">
+    <input type="email" placeholder="Email">
+    <select>
+      <option>Option 1</option>
+      <option>Option 2</option>
+    </select>
+    <button type="submit">Submit</button>
+  </form>
+  <p id="formCount"></p>
+</section>
+
+
+<!-- Task 29 -->
+<section>
+  <h2>Task 29: Toggle Div Borders</h2>
+  <div class="borderDiv" style="border:2px solid black;">Div1</div>
+  <div class="borderDiv" style="border:2px solid rgb(232, 109, 109);">Div2</div>
+  <button onclick="toggleBorders()">Toggle Borders</button>
+</section>
+
+<!-- Task 30 -->
+<section>
+  <h2>Task 30: Last Visited Time</h2>
+  <p id="lastVisit"></p>
+</section>
+<!-- Task 31 -->
+<section>
+  <h2>Task 31: Sort Names Alphabetically</h2>
+  <ul id="nameList"><li>Charlie</li><li>Alice</li><li>Bob</li></ul>
+  <button onclick="sortNames()">Sort Names</button>
+</section>
+
+<!-- Task 32 -->
+<section>
+  <h2>Task 32: Validate Number Within Range</h2>
+  <input id="rangeInput" type="number" placeholder="Enter number 1-100">
+  <button onclick="validateRange()">Validate</button>
+  <p id="rangeMsg"></p>
+</section>
+
+<!-- Task 33 -->
+<section>
+  <h2>Task 33: Change Page Language Direction</h2>
+  <button onclick="document.body.dir='rtl'">RTL</button>
+  <button onclick="document.body.dir='ltr'">LTR</button>
+</section>
+
+<!-- Task 34 -->
+<section>
+  <h2>Task 34: Message on Tab Switch</h2>
+  <p id="tabMsg">Switch tabs to see the message update.</p>
+</section>
+
+
+<!-- Task 35 -->
+<section>
+  <h2>Task 35: Highlight Empty Fields on Submit</h2>
+  <form onsubmit="highlightEmpty(event)">
+    <input placeholder="Name">
+    <input placeholder="Email">
+    <button type="submit">Submit</button>
+  </form>
+</section>
+
+<!-- Task 36 -->
+<section>
+  <h2>Task 36: Remove All Child Elements in Div</h2>
+  <div id="childDiv"><p>Child1</p><p>Child2</p></div>
+  <button onclick="document.getElementById('childDiv').innerHTML=''">Remove Children</button>
+</section>
+
+<!-- Task 37 -->
+<section>
+  <h2>Task 37: Word Count from Multiple Inputs</h2>
+  <input class="wordInput"><input class="wordInput">
+  <button onclick="countWords()">Count Words</button>
+  <p id="wordCount"></p>
+</section>
+
+<!-- Task 38 -->
+<section>
+  <h2>Task 38: Lock/Unlock Form</h2>
+  <form id="lockForm"><input><input></form>
+  <button onclick="toggleLock()">Lock/Unlock</button>
+</section>
+
+<!-- Task 39 -->
+<section>
+  <h2>Task 39: Warning on Refresh</h2>
+  <p>Try refreshing the page!</p>
+</section>
+
+<!-- Task 40 -->
+<section>
+  <h2>Task 40: Semantic Layout</h2>
+  <header>Header</header>
+  <nav>Navigation</nav>
+  <main>Main Content</main>
+  <footer>Footer</footer>
+</section>
+<!-- Task 41 -->
+<section>
+  <h2>Task 41: Toggle Visibility of Multiple Sections</h2>
+  <div class="toggleSec">Section 1</div>
+  <div class="toggleSec">Section 2</div>
+  <button onclick="toggleSections()">Toggle Sections</button>
+</section>
+
+<!-- Task 42 -->
+<section>
+  <h2>Task 42: Convert Input to Title Case</h2>
+  <input id="titleInput" oninput="document.getElementById('titleOutput').textContent=toTitleCase(this.value)">
+  <p id="titleOutput"></p>
+</section>
+
+<!-- Task 43 -->
+<section>
+  <h2>Task 43: Background Color Based on Time</h2>
+  <button onclick="bgByTime()">Set BG by Time</button>
+</section>
+
+<!-- Task 44 -->
+<section>
+  <h2>Task 44: Message When Browser Goes Online</h2>
+  <p id="onlineMsg">Disconnect your internet and reconnect to see the message.</p>
+</section>
+
+
+<!-- Task 45 -->
+<section>
+  <h2>Task 45: Highlight Required Inputs</h2>
+  <form>
+    <input required><input required><input>
+  </form>
+  <button onclick="document.querySelectorAll('input[required]').forEach(i=>i.style.border='2px solid red')">Highlight Required</button>
+</section>
+
+<!-- Task 46 -->
+<section>
+  <h2>Task 46: Count Checked Checkboxes</h2>
+  <input type="checkbox"><input type="checkbox" checked><input type="checkbox">
+  <button onclick="countChecked()">Count Checked</button>
+  <p id="checkCount"></p>
+</section>
+
+<!-- Task 47 -->
+<section>
+  <h2>Task 47: Disable Page Scrolling</h2>
+  <button onclick="document.body.style.overflow='hidden'">Disable Scroll</button>
+  <button onclick="document.body.style.overflow='auto'">Enable Scroll</button>
+</section>
+
+<!-- Task 48 -->
+<section>
+  <h2>Task 48: Two-Column Layout</h2>
+  <div style="display:flex;">
+    <div style="flex:1;border:1px solid #ccc;padding:10px;">Column 1</div>
+    <div style="flex:1;border:1px solid #ccc;padding:10px;">Column 2</div>
+  </div>
+</section>
+
+<!-- Task 49 -->
+<section>
+  <h2>Task 49: Message After Copy</h2>
+  <input id="copyMsgInput"><button onclick="copyWithMsg()">Copy</button>
+  <p id="copyMsg"></p>
+</section>
+<!-- Task 50 -->
+<section>
+  <h2>Task 50: Change Meta Description</h2>
+  <!-- Initial meta description -->
+  <meta name="description" content="Initial description">
+  <button onclick="changeMetaDescription('New dynamic description!')">
+    Change Meta Description
+  </button>
+  <p>Open your page source or inspect the meta tag to see the change.</p>
+</section>
+
+
+<script>
+// Task 1 Greeting
+window.onload = function() {
+  const hour = new Date().getHours();
+  let message;
+  if (hour < 12) {
+    message = "Good Morning!";
+  } else if (hour < 18) {
+    message = "Good Afternoon!";
+  } else {
+    message = "Good Evening!";
+  }
+  document.getElementById("greeting").textContent = message;
+};
+
+// Task 3 Enter key
+document.getElementById('enterInput').addEventListener('keydown', e => {
+  if(e.key === 'Enter') {
+    document.getElementById('enterMsg').textContent = 'You pressed Enter!';
+  }
+});
+
+// Task 4 Browser name
+document.getElementById('browserName').textContent = "Browser: " + navigator.userAgent;
+
+// Task 7 Link count
+document.getElementById('linkCount').textContent = "Total links: " + document.querySelectorAll('a').length;
+
+// Task 10 Screen size
+document.getElementById('screenSize').textContent = `Width: ${screen.width}, Height: ${screen.height}`;
+// Task 11: Change Text Direction
+// (Handled inline with buttons in HTML, no extra JS needed)
+
+// Task 12: Input Blur Message
+// (Handled inline with onblur attribute in HTML)
+
+// Task 13: Change Even Paragraphs Color
+// (Handled inline with button onclick in HTML)
+
+// Task 14: Count Images
+document.getElementById('imgCount').textContent =
+  'Images: ' + document.querySelectorAll('img').length;
+
+// Task 15: Toggle Upper/Lowercase
+let upper = true;
+function toggleCase() {
+  let p = document.getElementById('casePara');
+  p.textContent = upper
+    ? p.textContent.toUpperCase()
+    : p.textContent.toLowerCase();
+  upper = !upper;
+}
+
+// Task 16: Form Thank You
+// (Handled inline with onsubmit attribute in HTML)
+
+// Task 17: Change Div Border Width
+// (Handled inline with button onclick in HTML)
+
+// Task 18: Current URL
+document.getElementById('currentURL').textContent = location.href;
+
+// Task 19: Reset Specific Input
+// (Handled inline with button onclick in HTML)
+
+// Task 20: Word Spacing
+// (Handled inline with button onclick in HTML)
+// Task 21: Random Background Color
+function randomBG(){
+  document.body.style.background = '#' + Math.floor(Math.random()*16777215).toString(16);
+}
+
+// Task 22: Character Count Excluding Spaces
+function countChars(){
+  const val = document.getElementById('charInput').value;
+  document.getElementById('charCount').textContent = "Characters (no spaces): " + val.replace(/ /g,'').length;
+}
+
+// Task 23: Hide All Inputs
+function hideInputs(){
+  document.querySelectorAll('input').forEach(i => i.style.display='none');
+}
+
+// Task 24: Click Anywhere Message
+document.addEventListener('click', () => {
+  document.getElementById('clickMsg').textContent = 'You clicked the page!';
+});
+
+// Task 26: Validate Numbers & Decimals
+function validateNumber(el){
+  el.value = el.value.replace(/[^0-9.]/g,'');
+}
+
+// Task 27: Copy to Clipboard
+function copyText(){
+  let val = document.getElementById('copyInput').value;
+  navigator.clipboard.writeText(val);
+}
+
+// Task 28: Count Form Elements
+document.getElementById('formCount').textContent =
+  "Form elements: " + document.getElementById('formTask').elements.length;
+
+// Task 29: Toggle Div Borders
+function toggleBorders(){
+  document.querySelectorAll('.borderDiv').forEach(d => {
+    d.style.border = d.style.border ? '' : '2px solid black';
+  });
+}
+
+// Task 30: Last Visited Time
+let last = localStorage.getItem('lastVisit');
+document.getElementById('lastVisit').textContent = last ? `Last visit: ${last}` : 'First visit!';
+localStorage.setItem('lastVisit', new Date());
+// Task 31: Sort Names Alphabetically
+function sortNames(){
+  let ul = document.getElementById('nameList');
+  let items = [...ul.children].map(li => li.textContent).sort();
+  ul.innerHTML = '';
+  items.forEach(n => {
+    let li = document.createElement('li');
+    li.textContent = n;
+    ul.appendChild(li);
+  });
+}
+
+// Task 32: Validate Number Within Range
+function validateRange(){
+  let val = document.getElementById('rangeInput').value;
+  document.getElementById('rangeMsg').textContent =
+    (val >= 1 && val <= 100) ? 'Valid' : 'Out of range';
+}
+
+// Task 34: Message on Tab Switch
+document.addEventListener('visibilitychange', () => {
+  document.getElementById('tabMsg').textContent =
+    document.hidden ? 'You left the tab' : 'You returned!';
+});
+
+// Task 35: Highlight Empty Fields on Submit
+function highlightEmpty(e){
+  e.preventDefault();
+  e.target.querySelectorAll('input').forEach(i => {
+    if(!i.value) i.style.border = '2px solid red';
+  });
+}
+
+// Task 37: Word Count from Multiple Inputs
+function countWords(){
+  let total = 0;
+  document.querySelectorAll('.wordInput').forEach(i => {
+    total += i.value.trim().split(/\s+/).filter(Boolean).length;
+  });
+  document.getElementById('wordCount').textContent = 'Words: ' + total;
+}
+
+// Task 38: Lock/Unlock Form
+let locked = false;
+function toggleLock(){
+  locked = !locked;
+  document.querySelectorAll('#lockForm input').forEach(i => i.disabled = locked);
+}
+
+// Task 39: Warning on Refresh
+window.onbeforeunload = () => 'Are you sure you want to refresh or leave this page?';
+
+// Task 40: Semantic Layout styling (optional)
+document.querySelector("header").style.background = "#ddd";
+document.querySelector("nav").style.background = "#eee";
+document.querySelector("main").style.background = "#fafafa";
+document.querySelector("footer").style.background = "#ddd";
+
+// Task 41: Toggle Visibility of Multiple Sections
+function toggleSections(){
+  document.querySelectorAll('.toggleSec').forEach(sec => {
+    sec.style.display = (sec.style.display === 'none' ? 'block' : 'none');
+  });
+}
+
+// Task 42: Convert Input to Title Case
+function toTitleCase(str){
+  return str.replace(/\w\S*/g, w => w.charAt(0).toUpperCase() + w.substr(1).toLowerCase());
+}
+
+// Task 43: Background Color Based on Time
+function bgByTime(){
+  let hr = new Date().getHours();
+  if(hr < 12){
+    document.body.style.background = 'lightyellow'; // morning
+  } else if(hr < 18){
+    document.body.style.background = 'lightblue';   // afternoon
+  } else {
+    document.body.style.background = 'lightgray';   // evening
+  }
+}
+
+// Task 44: Message When Browser Goes Online
+window.addEventListener('online', () => {
+  document.getElementById('onlineMsg').textContent = 'Browser is online again!';
+});
+
+// Task 46: Count Checked Checkboxes
+function countChecked(){
+  let count = document.querySelectorAll('input[type=checkbox]:checked').length;
+  document.getElementById('checkCount').textContent = 'Checked: ' + count;
+}
+
+// Task 49: Copy Text with Success Message
+function copyWithMsg(){
+  let val = document.getElementById('copyMsgInput').value;
+  navigator.clipboard.writeText(val).then(() => {
+    document.getElementById('copyMsg').textContent = 'Copied successfully!';
+  });
+}
+
+// Task 50: Change Meta Description
+function changeMetaDescription(newDesc){
+  document.querySelector('meta[name=description]').setAttribute('content', newDesc);
+}
+
+</script>
+
+</body>
+</html>
