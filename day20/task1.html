@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tasks 1-10</title>
+  <style>
+    section {border:1px solid #ccc; margin:10px; padding:10px;}
+  </style>
+</head>
+<body>
+
+<!-- 1 -->
+<section>
+  <h2>1. Random Quote on Load</h2>
+  <p id="quote"></p>
+</section>
+
+<!-- 2 -->
+<section>
+  <h2>2. Button changes clicked element color</h2>
+  <p id="p2">Click me!</p>
+  <button onclick="document.getElementById('p2').style.color='red'">Change Color</button>
+</section>
+
+<!-- 3 -->
+<section>
+  <h2>3. Input click counter</h2>
+  <input id="input3" type="text">
+  <p id="count3">Clicked: 0</p>
+</section>
+
+<!-- 4 -->
+<section>
+  <h2>4. Display current hour</h2>
+  <p id="hour"></p>
+</section>
+
+<!-- 5 -->
+<section>
+  <h2>5. Toggle underline</h2>
+  <p id="p5">Toggle my underline</p>
+  <button onclick="toggleUnderline()">Toggle</button>
+</section>
+
+<!-- 6 -->
+<section id="lastSection">
+  <h2>6. Change background of last section</h2>
+  <button onclick="document.getElementById('lastSection').style.background='lightblue'">Change BG</button>
+</section>
+
+<!-- 7 -->
+<section>
+  <h2>7. Count paragraphs</h2>
+  <p>Para A</p>
+  <p>Para B</p>
+  <p id="paraCount"></p>
+</section>
+
+<!-- 8 -->
+<section>
+  <h2>8. Input length in real time</h2>
+  <input id="input8" type="text">
+  <p id="len8"></p>
+</section>
+
+<!-- 9 -->
+<section>
+  <h2>9. Hide last list item</h2>
+  <ul id="list9">
+    <li>One</li><li>Two</li><li>Three</li>
+  </ul>
+  <button onclick="hideLastLi()">Hide Last</button>
+</section>
+
+<!-- 10 -->
+<section>
+  <h2>10. Window width dynamically</h2>
+  <p id="width10"></p>
+</section>
+<!-- 11. Change line height -->
+<section>
+  <h2>11. Change line height</h2>
+  <p id="p11">This paragraph will change line height.</p>
+  <button id="btn11">Change line height</button>
+</section>
+
+<!-- 12. Message on number key -->
+<section>
+  <h2>12. Message on number key</h2>
+  <input id="input12" type="text" placeholder="Press a key">
+  <p id="msg12"></p>
+</section>
+
+<!-- 13. Change font style of all links -->
+<section>
+  <h2>13. Change font style of all links</h2>
+  <a href="#">Link 1</a>
+  <a href="#">Link 2</a>
+  <button id="btn13">Make links italic</button>
+</section>
+
+<!-- 14. Count radio buttons -->
+<section>
+  <h2>14. Count radio buttons</h2>
+  <input type="radio" name="r14">
+  <input type="radio" name="r14">
+  <input type="radio" name="r14">
+  <p id="count14"></p>
+</section>
+
+<!-- 15. Toggle footer visibility -->
+<section>
+  <h2>15. Toggle footer visibility</h2>
+  <footer id="footer15">Footer content</footer>
+  <button id="btn15">Toggle footer</button>
+</section>
+
+<!-- 16. Disable form submission -->
+<section>
+  <h2>16. Disable form submission</h2>
+  <form id="form16">
+    <input type="text" placeholder="Type something">
+    <button type="submit">Submit</button>
+  </form>
+  <p id="msg16"></p>
+</section>
+
+<!-- 17. Random border color -->
+<section>
+  <h2>17. Random border color</h2>
+  <div id="div17" style="border:2px solid black;width:150px;height:60px;"></div>
+  <button id="btn17">Randomize border</button>
+</section>
+
+<!-- 18. Show protocol -->
+<section>
+  <h2>18. Show protocol</h2>
+  <p id="proto18"></p>
+</section>
+
+<!-- 19. Clear textareas -->
+<section>
+  <h2>19. Clear textareas</h2>
+  <textarea id="ta19a" rows="3" cols="30">Some text</textarea>
+  <textarea id="ta19b" rows="3" cols="30">More text</textarea>
+  <button id="btn19">Clear all textareas</button>
+</section>
+
+<!-- 20. Change text transform -->
+<section>
+  <h2>20. Change text transform</h2>
+  <p id="p20">hello world</p>
+  <button id="btn20">Uppercase / lowercase</button>
+</section>
+
+<!-- 21. Change header background -->
+<section>
+  <h2>21. Change header background</h2>
+  <header id="header21">Header content</header>
+  <button id="btn21">Change background</button>
+</section>
+
+<!-- 22. Count list items -->
+<section>
+  <h2>22. Count list items</h2>
+  <ul id="list22">
+    <li>Item A</li>
+    <li>Item B</li>
+    <li>Item C</li>
+  </ul>
+  <p id="count22"></p>
+</section>
+
+<!-- 23. Caps Lock detection -->
+<section>
+  <h2>23. Caps Lock detection</h2>
+  <input id="input23" type="text" placeholder="Type here">
+  <p id="msg23"></p>
+</section>
+
+<!-- 24. Hide all buttons (only inside this section) -->
+<section id="section24">
+  <h2>24. Hide all buttons</h2>
+  <button id="btn24">Hide buttons in this section</button>
+  <button>Another button</button>
+  <button>Yet another button</button>
+</section>
+
+
+
+
+<!-- 25. Double-click message -->
+<section>
+  <h2>25. Double-click message</h2>
+  <p id="msg25"></p>
+</section>
+
+<!-- 26. Validate lowercase only -->
+<section>
+  <h2>26. Validate lowercase only</h2>
+  <input id="input26" type="text" placeholder="Only lowercase allowed">
+  <p id="msg26"></p>
+</section>
+
+<!-- 27. Save input to localStorage -->
+<section>
+  <h2>27. Save input to localStorage</h2>
+  <input id="input27" type="text">
+  <button id="btn27">Save</button>
+  <p id="msg27"></p>
+</section>
+
+<!-- 28. Count visible elements -->
+<section>
+  <h2>28. Count visible elements</h2>
+  <p id="count28"></p>
+</section>
+
+<!-- 29. Toggle input outline -->
+<section>
+  <h2>29. Toggle input outline</h2>
+  <input type="text">
+  <input type="text">
+  <button id="btn29">Toggle outline</button>
+</section>
+
+<!-- 30. Page visits count -->
+<section>
+  <h2>30. Page visits count</h2>
+  <p id="visits30"></p>
+</section>
+<!-- 31. Remove duplicate values from a list -->
+<section id="section31">
+  <h2>31. Remove duplicate values from a list</h2>
+  <ul id="list31">
+    <li>Apple</li><li>Banana</li><li>Apple</li><li>Orange</li><li>Banana</li>
+  </ul>
+  <button id="btn31">Remove duplicates</button>
+</section>
+
+<!-- 32. Validate leap year -->
+<section id="section32">
+  <h2>32. Validate leap year</h2>
+  <input id="input32" type="number" placeholder="Enter year">
+  <p id="msg32"></p>
+</section>
+
+<!-- 33. Switch between two CSS stylesheets -->
+<section id="section33">
+  <h2>33. Switch between two CSS stylesheets</h2>
+  <button id="btn33">Switch stylesheet</button>
+</section>
+
+<!-- 34. Page visibility change message -->
+<section id="section34">
+  <h2>34. Page visibility change</h2>
+  <p id="msg34"></p>
+</section>
+
+<!-- 35. Disable submit until all fields filled -->
+<section id="section35">
+  <h2>35. Disable submit until all fields filled</h2>
+  <form id="form35">
+    <input type="text" placeholder="Name">
+    <input type="email" placeholder="Email">
+    <button type="submit" disabled>Submit</button>
+  </form>
+</section>
+
+<!-- 36. Replace text inside all paragraphs -->
+<section id="section36">
+  <h2>36. Replace text inside all paragraphs</h2>
+  <p>Paragraph one</p>
+  <p>Paragraph two</p>
+  <button id="btn36">Replace text</button>
+</section>
+
+<!-- 37. Total character count across textareas -->
+<section id="section37">
+  <h2>37. Total character count across textareas</h2>
+  <textarea></textarea>
+  <textarea></textarea>
+  <p id="count37"></p>
+</section>
+
+<!-- 38. Freeze/unfreeze page scrolling -->
+<section id="section38">
+  <h2>38. Freeze/unfreeze page scrolling</h2>
+  <button id="btn38">Toggle scroll lock</button>
+</section>
+
+<!-- 39. Warning before closing tab -->
+<section id="section39">
+  <h2>39. Warning before closing tab</h2>
+  <p>Try closing the tab to see the warning.</p>
+</section>
+
+<!-- 40. Three-section layout using Flexbox -->
+<section id="section40">
+  <h2>40. Three-section Flexbox layout</h2>
+  <div id="flex40">
+    <div style="background:lightcoral;flex:1">Section A</div>
+    <div style="background:lightblue;flex:1">Section B</div>
+    <div style="background:lightgreen;flex:1">Section C</div>
+  </div>
+</section>
+<!-- 41. Toggle read-only state of input fields -->
+<section id="section41">
+  <h2>41. Toggle read-only state of input fields</h2>
+  <input type="text" value="Editable">
+  <input type="text" value="Editable">
+  <button id="btn41">Toggle read-only</button>
+</section>
+
+<!-- 42. Convert input text to camelCase -->
+<section id="section42">
+  <h2>42. Convert input text to camelCase</h2>
+  <input id="input42" type="text" placeholder="Enter text">
+  <p id="msg42"></p>
+</section>
+
+<!-- 43. Highlight elements on mouse hover -->
+<section id="section43">
+  <h2>43. Highlight elements on mouse hover</h2>
+  <p class="hover43">Hover over me</p>
+  <p class="hover43">And me too</p>
+  <button id="btn43">Enable highlight</button>
+</section>
+
+<!-- 44. Message when browser loses internet -->
+<section id="section44">
+  <h2>44. Internet connection status</h2>
+  <p id="msg44"></p>
+</section>
+
+<!-- 45. Select all text inside input -->
+<section id="section45">
+  <h2>45. Select all text inside input</h2>
+  <input id="input45" type="text" value="Sample text">
+  <button id="btn45">Select text</button>
+</section>
+
+<!-- 46. Count disabled form elements -->
+<section id="section46">
+  <h2>46. Count disabled form elements</h2>
+  <input type="text" disabled>
+  <input type="text">
+  <button disabled>Disabled button</button>
+  <p id="count46"></p>
+</section>
+
+<!-- 47. Toggle visibility of all tables -->
+<section id="section47">
+  <h2>47. Toggle visibility of all tables</h2>
+  <table border="1">
+    <tr><td>Row 1</td></tr>
+    <tr><td>Row 2</td></tr>
+  </table>
+  <button id="btn47">Toggle tables</button>
+</section>
+
+<!-- 48. Simple sidebar layout -->
+<section id="section48">
+  <h2>48. Sidebar layout</h2>
+  <div id="sidebar48" style="display:flex;">
+    <div style="width:200px;background:#ddd;">Sidebar</div>
+    <div style="flex:1;background:#eee;">Main content</div>
+  </div>
+</section>
+
+<!-- 49. Confirmation before deleting content -->
+<section id="section49">
+  <h2>49. Confirmation before deleting content</h2>
+  <p id="content49">This is some content.</p>
+  <button id="btn49">Delete content</button>
+</section>
+
+<!-- 50. Dynamically change page language attribute -->
+<section id="section50">
+  <h2>50. Change page language</h2>
+  <select id="select50">
+    <option value="en">English</option>
+    <option value="fr">French</option>
+    <option value="es">Spanish</option>
+  </select>
+  <p id="msg50"></p>
+</section>
+
+<script>
+
+window.onload = function(){
+  //1
+  let quotes=["Stay hungry.","Stay foolish.","Code is poetry."];
+  document.getElementById("quote").innerText=quotes[Math.floor(Math.random()*quotes.length)];
+  //3
+  let c=0;
+  document.getElementById("input3").addEventListener("click",()=>{c++;document.getElementById("count3").innerText="Clicked: "+c;});
+  //4
+  document.getElementById("hour").innerText="Current Hour: "+new Date().getHours();
+  //5
+  window.toggleUnderline=function(){
+    let p=document.getElementById("p5");
+    p.style.textDecoration=(p.style.textDecoration==="underline")?"none":"underline";
+  }
+  //7
+  document.getElementById("paraCount").innerText="Total paragraphs: "+document.getElementsByTagName("p").length;
+  //8
+  document.getElementById("input8").addEventListener("input",e=>{
+    document.getElementById("len8").innerText="Length: "+e.target.value.length;
+  });
+  //9
+  window.hideLastLi=function(){
+    let list=document.getElementById("list9");
+    if(list.lastElementChild) list.lastElementChild.style.display="none";
+  }
+  //10
+  function updateWidth(){document.getElementById("width10").innerText="Width: "+window.innerWidth;}
+  updateWidth();
+  window.onresize=updateWidth;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  // 11. Change line height
+  document.getElementById('btn11').addEventListener('click', () => {
+    const p = document.getElementById('p11');
+    p.style.lineHeight = (p.style.lineHeight === '3') ? '1.5' : '3';
+  });
+
+  // 12. Message on number key
+  document.getElementById('input12').addEventListener('keydown', (e) => {
+    const isNumberKey = /^[0-9]$/.test(e.key);
+    document.getElementById('msg12').textContent = isNumberKey ? 'Number key pressed!' : '';
+  });
+
+  // 13. Change font style of all links
+  document.getElementById('btn13').addEventListener('click', () => {
+    document.querySelectorAll('a').forEach(a => {
+      a.style.fontStyle = (a.style.fontStyle === 'italic') ? 'normal' : 'italic';
+    });
+  });
+
+  // 14. Count radio buttons
+  const radioCount = document.querySelectorAll('input[type="radio"]').length;
+  document.getElementById('count14').textContent = 'Radio buttons: ' + radioCount;
+
+  // 15. Toggle footer visibility
+  document.getElementById('btn15').addEventListener('click', () => {
+    const f = document.getElementById('footer15');
+    const isHidden = getComputedStyle(f).display === 'none';
+    f.style.display = isHidden ? 'block' : 'none';
+  });
+
+  // 16. Disable form submission
+  document.getElementById('form16').addEventListener('submit', (e) => {
+    e.preventDefault();
+    document.getElementById('msg16').textContent = 'Submission disabled by JavaScript.';
+  });
+
+  // 17. Random border color
+  document.getElementById('btn17').addEventListener('click', () => {
+    const colors = ['red', 'green', 'blue', 'purple', 'orange', 'teal'];
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    document.getElementById('div17').style.borderColor = color;
+  });
+
+  // 18. Show protocol
+  document.getElementById('proto18').textContent = 'Protocol: ' + location.protocol.replace(':', '');
+
+  // 19. Clear textareas
+  document.getElementById('btn19').addEventListener('click', () => {
+    document.querySelectorAll('textarea').forEach(t => t.value = '');
+  });
+
+  // 20. Change text transform
+  document.getElementById('btn20').addEventListener('click', () => {
+    const p = document.getElementById('p20');
+    const isUpper = getComputedStyle(p).textTransform === 'uppercase';
+    p.style.textTransform = isUpper ? 'none' : 'uppercase';
+  });
+});
+
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // 21. Change header background
+  document.getElementById('btn21').addEventListener('click', () => {
+    document.getElementById('header21').style.backgroundColor = 'lightblue';
+  });
+
+  // 22. Count list items
+  const liCount = document.querySelectorAll('#list22 li').length;
+  document.getElementById('count22').textContent = 'Total list items: ' + liCount;
+
+  // 23. Caps Lock detection
+  document.getElementById('input23').addEventListener('keyup', (e) => {
+    const caps = e.getModifierState('CapsLock');
+    document.getElementById('msg23').textContent = caps ? 'Caps Lock is ON' : '';
+  });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Task 24: Hide only buttons inside section24 except the trigger
+  document.getElementById('btn24').addEventListener('click', () => {
+    const buttons = document.querySelectorAll('#section24 button');
+    buttons.forEach(btn => {
+      if (btn.id !== 'btn24') {
+        btn.style.display = 'none';
+      }
+    });
+  });
+});
+
+
+  // 25. Double-click message
+  document.addEventListener('dblclick', () => {
+    document.getElementById('msg25').textContent = 'You double-clicked on the page!';
+  });
+
+  // 26. Validate lowercase only
+  document.getElementById('input26').addEventListener('input', (e) => {
+    if (/^[a-z]*$/.test(e.target.value)) {
+      document.getElementById('msg26').textContent = '';
+    } else {
+      document.getElementById('msg26').textContent = 'Only lowercase letters allowed!';
+      e.target.value = e.target.value.replace(/[^a-z]/g, '');
+    }
+  });
+
+  // 27. Save input to localStorage
+  document.getElementById('btn27').addEventListener('click', () => {
+    const val = document.getElementById('input27').value;
+    localStorage.setItem('task27', val);
+    document.getElementById('msg27').textContent = 'Saved: ' + val;
+  });
+
+  // 28. Count visible elements
+  function countVisible() {
+    const visible = Array.from(document.querySelectorAll('body *')).filter(el => {
+      return el.offsetParent !== null;
+    }).length;
+    document.getElementById('count28').textContent = 'Visible elements: ' + visible;
+  }
+  countVisible();
+
+  // 29. Toggle input outline
+  document.getElementById('btn29').addEventListener('click', () => {
+    document.querySelectorAll('input').forEach(inp => {
+      inp.style.outline = (inp.style.outline === '2px solid red') ? 'none' : '2px solid red';
+    });
+  });
+
+  // 30. Page visits count
+  let visits = localStorage.getItem('visits30') || 0;
+  visits++;
+  localStorage.setItem('visits30', visits);
+  document.getElementById('visits30').textContent = 'Page visits: ' + visits;
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // 31. Remove duplicates
+  document.getElementById('btn31').addEventListener('click', () => {
+    const list = document.querySelectorAll('#list31 li');
+    const seen = new Set();
+    list.forEach(li => {
+      if (seen.has(li.textContent)) {
+        li.style.display = 'none';
+      } else {
+        seen.add(li.textContent);
+      }
+    });
+  });
+
+  // 32. Leap year validation
+  document.getElementById('input32').addEventListener('input', e => {
+    const year = parseInt(e.target.value);
+    if (!isNaN(year)) {
+      const leap = (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+      document.getElementById('msg32').textContent = leap ? 'Leap year!' : 'Not a leap year.';
+    } else {
+      document.getElementById('msg32').textContent = '';
+    }
+  });
+
+  // 33. Switch stylesheets
+  let styleToggle = false;
+  document.getElementById('btn33').addEventListener('click', () => {
+    if (!document.getElementById('altStyle')) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.id = 'altStyle';
+      link.href = 'style1.css'; // replace with your stylesheet path
+      document.head.appendChild(link);
+    }
+    const link = document.getElementById('altStyle');
+    link.href = styleToggle ? 'style1.css' : 'style2.css'; // swap between two stylesheets
+    styleToggle = !styleToggle;
+  });
+
+  // 34. Page visibility change
+  document.addEventListener('visibilitychange', () => {
+    document.getElementById('msg34').textContent = document.hidden ? 'Page is hidden' : 'Page is visible';
+  });
+
+  // 35. Disable submit until all fields filled
+  const form35 = document.getElementById('form35');
+  const inputs35 = form35.querySelectorAll('input');
+  const submitBtn35 = form35.querySelector('button');
+  inputs35.forEach(inp => {
+    inp.addEventListener('input', () => {
+      const allFilled = Array.from(inputs35).every(i => i.value.trim() !== '');
+      submitBtn35.disabled = !allFilled;
+    });
+  });
+
+  // 36. Replace text inside all paragraphs
+  document.getElementById('btn36').addEventListener('click', () => {
+    document.querySelectorAll('#section36 p').forEach(p => {
+      p.textContent = 'Replaced text!';
+    });
+  });
+
+  // 37. Total character count across textareas
+  const updateCount37 = () => {
+    const total = Array.from(document.querySelectorAll('#section37 textarea'))
+      .reduce((sum, ta) => sum + ta.value.length, 0);
+    document.getElementById('count37').textContent = 'Total characters: ' + total;
+  };
+  document.querySelectorAll('#section37 textarea').forEach(ta => {
+    ta.addEventListener('input', updateCount37);
+  });
+  updateCount37();
+
+  // 38. Freeze/unfreeze scrolling
+  let scrollLocked = false;
+  document.getElementById('btn38').addEventListener('click', () => {
+    if (!scrollLocked) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    scrollLocked = !scrollLocked;
+  });
+
+  // 39. Warning before closing tab
+  window.addEventListener('beforeunload', (e) => {
+    e.preventDefault();
+    e.returnValue = 'Are you sure you want to leave?';
+  });
+
+  // 40. Flexbox layout styling
+  const flex40 = document.getElementById('flex40');
+  flex40.style.display = 'flex';
+  flex40.style.gap = '10px';
+}
+);
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // 41. Toggle read-only state
+  document.getElementById('btn41').addEventListener('click', () => {
+    document.querySelectorAll('#section41 input').forEach(inp => {
+      inp.readOnly = !inp.readOnly;
+    });
+  });
+
+  // 42. Convert to camelCase
+  document.getElementById('input42').addEventListener('input', e => {
+    const words = e.target.value.trim().split(/\s+/);
+    const camel = words.map((w,i) => i===0 ? w.toLowerCase() : w.charAt(0).toUpperCase()+w.slice(1).toLowerCase()).join('');
+    document.getElementById('msg42').textContent = camel;
+  });
+
+  // 43. Highlight on hover
+  let highlightEnabled = false;
+  document.getElementById('btn43').addEventListener('click', () => {
+    highlightEnabled = !highlightEnabled;
+    document.querySelectorAll('.hover43').forEach(el => {
+      if (highlightEnabled) {
+        el.addEventListener('mouseenter', () => el.style.background='yellow');
+        el.addEventListener('mouseleave', () => el.style.background='');
+      } else {
+        el.style.background='';
+      }
+    });
+  });
+
+  // 44. Internet connection status
+  function updateStatus() {
+    document.getElementById('msg44').textContent = navigator.onLine ? 'Online' : 'Offline';
+  }
+  window.addEventListener('online', updateStatus);
+  window.addEventListener('offline', updateStatus);
+  updateStatus();
+
+  // 45. Select all text
+  document.getElementById('btn45').addEventListener('click', () => {
+    const inp = document.getElementById('input45');
+    inp.select();
+  });
+
+  // 46. Count disabled elements
+  const disabledCount = document.querySelectorAll('#section46 [disabled]').length;
+  document.getElementById('count46').textContent = 'Disabled elements: ' + disabledCount;
+
+  // 47. Toggle tables
+  document.getElementById('btn47').addEventListener('click', () => {
+    document.querySelectorAll('#section47 table').forEach(tbl => {
+      tbl.style.display = (tbl.style.display === 'none') ? 'table' : 'none';
+    });
+  });
+
+  // 48. Sidebar layout is static (CSS flexbox already applied)
+
+  // 49. Confirmation before deleting
+  document.getElementById('btn49').addEventListener('click', () => {
+    if (confirm('Are you sure you want to delete this content?')) {
+      document.getElementById('content49').remove();
+    }
+  });
+
+  // 50. Change page language
+  document.getElementById('select50').addEventListener('change', e => {
+    document.documentElement.lang = e.target.value;
+    document.getElementById('msg50').textContent = 'Language set to: ' + e.target.value;
+  });
+});
+</script>
+
+</body>
+</html>

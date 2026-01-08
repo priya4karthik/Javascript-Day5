@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 24 Demo</title>
+</head>
+<body>
+
+<!-- Task 24 section -->
+<section id="section24">
+  <h2>24. Hide all buttons</h2>
+  <button id="btn24">Hide buttons in this section</button>
+  <button>Another button</button>
+  <button>Yet another button</button>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('btn24').addEventListener('click', () => {
+    // Select all buttons inside section24
+    const buttons = document.querySelectorAll('#section24 button');
+    buttons.forEach(btn => {
+      if (btn.id !== 'btn24') {   // keep the trigger visible
+        btn.style.display = 'none';
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
