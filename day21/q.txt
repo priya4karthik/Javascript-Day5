@@ -1,0 +1,50 @@
+1.Create a box that uses @keyframes to move left to right continuously.
+2.Create a loading text animation using CSS keyframes.
+3.Animate a div to fade in and slide up on page load.
+4.Create a button that triggers a CSS keyframe animation on click.
+5.Create a card that flips on hover using CSS transform.
+6.Animate a progress effect using width change and keyframes.
+7.Create a bouncing ball animation using CSS.
+8.Create a rotating loader using border and keyframes.
+9.Animate text color change using keyframes.
+10.Create a pulse animation for a button.
+11.Pause a CSS animation when the mouse hovers over an element.
+12.Change animation speed using a button click.
+13.Create an animation that runs only once when the page loads.
+14.Create a div that alternates between two positions using animation-direction.
+15.Create a CSS animation that starts after a delay.
+16.Trigger animation by adding and removing a class using JavaScript.
+17.Create a hover animation that uses both scale and rotate.
+18.Create a text typing-like effect using CSS animation.
+19.Animate background color gradient using keyframes.
+20.Create a box that shakes when a button is clicked.
+21.Stop and restart an animation using JavaScript.
+22.Create an animation that fills a bar from 0% to 100%.
+23.Create multiple elements that animate with different delays.
+24.Create a CSS animation using animation-fill-mode.
+25.Create an animation that changes both opacity and position.
+26.Create a responsive layout with three breakpoints (mobile, tablet, desktop).
+27.Change animation behavior based on screen size using media queries.
+28.Disable animations completely on screens smaller than 600px.
+29.Create a responsive navbar with animated open/close effect.
+30.Change animation duration for mobile and desktop using media queries.
+31.Create a responsive card layout with animated hover effects.
+32.Switch from grid layout to flex layout using media queries.
+33.Create a sidebar that slides in only on mobile view.
+34.Animate layout reflow when screen size changes.
+35.Create a responsive image gallery with animated hover zoom.
+36.Use media queries to change keyframe animation direction.
+37.Create text that animates differently on mobile vs desktop.
+38.Create a responsive banner with animated text.
+39.Reduce animation motion when screen width is small.
+40.Create a responsive button with different hover animations per device.
+41.Animate height changes when layout switches between breakpoints.
+42.Create a responsive modal with animated open/close effect.
+43.Change animation timing function using media queries.
+44.Create a responsive footer with animated links.
+45.Animate menu items differently based on screen size.
+46.Create a responsive section where animations trigger on scroll.
+47.Combine transition and keyframes in the same layout.
+48.Create a responsive dashboard layout with animated cards.
+49.Create a page where animations are enabled only on desktop.
+50.Build a fully responsive page with adaptive animations for all screen sizes.

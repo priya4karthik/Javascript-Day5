@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks 26-50: Responsive & Advanced Animations</title>
+    <style>
+        /* UNIVERSAL CONTINUITY STYLES */
+        :root {
+            --primary: #6366f1;
+            --success: #22c55e;
+            --bg: #f8fafc;
+            --text: #1e293b;
+        }
+
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; }
+        
+        /* 26. Responsive Grid Layout (Mobile/Tablet/Desktop) */
+        .main-wrapper {
+            display: grid;
+            gap: 20px;
+            /* Desktop Default */
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media (max-width: 1024px) { .main-wrapper { grid-template-columns: repeat(2, 1fr); } } /* Tablet */
+        @media (max-width: 600px) { .main-wrapper { grid-template-columns: 1fr; } } /* Mobile */
+
+        .task-container {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            transition: height 0.3s ease; /* 41. Animate height changes */
+        }
+
+        .task-title { font-weight: 600; margin-bottom: 15px; border-bottom: 2px solid #f1f5f9; padding-bottom: 5px; }
+        
+        .demo-box {
+            height: 120px;
+            background: #f1f5f9;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* 27. Change Behavior based on Screen Size */
+        .res-box { width: 50px; height: 50px; background: var(--primary); animation: slide 2s infinite alternate; }
+        @media (max-width: 600px) { .res-box { background: var(--success); transform: scale(0.5); } }
+
+        /* 28. Disable Animations on small screens */
+        @media (max-width: 600px) { .no-mobile-anim { animation: none !important; } }
+
+        /* 29. Responsive Navbar effect */
+        .nav-demo { width: 100%; background: #334155; height: 0; transition: 0.5s; color: white; }
+        .nav-demo.open { height: 50px; }
+
+        /* 30. Change Duration via Media Query */
+        .speed-box { width: 40px; height: 40px; background: orange; animation: spin 3s linear infinite; }
+        @media (max-width: 600px) { .speed-box { animation-duration: 0.5s; } }
+
+        /* 32. Switch Grid to Flex */
+        .switch-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; width: 100%; }
+        @media (max-width: 600px) { .switch-layout { display: flex; flex-direction: column; } }
+
+        /* 35. Gallery Hover Zoom */
+        .zoom-frame { width: 80px; height: 60px; overflow: hidden; border-radius: 4px; }
+        .zoom-frame img { width: 100%; transition: 0.5s; }
+        .zoom-frame:hover img { transform: scale(1.5); }
+
+        /* 40. Device Specific Hover */
+        .dev-btn { padding: 10px; background: var(--primary); color: white; border: none; }
+        @media (min-width: 1024px) { .dev-btn:hover { background: black; border-radius: 20px; } }
+
+        /* 42. Modal Animation */
+        .modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0); 
+                 background: white; padding: 20px; box-shadow: 0 0 20px rgba(0,0,0,0.5); z-index: 100; transition: 0.3s; }
+        .modal.active { transform: translate(-50%, -50%) scale(1); }
+
+        /* 43. Timing Function Change */
+        .timing-box { width: 30px; height: 30px; background: red; animation: slide 2s infinite; animation-timing-function: linear; }
+        @media (min-width: 1024px) { .timing-box { animation-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55); } }
+
+        /* KEYFRAMES */
+        @keyframes slide { from { transform: translateX(-40px); } to { transform: translateX(40px); } }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        button { cursor: pointer; padding: 8px 16px; margin-top: 10px; border-radius: 4px; border: 1px solid #ccc; }
+    /* Base Card Style */
+.resp-card {
+    width: 140px;
+    height: 80px;
+    background: var(--primary);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* DESKTOP HOVER EFFECT (Task 31 - Screen > 768px) */
+@media (min-width: 769px) {
+    .resp-card:hover {
+        transform: translateY(-8px); /* Lift up */
+        box-shadow: 0 10px 20px rgba(99, 102, 241, 0.4); /* Glow effect */
+        background-color: #4f46e5;
+    }
+}
+
+/* MOBILE TOUCH EFFECT (Task 31 - Screen <= 768px) */
+@media (max-width: 768px) {
+    .resp-card:active {
+        transform: scale(0.92); /* Shrink on press */
+        background-color: #4338ca;
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+    }
+}
+/* --- 33. Sidebar Styles --- */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -280px; /* Hidden off-screen to the left */
+    width: 250px;
+    height: 100%;
+    background: #1e293b;
+    color: white;
+    z-index: 1001;
+    transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 20px;
+    text-align: left;
+}
+
+.sidebar.active {
+    left: 0; /* Slide in */
+}
+
+.sidebar .close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    float: right;
+}
+
+#sidebar-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    z-index: 1000;
+}
+
+#sidebar-overlay.active { display: block; }
+
+/* --- 34. Layout Reflow --- */
+.reflow-grid {
+    display: flex;
+    gap: 10px;
+    width: 150px; /* Initial small width */
+    height: 60px;
+    background: #cbd5e1;
+    padding: 10px;
+    border-radius: 8px;
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Elastic reflow */
+}
+
+.reflow-grid.expanded {
+    width: 250px;
+    height: 100px;
+}
+
+.reflow-item {
+    flex: 1;
+    background: var(--primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+/* 36. Media Query Direction Switch */
+.dir-box {
+    width: 40px; height: 40px; background: #8b5cf6; color: white;
+    display: flex; align-items: center; justify-content: center;
+    animation: moveDir 2s infinite alternate ease-in-out;
+}
+@keyframes moveDir { from { transform: translateX(-40px); } to { transform: translateX(40px); } }
+
+@media (max-width: 600px) {
+    /* Change direction to vertical on mobile */
+    @keyframes moveDir { from { transform: translateY(-30px); } to { transform: translateY(30px); } }
+}
+
+/* 37. Text Animates Differently */
+.varying-text { font-weight: 800; animation: desktopText 2s infinite; }
+@keyframes desktopText { 0% { letter-spacing: 0; } 50% { letter-spacing: 10px; } }
+
+@media (max-width: 600px) {
+    .varying-text { animation: mobileText 1s infinite alternate; color: #ec4899; }
+    @keyframes mobileText { from { transform: scale(1); } to { transform: scale(1.3); } }
+}
+
+/* 38. Responsive Banner Text */
+.promo-banner { width: 100%; background: #000; overflow: hidden; white-space: nowrap; }
+.banner-text { 
+    display: inline-block; color: yellow; font-weight: bold;
+    animation: marquee 5s linear infinite; 
+}
+@keyframes marquee { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
+
+/* 39. Reduce Motion for small screens */
+.motion-box { width: 40px; height: 40px; background: #10b981; animation: complexRotate 4s infinite linear; }
+@keyframes complexRotate { to { transform: rotate(360deg) scale(1.5); filter: hue-rotate(90deg); } }
+
+@media (max-width: 600px) {
+    /* Simplifies the animation to save mobile CPU/battery */
+    .motion-box { animation: simpleFade 2s infinite alternate; }
+    @keyframes simpleFade { from { opacity: 1; } to { opacity: 0.5; } }
+}
+
+/* 40. Different Hover Per Device */
+.device-btn { 
+    padding: 10px 20px; background: #3b82f6; color: white; border: none; 
+    transition: 0.3s; cursor: pointer;
+}
+@media (min-width: 1025px) {
+    /* Desktop: Fancy Rotate Hover */
+    .device-btn:hover { transform: rotate(5deg) scale(1.1); background: #1d4ed8; }
+}
+@media (max-width: 1024px) {
+    /* Mobile/Tablet: Color Flash only (no movement) */
+    .device-btn:active { background: #10b981; }
+}
+/* Base Wrapper */
+.height-anim-wrapper {
+    width: 100%;
+    background: #f1f5f9;
+    border-radius: 8px;
+    overflow: hidden;
+    /* This allows the container to grow/shrink smoothly */
+    transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Internal Layout */
+.content-block {
+    display: flex;
+    gap: 10px;
+    padding: 15px;
+}
+
+.box-item {
+    flex: 1;
+    height: 40px;
+    background: var(--primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+/* DESKTOP (Horizontal) */
+@media (min-width: 601px) {
+    .height-anim-wrapper {
+        height: 70px; /* Short height for 1 row */
+    }
+    .content-block {
+        flex-direction: row;
+    }
+}
+
+/* MOBILE (Vertical Stack) */
+@media (max-width: 600px) {
+    .height-anim-wrapper {
+        height: 180px; /* Tall height for 3 rows */
+    }
+    .content-block {
+        flex-direction: column;
+    }
+}
+/* 43. Timing Function Change */
+.timing-box {
+    width: 40px; height: 40px; background: #f43f5e; color: white;
+    display: flex; align-items: center; justify-content: center;
+    animation: moveLR 2s infinite alternate;
+}
+@media (min-width: 1025px) {
+    .timing-box { animation-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55); } /* Bouncy */
+}
+@media (max-width: 1024px) {
+    .timing-box { animation-timing-function: linear; } /* Smooth/Simple */
+}
+
+/* 44. Animated Footer Links */
+.foot-link { color: #64748b; text-decoration: none; position: relative; padding: 5px; }
+.foot-link::after {
+    content: ''; position: absolute; width: 0; height: 2px;
+    bottom: 0; left: 0; background: var(--primary); transition: width 0.3s;
+}
+.foot-link:hover::after { width: 100%; }
+
+/* 46. Scroll Reveal Base State */
+.scroll-reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+.scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* 47. Hybrid: Transition (hover) + Keyframes (idle) */
+.hybrid-box {
+    width: 60px; height: 60px; background: #10b981; color: white;
+    display: flex; align-items: center; justify-content: center;
+    animation: idlePulse 2s infinite; /* Keyframe */
+    transition: transform 0.3s, background 0.3s; /* Transition */
+}
+.hybrid-box:hover { transform: rotate(90deg) scale(1.2); background: #059669; }
+@keyframes idlePulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+
+/* 49. Desktop-Only Animation */
+.pc-box { width: 40px; height: 40px; background: #334155; }
+@media (min-width: 1025px) {
+    .pc-box { animation: spin 3s linear infinite; }
+}
+@media (max-width: 1024px) {
+    .pc-box { animation: none; }
+}
+    </style>
+</head>
+<body>
+
+    <h1 style="text-align: center;">Tasks 26 - 50: Responsive Mastery</h1>
+
+    <div class="main-wrapper">
+        <div class="task-container">
+            <div class="task-title">26/27. Responsive Behavior</div>
+            <div class="demo-box"><div class="res-box"></div></div>
+            <p><small>Changes color/size on mobile</small></p>
+        </div>
+
+        <div class="task-container">
+            <div class="task-title">28. Disable Anim < 600px</div>
+            <div class="demo-box"><div class="res-box no-mobile-anim" style="background: #f43f5e;"></div></div>
+        </div>
+
+        <div class="task-container">
+            <div class="task-title">29. Responsive Navbar</div>
+            <button onclick="document.getElementById('nav').classList.toggle('open')">Toggle Menu</button>
+            <div id="nav" class="nav-demo">Menu Items...</div>
+        </div>
+
+        <div class="task-container">
+            <div class="task-title">30. Mobile Speed Change</div>
+            <div class="demo-box"><div class="speed-box"></div></div>
+            <p><small>Faster on Mobile</small></p>
+        </div>
+<div class="task-container">
+    <div class="task-title">31. Responsive Hover Effect</div>
+    <div class="demo-box">
+        <div class="resp-card">
+            <div class="card-content">
+                <span>Interactive Card</span>
+            </div>
+        </div>
+    </div>
+    <p><small>Desktop: Lift & Glow | Mobile: Press & Shrink</small></p>
+</div>
+        <div class="task-container">
+            <div class="task-title">32. Grid to Flex Switch</div>
+            <div class="demo-box">
+                <div class="switch-layout">
+                    <div style="background: #ddd;">A</div><div style="background: #ddd;">B</div>
+                </div>
+            </div>
+        </div>
+<div class="task-container">
+    <div class="task-title">33. Mobile Slide-in Sidebar</div>
+    <div class="demo-box">
+        <button onclick="toggleSidebar(true)">Open Sidebar</button>
+    </div>
+    <div id="mobile-sidebar" class="sidebar">
+        <button class="close-btn" onclick="toggleSidebar(false)">×</button>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Profile</a>
+            <a href="#">Settings</a>
+        </nav>
+    </div>
+    <div id="sidebar-overlay" onclick="toggleSidebar(false)"></div>
+</div>
+
+<div class="task-container">
+    <div class="task-title">34. Layout Reflow Anim</div>
+    <div class="demo-box">
+        <div id="reflow-parent" class="reflow-grid">
+            <div class="reflow-item">1</div>
+            <div class="reflow-item">2</div>
+            <div class="reflow-item">3</div>
+        </div>
+    </div>
+    <button onclick="toggleReflow()">Toggle Layout Size</button>
+</div>
+        <div class="task-container">
+            <div class="task-title">35. Gallery Hover Zoom</div>
+            <div class="demo-box">
+                <div class="zoom-frame">
+                    <img src="https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" width="400" alt="Sample">
+                </div>
+            </div>
+        </div>
+
+    <div class="task-container">
+        <div class="task-title">36. MQ Keyframe Direction</div>
+        <div class="demo-box">
+            <div class="dir-box">Dir</div>
+        </div>
+        <p><small>Desktop: Horizontal | Mobile: Vertical</small></p>
+    </div>
+
+    <div class="task-container">
+        <div class="task-title">37. Text Variation MQ</div>
+        <div class="demo-box">
+            <div class="varying-text">WATCH ME</div>
+        </div>
+    </div>
+
+    <div class="task-container">
+        <div class="task-title">38. Responsive Banner</div>
+        <div class="promo-banner">
+            <span class="banner-text">FLASH SALE - 50% OFF</span>
+        </div>
+    </div>
+
+    <div class="task-container">
+        <div class="task-title">39. Reduced Motion (Small)</div>
+        <div class="demo-box">
+            <div class="motion-box">Motion</div>
+        </div>
+    </div>
+
+    <div class="task-container">
+        <div class="task-title">40. Per-Device Hover</div>
+        <div class="demo-box">
+            <button class="device-btn">Button</button>
+        </div>
+    </div>
+<div class="task-container">
+    <div class="task-title">41. Animate Height on Breakpoint</div>
+    <div class="height-anim-wrapper">
+        <div class="content-block">
+            <div class="box-item">A</div>
+            <div class="box-item">B</div>
+            <div class="box-item">C</div>
+        </div>
+    </div>
+    <p><small>Resize window to see height transition</small></p>
+</div>
+        <div class="task-container">
+            <div class="task-title">42. Responsive Modal</div>
+            <button onclick="toggleModal(true)">Open Modal</button>
+        </div>
+
+    <div class="task-container">
+        <div class="task-title">43. MQ Timing Function</div>
+        <div class="demo-box">
+            <div class="timing-box">Bounce</div>
+        </div>
+        <p><small>Desktop: Bouncy | Mobile: Linear</small></p>
+    </div>
+
+    <div class="task-container">
+        <div class="task-title">44. Animated Footer Links</div>
+        <footer class="mini-footer">
+            <a href="#" class="foot-link">Home</a>
+            <a href="#" class="foot-link">About</a>
+        </footer>
+    </div>
+
+    <div class="task-container">
+        <div class="task-title">45. Device-Specific Menu</div>
+        <div class="demo-box">
+            <ul class="device-menu">
+                <li>Item 1</li>
+                <li>Item 2</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="task-container scroll-reveal">
+        <div class="task-title">46. Trigger on Scroll</div>
+        <div class="demo-box">
+            <div class="reveal-content">I appeared on scroll!</div>
+        </div>
+    </div>
+
+    <div class="task-container">
+        <div class="task-title">47. Transition + Keyframes</div>
+        <div class="demo-box">
+            <div class="hybrid-box">Hybrid</div>
+        </div>
+    </div>
+
+    <div class="task-container dashboard-card">
+        <div class="task-title">48. Dashboard Card Float</div>
+        <div class="demo-box">
+            <div class="stat-card">Stats</div>
+        </div>
+    </div>
+
+    <div class="task-container desktop-only-anim">
+        <div class="task-title">49. Desktop-Only Animation</div>
+        <div class="demo-box">
+            <div class="pc-box">PC Only</div>
+        </div>
+    </div>
+
+        <div class="task-container">
+            <div class="task-title">50. Adaptive Page Final</div>
+            <div class="demo-box">
+                <p>Fully Responsive System Loaded</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="myModal" class="modal">
+        <h3>Animated Modal</h3>
+        <p>This scaled up from 0!</p>
+        <button onclick="toggleModal(false)">Close</button>
+    </div>
+
+    <script>
+        // 42. Modal Logic
+        function toggleModal(show) {
+            document.getElementById('myModal').classList.toggle('active', show);
+        }
+
+        // 46. Trigger on Scroll Demo
+        window.addEventListener('scroll', () => {
+            const containers = document.querySelectorAll('.task-container');
+            containers.forEach(c => {
+                const rect = c.getBoundingClientRect();
+                if(rect.top < window.innerHeight) {
+                    c.style.animation = "fadeIn 1s forwards";
+                }
+            });
+        });
+
+        // 21 (Carry over) Stop/Restart Logic
+        function toggleSpecificAnimation(id) {
+            const el = document.getElementById(id);
+            el.style.animationPlayState = el.style.animationPlayState === 'paused' ? 'running' : 'paused';
+        }
+        // Optional: Log device-specific interaction
+const card31 = document.querySelector('.resp-card');
+
+if (card31) {
+    card31.addEventListener('click', () => {
+        const isMobile = window.innerWidth <= 768;
+        console.log(`Task 31 clicked on ${isMobile ? 'Mobile' : 'Desktop'}`);
+    });
+}
+// 33. Sidebar Toggle Logic
+function toggleSidebar(isOpen) {
+    const sidebar = document.getElementById('mobile-sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
+    
+    if (isOpen) {
+        sidebar.classList.add('active');
+        overlay.classList.add('active');
+    } else {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+    }
+}
+
+// 34. Layout Reflow Logic
+function toggleReflow() {
+    const box = document.getElementById('reflow-parent');
+    box.classList.toggle('expanded');
+}
+// Monitor Breakpoints for Tasks 36-40
+window.addEventListener('resize', () => {
+    const width = window.innerWidth;
+    const infoText = document.querySelector('.varying-text');
+    
+    if (width <= 600) {
+        console.log("Task 36-40: Mobile animations active.");
+    } else {
+        console.log("Task 36-40: Desktop animations active.");
+    }
+});
+// Optional: Auto-calculate height if content is dynamic
+function updateDynamicHeight() {
+    const wrapper = document.querySelector('.height-anim-wrapper');
+    const content = document.querySelector('.content-block');
+    
+    // In a real scenario, you could set height to content.scrollHeight
+    // wrapper.style.height = content.scrollHeight + 'px';
+    
+    console.log("Task 41: Height adjusted to " + wrapper.offsetHeight + "px");
+}
+
+window.addEventListener('resize', updateDynamicHeight);
+// 46. Intersection Observer for Scroll Trigger
+const observerOptions = {
+    threshold: 0.2
+};
+
+const scrollObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, observerOptions);
+
+// Initialize observer on Task 46 container
+document.querySelectorAll('.scroll-reveal').forEach(el => {
+    scrollObserver.observe(el);
+});
+
+// 48. Dashboard Card Random Stat Update (Animation trigger)
+setInterval(() => {
+    const statCard = document.querySelector('.stat-card');
+    if(statCard) {
+        statCard.style.transform = 'scale(1.1)';
+        setTimeout(() => statCard.style.transform = 'scale(1)', 200);
+    }
+}, 3000);
+    </script>
+</body>
+</html>

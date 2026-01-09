@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks 1-25: CSS & JS Animations</title>
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --bg: #f3f4f6;
+            --card: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--bg);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .task-container {
+            background: var(--card);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 200px;
+            text-align: center;
+        }
+
+        h3 { margin-top: 0; font-size: 1rem; color: #374151; border-bottom: 1px solid #eee; width: 100%; padding-bottom: 10px; }
+        
+        /* Utility Box */
+        .box { width: 50px; height: 50px; background: var(--primary); border-radius: 8px; }
+
+        /* --- TASK STYLES --- */
+
+        /* 1. Left to Right */
+        .t1-box { animation: moveLR 2s linear infinite alternate; }
+        @keyframes moveLR { from { transform: translateX(-50px); } to { transform: translateX(50px); } }
+
+        /* 2. Loading Text */
+        .t2-text span { animation: pulseText 1s infinite; }
+        @keyframes pulseText { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+
+        /* 3. Fade In Slide Up */
+        .t3-anim { animation: fadeUp 1s ease-out forwards; }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* 4. Click Trigger (Class applied via JS) */
+        .spin-anim { animation: spin 0.6s ease-in-out; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        /* 5. Card Flip */
+        .t5-card { width: 100px; height: 60px; perspective: 1000px; cursor: pointer; }
+        .t5-inner { position: relative; width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-3d; }
+        .t5-card:hover .t5-inner { transform: rotateY(180deg); }
+        .t5-front, .t5-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; align-items: center; justify-content: center; border-radius: 5px; color: white; }
+        .t5-front { background: #4f46e5; }
+        .t5-back { background: #ec4899; transform: rotateY(180deg); }
+
+        /* 6. Progress Effect */
+        .t6-track { width: 150px; height: 10px; background: #e5e7eb; border-radius: 5px; overflow: hidden; }
+        .t6-fill { width: 0; height: 100%; background: #10b981; animation: fillBar 3s infinite; }
+        @keyframes fillBar { to { width: 100%; } }
+
+        /* 7. Bouncing Ball */
+        .t7-ball { width: 30px; height: 30px; background: #f59e0b; border-radius: 50%; animation: bounce 0.5s infinite alternate cubic-bezier(.5,0.05,1,.5); }
+        @keyframes bounce { from { transform: translateY(-40px); } to { transform: translateY(0); } }
+
+        /* 8. Rotating Loader */
+        .t8-loader { width: 30px; height: 30px; border: 4px solid #e5e7eb; border-top: 4px solid #4f46e5; border-radius: 50%; animation: spin 1s linear infinite; }
+
+        /* 9. Text Color Change */
+        .t9-text { font-weight: bold; animation: colorChange 3s infinite; }
+        @keyframes colorChange { 0% { color: #ef4444; } 33% { color: #3b82f6; } 66% { color: #10b981; } 100% { color: #ef4444; } }
+
+        /* 10. Pulse Button */
+        .t10-btn { padding: 10px 20px; background: #4f46e5; color: white; border: none; border-radius: 6px; cursor: pointer; animation: pulseBtn 2s infinite; }
+        @keyframes pulseBtn { 0% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(79, 70, 229, 0); } 100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); } }
+
+        button { cursor: pointer; padding: 5px 10px; background: #374151; color: white; border: none; border-radius: 4px; }
+    /* General Card Styling */
+.task-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 20px; }
+.task-card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center; }
+.box { width: 50px; height: 50px; background: #6366f1; margin: 10px auto; border-radius: 8px; }
+
+/* 11. Pause on Hover */
+.pause-box { width: 100px; padding: 10px; background: #8b5cf6; color: white; animation: move 2s infinite linear; }
+.pause-box:hover { animation-play-state: paused; cursor: pointer; }
+@keyframes move { 0%, 100% { transform: translateX(-30px); } 50% { transform: translateX(30px); } }
+
+/* 12. Speed Change Base */
+.speed-anim { animation: rotate 2s infinite linear; }
+@keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* 13. Run Once */
+.once-box { animation: slideIn 1.5s ease-out forwards; animation-iteration-count: 1; }
+@keyframes slideIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* 14. Alternate Direction */
+.alt-box { width: 40px; height: 40px; background: #10b981; animation: move 1.5s infinite alternate ease-in-out; }
+
+/* 15. Delay */
+.delay-box { animation: fadeIn 1s forwards; opacity: 0; animation-delay: 2s; }
+@keyframes fadeIn { to { opacity: 1; } }
+
+/* 16. Triggered Class */
+.active-pulse { animation: pulse 1s infinite; }
+@keyframes pulse { 50% { transform: scale(1.2); opacity: 0.7; } }
+
+/* 17. Scale & Rotate */
+.sr-box { width: 80px; height: 80px; background: #f59e0b; display: flex; align-items: center; justify-content: center; transition: transform 0.4s; }
+.sr-box:hover { transform: scale(1.2) rotate(15deg); }
+
+/* 18. Typing Effect */
+.typing-text { font-family: monospace; border-right: 2px solid; white-space: nowrap; overflow: hidden; width: 0; animation: type 3s steps(12) infinite; margin: 0 auto; }
+@keyframes type { from { width: 0 } to { width: 12ch } }
+
+/* 19. Background Gradient */
+.grad-box { width: 100%; height: 80px; background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab); background-size: 400% 400%; animation: gradientBG 5s ease infinite; border-radius: 8px; }
+@keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+/* 20. Shake Animation */
+.shake-anim { animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both; }
+@keyframes shake { 10%, 90% { transform: translate3d(-1px, 0, 0); } 20%, 80% { transform: translate3d(2px, 0, 0); } 30%, 50%, 70% { transform: translate3d(-4px, 0, 0); } 40%, 60% { transform: translate3d(4px, 0, 0); } }
+    /* 21. Stop/Restart Moving Box */
+.moving-box {
+    width: 40px; height: 40px; background: #6366f1; border-radius: 8px;
+    animation: slideAcross 2s infinite alternate ease-in-out;
+}
+@keyframes slideAcross {
+    from { transform: translateX(-60px); }
+    to { transform: translateX(60px); }
+}
+
+/* The outer container (grey track) */
+.progress-track {
+    width: 80%;
+    height: 20px;
+    background-color: #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden; /* Ensures the fill stays inside the rounded corners */
+    border: 1px solid #cbd5e1;
+}
+
+/* The animating part */
+.progress-fill {
+    height: 100%;
+    width: 0%; /* Start at zero */
+    background: linear-gradient(90deg, #3b82f6, #22c55e); /* Blue to Green gradient */
+    
+    /* Animation: name | duration | timing-function | fill-mode */
+    animation: fillProgress 4s ease-in-out forwards;
+}
+
+/* Define the growth from 0 to 100 */
+@keyframes fillProgress {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+/* 23. Multiple Delays (Staggered dots) */
+.delayed-dot {
+    width: 15px; height: 15px; background: #ec4899; border-radius: 50%;
+    animation: bounceDelay 0.8s infinite alternate;
+}
+@keyframes bounceDelay {
+    from { transform: translateY(0); }
+    to { transform: translateY(-20px); }
+}
+
+/* 24. Fill Mode Forwards (Prevents resetting to start) */
+.fill-mode-box {
+    padding: 8px 12px; background: #f59e0b; color: white; border-radius: 4px;
+    animation: moveAndStay 2s forwards; /* Key part: 'forwards' */
+}
+@keyframes moveAndStay {
+    from { transform: translateX(-50px); opacity: 0.5; }
+    to { transform: translateX(30px); opacity: 1; background: #d97706; }
+}
+
+/* 25. Opacity & Position Combination */
+.fade-slide-box {
+    font-weight: bold; color: #475569;
+    animation: fadeSlideUp 2s infinite;
+}
+@keyframes fadeSlideUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    50% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-20px); }
+}
+    </style>
+</head>
+<body>
+
+    <div class="task-container">
+        <h3>1. Continuous Left-Right</h3>
+        <div class="box t1-box"></div>
+    </div>
+
+    <div class="task-container">
+        <h3>2. Loading Text</h3>
+        <div class="t2-text">Loading<span>...</span></div>
+    </div>
+
+    <div class="task-container">
+        <h3>3. Fade In Slide Up</h3>
+        <div class="t3-anim">Hello World</div>
+    </div>
+
+    <div class="task-container">
+        <h3>4. Click to Animate</h3>
+        <div id="t4-box" class="box" style="background: #ef4444;"></div>
+        <button onclick="triggerSpin()">Click Me</button>
+    </div>
+
+    <div class="task-container">
+        <h3>5. Hover Flip Card</h3>
+        <div class="t5-card">
+            <div class="t5-inner">
+                <div class="t5-front">Front</div>
+                <div class="t5-back">Back</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="task-container">
+        <h3>6. Progress Animation</h3>
+        <div class="t6-track"><div class="t6-fill"></div></div>
+    </div>
+
+    <div class="task-container">
+        <h3>7. Bouncing Ball</h3>
+        <div style="height: 50px; display: flex; align-items: flex-end;">
+            <div class="t7-ball"></div>
+        </div>
+    </div>
+
+    <div class="task-container">
+        <h3>8. Rotating Loader</h3>
+        <div class="t8-loader"></div>
+    </div>
+
+    <div class="task-container">
+        <h3>9. Color Change Text</h3>
+        <div class="t9-text">Color Cycling Text</div>
+    </div>
+
+    <div class="task-container">
+        <h3>10. Pulse Button</h3>
+        <button class="t10-btn">Hover/Watch Me</button>
+    </div>
+
+    <div class="task-container">
+        <h3>11. Pause on Hover</h3>
+        <div class="pause-box">Hover to Pause</div>
+    </div>
+
+    <div class="task-container">
+        <h3>12. Change Speed via Click</h3>
+        <div id="speed-box" class="box speed-anim"></div>
+        <button onclick="changeSpeed()">Go Faster</button>
+    </div>
+
+    <div class="task-container">
+        <h3>13. Run Once on Load</h3>
+        <div class="once-box">I only run once</div>
+    </div>
+
+    <div class="task-container">
+        <h3>14. Alternate Direction</h3>
+        <div class="alt-box"></div>
+    </div>
+
+    <div class="task-container">
+        <h3>15. Delayed Start</h3>
+        <div class="delay-box">Starts after 2s</div>
+    </div>
+
+    <div class="task-container">
+        <h3>16. Class Toggle (JS)</h3>
+        <div id="class-box" class="box"></div>
+        <button onclick="toggleBoxClass()">Toggle Animation</button>
+    </div>
+
+    <div class="task-container">
+        <h3>17. Scale & Rotate Hover</h3>
+        <div class="sr-box">Hover Me</div>
+    </div>
+
+    <div class="task-container">
+        <h3>18. Text Typing Effect</h3>
+        <div class="typing-text">Hello World!</div>
+    </div>
+
+    <div class="task-container">
+        <h3>19. Gradient Background</h3>
+        <div class="grad-box"></div>
+    </div>
+
+    <div class="task-container">
+        <h3>20. Shake on Click</h3>
+        <div id="shake-box" class="box" style="background: #e11d48;"></div>
+        <button onclick="triggerShake()">Shake Me</button>
+    </div>
+
+    <div class="task-container">
+        <div class="task-title">21. Stop/Restart JS</div>
+        <div class="demo-box">
+            <div id="box-21" class="moving-box"></div>
+        </div>
+        <div class="controls">
+            <button onclick="toggleAnimation()">Pause/Play</button>
+            <button onclick="restartAnimation()">Restart</button>
+        </div>
+    </div>
+
+  <div class="task-container">
+    <div class="task-title">22. Progress Bar (0% to 100%)</div>
+    <div class="demo-box">
+        <div class="progress-track">
+            <div id="bar-22" class="progress-fill"></div>
+        </div>
+    </div>
+    <button onclick="resetProgressBar()">Restart Loading</button>
+</div>
+    <div class="task-container">
+        <div class="task-title">23. Multiple Delays</div>
+        <div class="demo-box" style="gap: 10px;">
+            <div class="delayed-dot" style="animation-delay: 0s"></div>
+            <div class="delayed-dot" style="animation-delay: 0.2s"></div>
+            <div class="delayed-dot" style="animation-delay: 0.4s"></div>
+        </div>
+    </div>
+
+    <div class="task-container">
+        <div class="task-title">24. animation-fill-mode</div>
+        <div class="demo-box">
+            <div class="fill-mode-box">I stay at the end</div>
+        </div>
+    </div>
+
+    <div class="task-container">
+        <div class="task-title">25. Opacity & Position</div>
+        <div class="demo-box">
+            <div class="fade-slide-box">Floating Up</div>
+        </div>
+    </div>
+
+    <script>
+        // Task 4 Logic
+        function triggerSpin() {
+            const box = document.getElementById('t4-box');
+            box.classList.remove('spin-anim'); // Reset
+            void box.offsetWidth; // Trigger Reflow
+            box.classList.add('spin-anim');
+        }
+        // 12. Change Animation Speed
+function changeSpeed() {
+    const box = document.getElementById('speed-box');
+    // Change duration from 2s to 0.4s
+    box.style.animationDuration = '0.4s';
+}
+
+// 16. Add/Remove Class
+function toggleBoxClass() {
+    const box = document.getElementById('class-box');
+    box.classList.toggle('active-pulse');
+}
+
+// 20. Shake Trigger
+function triggerShake() {
+    const box = document.getElementById('shake-box');
+    // Remove class if it exists to allow restart
+    box.classList.remove('shake-anim');
+    // Trigger reflow to restart animation
+    void box.offsetWidth; 
+    box.classList.add('shake-anim');
+}
+// 21. Stop and Restart Logic
+function toggleAnimation() {
+    const box = document.getElementById('box-21');
+    // Check current play state
+    const isPaused = window.getComputedStyle(box).animationPlayState === 'paused';
+    box.style.animationPlayState = isPaused ? 'running' : 'paused';
+}
+
+function restartAnimation() {
+    const box = document.getElementById('box-21');
+    // Removing and re-adding the animation triggers a restart
+    box.style.animation = 'none';
+    void box.offsetWidth; // Trigger reflow
+    box.style.animation = 'slideAcross 2s infinite alternate ease-in-out';
+}
+
+function resetProgressBar() {
+    const bar = document.getElementById('bar-22');
+    
+    // 1. Remove the animation
+    bar.style.animation = 'none';
+    
+    // 2. Trigger a "reflow" (this forces the browser to notice the animation was removed)
+    void bar.offsetWidth; 
+    
+    // 3. Re-apply the animation
+    bar.style.animation = 'fillProgress 4s ease-in-out forwards';
+}
+    </script>
+    
+</body>
+</html>
