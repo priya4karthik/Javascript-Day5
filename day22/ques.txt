@@ -1,0 +1,50 @@
+1.Display the number of characters typed in an input field in real time.
+2.Change the border color of an input field while the user is typing.
+3.Show a live preview of text entered in an input field.
+4.Display remaining characters allowed in a textarea while typing.
+5.Show an error message immediately when input is left empty.
+6.Enable a submit button only when all required fields are filled.
+7.Display the current mouse X and Y position on the page.
+8.Change the background color of a section while scrolling.
+9.Highlight an input field when it contains invalid data.
+10.Show password strength while the user types.
+11.Update a counter every second using JavaScript.
+12.Display the current time and update it live.
+13.Change text color in real time based on input length.
+14.Show a live word count for a textarea.
+15.Display a warning when Caps Lock is turned on while typing.
+16.Automatically convert text to uppercase while typing.
+17.Show or hide helper text based on input focus.
+18.Display selected range slider value in real time.
+19.Change button style while it is being pressed.
+20.Display a loading message while processing input.
+21.Show a success message immediately after valid input.
+22.Highlight matching text as the user types in a search box.
+23.Disable a button in real time when input exceeds limit.
+24.Change page title dynamically based on user input.
+25.Display a message when the user stops typing.
+26.Create a live form validation system without page reload.
+27.Show real-time preview of selected image before upload.
+28.Filter a list of items dynamically as the user types.
+29.Save input data automatically while the user is typing.
+30.Restore saved input values when the page reloads.
+31.Show online/offline status in real time.
+32.Update UI instantly when a checkbox is checked or unchecked.
+33.Show a confirmation message when all fields are valid.
+34.Track and display total time spent on the page.
+35.Show real-time typing speed (characters per second).
+36.Change layout styles dynamically based on window size.
+37.Display scroll percentage while scrolling the page.
+38.Highlight the active section while scrolling.
+39.Disable form fields in real time based on user selection.
+40.Show tooltip text when hovering over elements.
+41.Update multiple UI elements using a single event.
+42.Display a live countdown to a specific time.
+43.Show dynamic suggestions while typing (basic).
+44.Highlight invalid inputs instantly as the user types.
+45.Show real-time result of a calculation based on inputs.
+46.Lock submit button while processing and unlock after completion.
+47.Display last activity time of the user.
+48.Update UI when browser tab visibility changes.
+49.Show warning if the user tries to leave with unsaved data.
+50.Build a page where multiple UI elements react to one user action.

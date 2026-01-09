@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="dynamic-title">JS 50-in-1 Dashboard</title>
+    <style>
+        :root {
+            --primary: #4a90e2;
+            --error: #ff4d4d;
+            --success: #2ecc71;
+            --warning: #f1c40f;
+        }
+        body { font-family: system-ui, sans-serif; line-height: 1.6; margin: 0; padding: 20px; transition: background 0.3s; }
+        .container { max-width: 1000px; margin: auto; }
+        section { background: #f9f9f9; padding: 20px; margin-bottom: 20px; border-radius: 8px; border: 2px solid #eee; transition: all 0.3s; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        input, textarea { width: 100%; padding: 10px; margin: 10px 0; border: 2px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .error-border { border-color: var(--error) !important; }
+        .success-border { border-color: var(--success) !important; }
+        .hidden { display: none; }
+        #status-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: #333; color: white; padding: 10px; display: flex; justify-content: space-around; font-size: 0.8em; z-index: 1000; }
+        .strength-meter { height: 5px; background: #ddd; margin-top: -5px; margin-bottom: 10px; }
+        .strength-fill { height: 100%; width: 0%; transition: 0.3s; }
+        button:disabled { opacity: 0.5; cursor: not-allowed; }
+        .active-scroll { border-color: var(--primary); transform: scale(1.01); }
+        #image-preview { max-width: 100px; display: block; margin-top: 10px; }
+        .tooltip { position: relative; display: inline-block; cursor: help; color: var(--primary); text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<div id="status-bar">
+    <span>Mouse: <span id="mouse-pos">0, 0</span></span>
+    <span>Time: <span id="live-clock">00:00:00</span></span>
+    <span>Scroll: <span id="scroll-pct">0%</span></span>
+    <span>Status: <span id="online-status">Online</span></span>
+    <span>Active for: <span id="page-timer">0s</span></span>
+</div>
+
+<div class="container">
+    <h1>JavaScript 50-Task </h1>
+    
+    <div class="grid">
+        <section id="sec-input">
+            <h3>1. Live Text Feedback</h3>
+            <input type="text" id="main-input" placeholder="Type something...">
+            <p>Chars: <span id="char-count">0</span> | Speed: <span id="typing-speed">0</span> cps</p>
+            <p id="live-preview" style="font-weight: bold;">Preview will appear here...</p>
+            <p id="typing-status" style="font-style: italic; color: gray;"></p>
+        </section>
+
+        <section id="sec-textarea">
+            <h3>2. Content Analysis</h3>
+            <textarea id="main-textarea" maxlength="100" placeholder="Max 100 characters..."></textarea>
+            <p>Remaining: <span id="chars-left">100</span> | Words: <span id="word-count">0</span></p>
+        </section>
+
+        <section id="sec-form">
+            <h3>3. Smart Form</h3>
+            <form id="live-form">
+                <input type="email" id="email-field" placeholder="Email (Required)" required>
+                <span id="email-error" style="color:red; font-size:12px;" class="hidden">Email cannot be empty!</span>
+                
+                <input type="password" id="pw-field" placeholder="Password strength check">
+                <div class="strength-meter"><div id="strength-bar" class="strength-fill"></div></div>
+                
+                <p id="caps-warning" style="color:orange; font-size:12px;" class="hidden">⚠️ Caps Lock is ON</p>
+                
+                <label><input type="checkbox" id="terms-check"> I agree to terms</label>
+                
+                <button type="submit" id="submit-btn" disabled>Submit</button>
+                <p id="form-msg"></p>
+            </form>
+        </section>
+
+        <section id="sec-dynamic">
+            <h3>4. Dynamic Interaction</h3>
+            <input type="range" id="range-slider" min="0" max="100" value="50">
+            <p>Value: <span id="range-val">50</span></p>
+            
+            <input type="number" id="calc-a" placeholder="Num 1" style="width: 45%;"> + 
+            <input type="number" id="calc-b" placeholder="Num 2" style="width: 45%;">
+            <p>Result: <span id="calc-result">0</span></p>
+
+            <input type="text" id="list-filter" placeholder="Search list (Apple, Banana, Cherry)...">
+            <ul id="fruit-list">
+                <li>Apple</li><li>Banana</li><li>Cherry</li><li>Date</li>
+            </ul>
+
+            <input type="file" id="img-upload" accept="image/*">
+            <img id="image-preview" src="#" alt="Preview" class="hidden">
+            
+            <p>Hover <span class="tooltip" title="This is a real-time tooltip!">HERE</span> for tooltip.</p>
+        </section>
+    </div>
+
+    <section id="sec-timers">
+        <h3>5. Counters & State</h3>
+        <p>Counter: <span id="simple-counter">0</span></p>
+        <p>Countdown to New Year: <span id="countdown">Calculating...</span></p>
+        <p>Last Activity: <span id="last-activity">Just now</span></p>
+        <button id="save-btn">Manual Save to LocalStorage</button>
+        <p id="save-msg"></p>
+    </section>
+</div>
+
+<script>
+    // --- Global Variables & Selectors ---
+    const mainInput = document.getElementById('main-input');
+    const mainTextarea = document.getElementById('main-textarea');
+    const submitBtn = document.getElementById('submit-btn');
+    const storageKey = 'js_playground_data';
+    let typingTimer;
+
+    // --- 1-3, 13, 16, 24, 25, 35: Input Interaction ---
+    mainInput.addEventListener('input', (e) => {
+        let val = e.target.value;
+        // Task 16: Auto Uppercase
+        // mainInput.value = val.toUpperCase(); // Uncomment to force uppercase
+        
+        // Task 1: Char count
+        document.getElementById('char-count').textContent = val.length;
+        
+        // Task 2 & 13: Border & Text color
+        e.target.style.borderColor = val.length > 5 ? 'var(--primary)' : '#ccc';
+        e.target.style.color = val.length > 10 ? 'purple' : 'black';
+        
+        // Task 3: Live Preview
+        document.getElementById('live-preview').textContent = val || "Preview will appear here...";
+        
+        // Task 24: Dynamic Title
+        document.title = val ? `Typing: ${val.substring(0, 10)}...` : "JS 50-in-1 Dashboard";
+
+        // Task 25: Typing status
+        clearTimeout(typingTimer);
+        document.getElementById('typing-status').textContent = "Typing...";
+        typingTimer = setTimeout(() => {
+            document.getElementById('typing-status').textContent = "Stopped typing.";
+        }, 1000);
+
+        // Task 35: Speed (simplified)
+        document.getElementById('typing-speed').textContent = (val.length / (performance.now() / 1000)).toFixed(1);
+
+        // Task 29: Auto-save
+        localStorage.setItem('autosave_input', val);
+    });
+
+    // --- 4, 14, 23: Textarea Logic ---
+    mainTextarea.addEventListener('input', (e) => {
+        const len = e.target.value.length;
+        const words = e.target.value.trim().split(/\s+/).filter(x => x).length;
+        document.getElementById('chars-left').textContent = 100 - len;
+        document.getElementById('word-count').textContent = words;
+        
+        // Task 23: Disable button if limit exceeded
+        submitBtn.disabled = len > 100;
+    });
+
+    // --- 5, 6, 9, 10, 15, 21, 26, 44, 46: Form Logic ---
+    const emailField = document.getElementById('email-field');
+    const pwField = document.getElementById('pw-field');
+    const terms = document.getElementById('terms-check');
+
+    const validateForm = () => {
+        const isEmailValid = emailField.value.includes('@');
+        const isTermsChecked = terms.checked;
+        
+        // Task 6: Enable submit only when filled
+        submitBtn.disabled = !(isEmailValid && isTermsChecked);
+        
+        // Task 9/44: Highlight invalid
+        emailField.classList.toggle('error-border', !isEmailValid && emailField.value !== "");
+        emailField.classList.toggle('success-border', isEmailValid);
+    };
+
+    emailField.addEventListener('blur', () => {
+        // Task 5: Error if empty
+        document.getElementById('email-error').classList.toggle('hidden', emailField.value !== "");
+    });
+
+    emailField.addEventListener('input', validateForm);
+    terms.addEventListener('change', validateForm);
+
+    pwField.addEventListener('input', (e) => {
+        // Task 10: Password strength
+        const strength = Math.min(e.target.value.length * 10, 100);
+        const bar = document.getElementById('strength-bar');
+        bar.style.width = strength + '%';
+        bar.style.background = strength < 40 ? 'red' : strength < 70 ? 'orange' : 'green';
+    });
+
+    window.addEventListener('keydown', (e) => {
+        // Task 15: Caps Lock
+        const isCaps = e.getModifierState && e.getModifierState('CapsLock');
+        document.getElementById('caps-warning').classList.toggle('hidden', !isCaps);
+    });
+
+    document.getElementById('live-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        // Task 46/20: Lock and show loading
+        submitBtn.textContent = "Processing...";
+        submitBtn.disabled = true;
+        setTimeout(() => {
+            submitBtn.textContent = "Submit";
+            document.getElementById('form-msg').textContent = "Form submitted successfully! (Task 21)";
+            document.getElementById('form-msg').style.color = "green";
+        }, 1500);
+    });
+
+    // --- 7, 12, 34, 37, 38, 48: Global Tracking ---
+    window.addEventListener('mousemove', (e) => {
+        // Task 7: Mouse Position
+        document.getElementById('mouse-pos').textContent = `${e.clientX}, ${e.clientY}`;
+        document.getElementById('last-activity').textContent = new Date().toLocaleTimeString();
+    });
+
+    setInterval(() => {
+        // Task 12: Live Clock
+        document.getElementById('live-clock').textContent = new Date().toLocaleTimeString();
+        // Task 34: Time on page
+        document.getElementById('page-timer').textContent = Math.floor(performance.now() / 1000) + 's';
+    }, 1000);
+
+    window.addEventListener('scroll', () => {
+        // Task 37: Scroll Percentage
+        const pct = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
+        document.getElementById('scroll-pct').textContent = pct + '%';
+        
+        // Task 8: Change background color on scroll
+        document.body.style.backgroundColor = `rgba(74, 144, 226, ${pct / 200})`;
+
+        // Task 38: Highlight active section
+        document.querySelectorAll('section').forEach(sec => {
+            const top = window.scrollY;
+            const offset = sec.offsetTop - 100;
+            if (top >= offset && top < offset + sec.offsetHeight) {
+                sec.classList.add('active-scroll');
+            } else {
+                sec.classList.remove('active-scroll');
+            }
+        });
+    });
+
+    // --- 18, 27, 28, 45: Dynamic UI ---
+    document.getElementById('range-slider').addEventListener('input', (e) => {
+        document.getElementById('range-val').textContent = e.target.value;
+    });
+
+    const calcResult = () => {
+        const a = parseFloat(document.getElementById('calc-a').value) || 0;
+        const b = parseFloat(document.getElementById('calc-b').value) || 0;
+        document.getElementById('calc-result').textContent = a + b;
+    };
+    document.getElementById('calc-a').addEventListener('input', calcResult);
+    document.getElementById('calc-b').addEventListener('input', calcResult);
+
+    document.getElementById('list-filter').addEventListener('input', (e) => {
+        const term = e.target.value.toLowerCase();
+        document.querySelectorAll('#fruit-list li').forEach(li => {
+            const match = li.textContent.toLowerCase().includes(term);
+            li.style.display = match ? 'block' : 'none';
+            // Task 22: Highlight matching (basic)
+            li.style.color = match && term !== "" ? 'var(--primary)' : 'black';
+        });
+    });
+
+    document.getElementById('img-upload').addEventListener('change', function() {
+        // Task 27: Image preview
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const img = document.getElementById('image-preview');
+            img.src = e.target.result;
+            img.classList.remove('hidden');
+        };
+        reader.readAsDataURL(this.files[0]);
+    });
+
+    // --- 11, 31, 42, 49, 50: Lifecycle & Extra ---
+    let count = 0;
+    setInterval(() => { count++; document.getElementById('simple-counter').textContent = count; }, 1000);
+
+    window.addEventListener('online', () => document.getElementById('online-status').textContent = "Online");
+    window.addEventListener('offline', () => document.getElementById('online-status').textContent = "Offline");
+
+    window.onbeforeunload = function() {
+        // Task 49: Unsaved data warning
+        if (mainInput.value !== "") return "You have unsaved changes!";
+    };
+
+    // Task 30: Restore values
+    window.onload = () => {
+        const saved = localStorage.getItem('autosave_input');
+        if (saved) {
+            mainInput.value = saved;
+            document.getElementById('live-preview').textContent = saved;
+        }
+    };
+
+    // Task 42: Countdown
+    const nextYear = new Date().getFullYear() + 1;
+    setInterval(() => {
+        const diff = new Date(`Jan 1, ${nextYear}`) - new Date();
+        const h = Math.floor(diff / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        document.getElementById('countdown').textContent = `${h}h ${m}m ${s}s`;
+    }, 1000);
+
+</script>
+</body>
+</html>
