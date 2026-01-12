@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Dashboard Tasks 31-40</title>
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --success: #10b981;
+            --error: #ef4444;
+            --sidebar-width: 250px;
+        }
+
+        /* Task 39 & 40: Responsive Layout with Media Queries */
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            margin: 0;
+            display: flex;
+            background: #f9fafb;
+            min-height: 100vh;
+        }
+
+        #sidebar {
+            width: var(--sidebar-width);
+            background: #1e293b;
+            color: white;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+
+        #main-content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        /* Mobile View (Task 40) */
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            #sidebar { width: 100%; box-sizing: border-box; }
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        /* Task 35: Notification Area */
+        #notification-bar {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 5px;
+            color: white;
+            display: none;
+            z-index: 1000;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+
+        .hidden { display: none; }
+        
+        .status-badge {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .active { background: #d1fae5; color: #065f46; }
+        .pending { background: #fef3c7; color: #92400e; }
+    </style>
+</head>
+<body>
+
+    <div id="notification-bar"></div>
+
+    <aside id="sidebar">
+        <h2>AdminHub</h2>
+        <nav>
+            <p>Dashboard</p>
+            <p>Settings</p>
+        </nav>
+    </aside>
+
+    <main id="main-content">
+        <div class="card">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2>Task 31/32: Data Table</h2>
+                <span style="background: var(--primary); color: white; padding: 5px 15px; border-radius: 20px;">
+                    Total Records: <span id="record-count">0</span>
+                </span>
+            </div>
+
+            <div style="margin: 15px 0;">
+                <label>Filter Status: </label>
+                <select id="statusFilter" onchange="applyFilter()">
+                    <option value="all">All Items</option>
+                    <option value="active">Active Only</option>
+                    <option value="pending">Pending Only</option>
+                </select>
+            </div>
+
+            <table width="100%" id="dataTable" style="border-collapse: collapse;">
+                <thead style="background: #f3f4f6;">
+                    <tr>
+                        <th align="left" style="padding: 10px;">Name</th>
+                        <th align="left">Status</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>Task 33/34/37/38: Smart Form</h2>
+            <form id="smartForm">
+                <div style="margin-bottom: 15px;">
+                    <label>Project Name (Auto-saves):</label><br>
+                    <input type="text" id="projName" style="width: 100%; padding: 8px;" required>
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <label>Enable Notifications?</label>
+                    <input type="checkbox" id="toggleNotify" onchange="toggleConditionalField()">
+                </div>
+
+                <div id="conditionalSection" class="hidden" style="padding: 10px; background: #f0fdf4; border-radius: 4px; margin-bottom: 15px;">
+                    <label>Notification Email:</label><br>
+                    <input type="email" id="notifyEmail" style="width: 100%; padding: 8px;">
+                </div>
+
+                <button type="submit" id="submitBtn" class="btn">Create Project</button>
+                <p id="formWarning" style="color: var(--error); font-size: 12px; display: none;">Please fill in the project name.</p>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        // Data for Task 31/32
+        const dataItems = [
+            { name: "Project Alpha", status: "active" },
+            { name: "Beta System", status: "pending" },
+            { name: "Gamma Module", status: "active" },
+            { name: "Delta UI", status: "pending" }
+        ];
+
+        // --- Task 31 & 32: Filter and Count ---
+        function applyFilter() {
+            const filterVal = document.getElementById('statusFilter').value;
+            const tbody = document.getElementById('tableBody');
+            
+            const filtered = filterVal === 'all' 
+                ? dataItems 
+                : dataItems.filter(i => i.status === filterVal);
+
+            tbody.innerHTML = filtered.map(item => `
+                <tr style="border-bottom: 1px solid #eee;">
+                    <td style="padding: 10px;">${item.name}</td>
+                    <td><span class="status-badge ${item.status}">${item.status}</span></td>
+                </tr>
+            `).join('');
+
+            document.getElementById('record-count').innerText = filtered.length;
+        }
+
+        // --- Task 33 & 34: Auto-save and Restore ---
+        const projInput = document.getElementById('projName');
+        
+        // Restore on Load (Task 34)
+        window.onload = () => {
+            const savedName = localStorage.getItem('autosave_projName');
+            if (savedName) {
+                projInput.value = savedName;
+                showNotification("Draft restored from last session", "var(--primary)");
+            }
+            applyFilter();
+            validateForm();
+        };
+
+        // Save while typing (Task 33)
+        projInput.addEventListener('input', (e) => {
+            localStorage.setItem('autosave_projName', e.target.value);
+            validateForm();
+        });
+
+        // --- Task 37: Conditional Fields ---
+        function toggleConditionalField() {
+            const isChecked = document.getElementById('toggleNotify').checked;
+            document.getElementById('conditionalSection').classList.toggle('hidden', !isChecked);
+        }
+
+        // --- Task 38: Disable Actions ---
+        function validateForm() {
+            const btn = document.getElementById('submitBtn');
+            const warning = document.getElementById('formWarning');
+            if (projInput.value.trim() === "") {
+                btn.disabled = true;
+                btn.style.opacity = "0.5";
+                warning.style.display = "block";
+            } else {
+                btn.disabled = false;
+                btn.style.opacity = "1";
+                warning.style.display = "none";
+            }
+        }
+
+        // --- Task 36: Show Notifications ---
+        function showNotification(msg, color) {
+            const bar = document.getElementById('notification-bar');
+            bar.innerText = msg;
+            bar.style.backgroundColor = color;
+            bar.style.display = 'block';
+            setTimeout(() => { bar.style.display = 'none'; }, 3000);
+        }
+
+        document.getElementById('smartForm').onsubmit = (e) => {
+            e.preventDefault();
+            showNotification("Success! Project Created.", "var(--success)"); // Task 36
+            localStorage.removeItem('autosave_projName'); // Clear autosave after success
+            e.target.reset();
+            validateForm();
+            toggleConditionalField();
+        };
+    </script>
+</body>
+</html>

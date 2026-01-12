@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10-in-1 Form Tasks</title>
+    <style>
+        :root {
+            --primary: #4a90e2;
+            --success: #2ecc71;
+            --error: #e74c3c;
+            --bg: #f5f7fa;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--bg);
+            padding: 40px 20px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .task-box {
+            background: white;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            /* shadow: 0 4px 6px rgba(0,0,0,0.1); */
+            border: 1px solid #ddd;
+        }
+
+        h2 {
+            margin-top: 0;
+            color: var(--primary);
+            border-bottom: 2px solid var(--bg);
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        /* Task 8: Highlight required fields using CSS */
+        input:required {
+            border-left: 5px solid var(--error);
+        }
+
+        input:valid {
+            border-left: 5px solid var(--success);
+        }
+
+        button {
+            background: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .error-text {
+            color: var(--error);
+            font-size: 0.85em;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .summary-section, .preview-box {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px dashed #4a90e2;
+            margin-top: 15px;
+        }
+
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="task-box">
+        <h2>Task 1, 3, 4, 5, 6, 8, 10: Registration & Logic</h2>
+        <p><i>Features: Required Highlights (8), Submit Disable (3), Inline Errors (4), Password Check (10), Clear on Submit (5)</i></p>
+        
+        <form id="regForm">
+            <div class="form-group">
+                <label>Email Address (Required)</label>
+                <input type="email" id="regEmail" required placeholder="example@mail.com">
+                <span id="emailError" class="error-text">Please enter a valid email address.</span>
+            </div>
+
+            <div class="form-group">
+                <label>Password (Required)</label>
+                <input type="password" id="regPass" required placeholder="Min 6 characters">
+            </div>
+
+            <div class="form-group">
+                <label>Confirm Password (Required)</label>
+                <input type="password" id="confirmPass" required placeholder="Match password">
+                <span id="passMatchError" class="error-text">Passwords do not match!</span>
+            </div>
+
+            <button type="submit" id="regSubmit" disabled>Register</button>
+        </form>
+
+        <div id="regSummary" class="summary-section hidden">
+            <strong>Task 1 Summary:</strong> User <span id="summaryEmail"></span> registered successfully!
+        </div>
+        <p><strong>Task 6:</strong> Total Submissions: <span id="subCount">0</span></p>
+    </div>
+
+    <div class="task-box">
+        <h2>Task 2: Login Form</h2>
+        <form id="loginForm">
+            <input type="text" id="loginUser" placeholder="Enter 'Admin' to succeed" required>
+            <button type="submit" style="margin-top: 10px;">Login</button>
+        </form>
+        <div id="loginWelcome" class="summary-section hidden" style="color: var(--success); font-weight: bold;"></div>
+    </div>
+
+    <div class="task-box">
+        <h2>Task 9: Profile Form with Live Preview</h2>
+        <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="profileName" placeholder="Type your name...">
+        </div>
+        <div class="form-group">
+            <label>Bio</label>
+            <textarea id="profileBio" placeholder="Tell us about yourself..."></textarea>
+        </div>
+        
+        <div class="preview-box">
+            <strong>Live Preview:</strong>
+            <h3 id="prevName" style="margin: 5px 0;">---</h3>
+            <p id="prevBio" style="color: #666;">No bio entered yet.</p>
+        </div>
+    </div>
+
+    <div class="task-box">
+        <h2>Task 7: Contact Form (No Page Reload)</h2>
+        <form id="contactForm">
+            <textarea id="contactMsg" placeholder="Your message here..." required></textarea>
+            <button type="submit" style="margin-top: 10px; background: #333;">Send Message</button>
+        </form>
+        <p id="contactStatus" style="font-weight: bold;"></p>
+    </div>
+
+</div>
+
+<script>
+    // --- State Variables ---
+    let submissionCount = 0;
+
+    // --- Selectors ---
+    const regForm = document.getElementById('regForm');
+    const regEmail = document.getElementById('regEmail');
+    const regPass = document.getElementById('regPass');
+    const confirmPass = document.getElementById('confirmPass');
+    const regSubmit = document.getElementById('regSubmit');
+    const subDisplay = document.getElementById('subCount');
+
+    // --- Task 3, 4, 10: Validation Logic ---
+    function validateRegistration() {
+        const isEmailValid = regEmail.value.includes('@');
+        const isPassFilled = regPass.value.length >= 6;
+        const doPasswordsMatch = regPass.value === confirmPass.value;
+
+        // Task 4: Inline Error Visibility
+        document.getElementById('emailError').style.display = (regEmail.value && !isEmailValid) ? 'block' : 'none';
+        document.getElementById('passMatchError').style.display = (confirmPass.value && !doPasswordsMatch) ? 'block' : 'none';
+
+        // Task 3: Disable Button
+        regSubmit.disabled = !(isEmailValid && isPassFilled && doPasswordsMatch);
+    }
+
+    [regEmail, regPass, confirmPass].forEach(input => {
+        input.addEventListener('input', validateRegistration);
+    });
+
+    // --- Task 1, 5, 6: Registration Submit ---
+    regForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        submissionCount++;
+        
+        // Task 1: Show Summary
+        document.getElementById('regSummary').classList.remove('hidden');
+        document.getElementById('summaryEmail').innerText = regEmail.value;
+        
+        // Task 6: Update Count
+        subDisplay.innerText = submissionCount;
+
+        // Task 5: Clear fields
+        regForm.reset();
+        regSubmit.disabled = true;
+    });
+
+    // --- Task 2: Login Logic ---
+    document.getElementById('loginForm').onsubmit = (e) => {
+        e.preventDefault();
+        const user = document.getElementById('loginUser').value;
+        const welcome = document.getElementById('loginWelcome');
+        
+        if(user.toLowerCase() === 'admin') {
+            welcome.innerText = `Welcome back, Master Admin!`;
+            welcome.classList.remove('hidden');
+        } else {
+            alert("Validation failed. Try 'Admin'");
+        }
+    };
+
+    // --- Task 9: Live Preview Logic ---
+    document.getElementById('profileName').addEventListener('input', (e) => {
+        document.getElementById('prevName').innerText = e.target.value || "---";
+    });
+
+    document.getElementById('profileBio').addEventListener('input', (e) => {
+        document.getElementById('prevBio').innerText = e.target.value || "No bio entered yet.";
+    });
+
+    // --- Task 7: Contact Form Logic (No Reload) ---
+    document.getElementById('contactForm').onsubmit = (e) => {
+        e.preventDefault(); // Prevents refresh
+        const status = document.getElementById('contactStatus');
+        status.innerText = "Processing...";
+        status.style.color = "orange";
+
+        setTimeout(() => {
+            status.innerText = "Success! Message sent without refreshing.";
+            status.style.color = "green";
+            document.getElementById('contactForm').reset();
+        }, 1500);
+    };
+</script>
+
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Tasks 21-30</title>
+    <style>
+        body { font-family: sans-serif; background: #f0f2f5; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; display: grid; gap: 20px; }
+        .card { background: white; padding: 20px; border-radius: 8px;  border: 1px solid #ddd; }
+        
+        /* Multi-step Styling */
+        .step { display: none; }
+        .step.active { display: block; }
+        .step-header { display: flex; gap: 10px; margin-bottom: 20px; }
+        .step-pill { padding: 5px 15px; background: #ddd; border-radius: 20px; font-size: 12px; }
+        .step-pill.active { background: #3498db; color: white; }
+
+        /* Table Styling */
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { padding: 12px; border-bottom: 1px solid #eee; text-align: left; }
+        tr:hover { background: #f9f9f9; }
+
+        .btn { padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer; margin-right: 5px; }
+        .btn-blue { background: #3498db; color: white; }
+        .btn-red { background: #e74c3c; color: white; }
+        .btn-gray { background: #95a5a6; color: white; }
+        
+        #loading { display: none; color: #3498db; font-weight: bold; margin-top: 10px; }
+        .message-box { padding: 10px; margin-top: 10px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="card">
+        <h2>Dashboard Items</h2>
+        <input type="text" id="searchInput" placeholder="Search by name..." style="width: 100%; padding: 10px; margin-bottom: 10px;">
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="itemTableBody">
+                </tbody>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2 id="formTitle">Add New Item</h2>
+        
+        <div class="step-header">
+            <span class="step-pill active" id="pill1">1. Info</span>
+            <span class="step-pill" id="pill2">2. Category</span>
+        </div>
+
+        <form id="multiStepForm">
+            <div class="step active" id="step1">
+                <label>Item Name:</label>
+                <input type="text" id="itemName" placeholder="Enter name">
+                <p id="step1Error" style="color:red; font-size:12px; display:none;">Name is required!</p>
+                <div style="margin-top:15px;">
+                    <button type="button" class="btn btn-blue" onclick="goToStep(2)">Next</button>
+                    <button type="reset" class="btn btn-gray">Reset</button>
+                </div>
+            </div>
+
+            <div class="step" id="step2">
+                <label>Category:</label>
+                <select id="itemCategory">
+                    <option value="">--Select--</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Furniture">Furniture</option>
+                    <option value="Software">Software</option>
+                </select>
+                
+                <div id="categoryHint" class="message-box"></div>
+
+                <div style="margin-top:15px;">
+                    <button type="button" class="btn btn-gray" onclick="goToStep(1)">Back</button>
+                    <button type="submit" class="btn btn-blue">Save Item</button>
+                </div>
+            </div>
+
+            <div id="loading">Saving to dashboard...</div>
+        </form>
+    </div>
+
+</div>
+
+<script>
+    let items = [
+        { id: 1, name: "MacBook Pro", category: "Electronics" },
+        { id: 2, name: "Office Chair", category: "Furniture" }
+    ];
+    let editId = null;
+
+    // --- Task 26 & 27: Multi-step Navigation & Validation ---
+    function goToStep(step) {
+        if (step === 2) {
+            const name = document.getElementById('itemName').value;
+            if (!name) {
+                document.getElementById('step1Error').style.display = 'block';
+                return; // Prevent moving forward
+            }
+            document.getElementById('step1Error').style.display = 'none';
+        }
+
+        document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('.step-pill').forEach(p => p.classList.remove('active'));
+        
+        document.getElementById('step' + step).classList.add('active');
+        document.getElementById('pill' + step).classList.add('active');
+    }
+
+    // --- Task 21 & 25: Dropdown & Conditional Messages ---
+    document.getElementById('itemCategory').addEventListener('change', (e) => {
+        const hint = document.getElementById('categoryHint');
+        const val = e.target.value;
+        if (val === 'Electronics') {
+            hint.innerText = "Note: Electronics require 1-year warranty.";
+            hint.style.background = "#e3f2fd";
+        } else if (val === 'Software') {
+            hint.innerText = "Note: Software items are digital delivery.";
+            hint.style.background = "#f1f8e9";
+        } else {
+            hint.innerText = "";
+            hint.style.background = "transparent";
+        }
+    });
+
+    // --- Task 28 & 29: Create/Update Logic ---
+    document.getElementById('multiStepForm').onsubmit = function(e) {
+        e.preventDefault();
+        const name = document.getElementById('itemName').value;
+        const category = document.getElementById('itemCategory').value;
+
+        if (!category) return alert("Select a category");
+
+        // Task 23: Loading State
+        document.getElementById('loading').style.display = 'block';
+
+        setTimeout(() => {
+            if (editId) {
+                // Update existing (Task 29)
+                const index = items.findIndex(i => i.id === editId);
+                items[index] = { id: editId, name, category };
+                editId = null;
+                document.getElementById('formTitle').innerText = "Add New Item";
+            } else {
+                // Add new (Task 28)
+                items.push({ id: Date.now(), name, category });
+            }
+
+            document.getElementById('loading').style.display = 'none';
+            this.reset();
+            goToStep(1);
+            renderTable();
+        }, 800);
+    };
+
+    // --- Task 22: Search Filter ---
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+        const term = e.target.value.toLowerCase();
+        const filtered = items.filter(i => i.name.toLowerCase().includes(term));
+        renderTable(filtered);
+    });
+
+    // --- Task 30: Delete with Confirmation ---
+    function deleteItem(id) {
+        if (confirm("Are you sure you want to delete this item?")) {
+            items = items.filter(i => i.id !== id);
+            renderTable();
+        }
+    }
+
+    // --- Task 29: Prepare Edit ---
+    function editItem(id) {
+        const item = items.find(i => i.id === id);
+        document.getElementById('itemName').value = item.name;
+        document.getElementById('itemCategory').value = item.category;
+        editId = id;
+        document.getElementById('formTitle').innerText = "Edit Item: " + item.name;
+        goToStep(1);
+    }
+
+    function renderTable(data = items) {
+        const tbody = document.getElementById('itemTableBody');
+        tbody.innerHTML = data.map(item => `
+            <tr>
+                <td>${item.name}</td>
+                <td>${item.category}</td>
+                <td>
+                    <button class="btn btn-blue" onclick="editItem(${item.id})">Edit</button>
+                    <button class="btn btn-red" onclick="deleteItem(${item.id})">Delete</button>
+                </td>
+            </tr>
+        `).join('');
+    }
+
+    // Initial render
+    renderTable();
+</script>
+
+</body>
+</html>

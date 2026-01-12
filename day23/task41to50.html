@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Admin Dashboard (41-50)</title>
+    <style>
+        :root {
+            --sidebar-bg: #111827;
+            --active-blue: #3b82f6;
+            --danger: #ef4444;
+        }
+
+        body { font-family: 'Inter', sans-serif; margin: 0; display: flex; background: #f3f4f6; min-height: 100vh; }
+
+        /* Task 41: Sidebar with Active Highlighting */
+        aside { width: 260px; background: var(--sidebar-bg); color: white; padding: 20px; display: flex; flex-direction: column; }
+        .nav-item { padding: 12px; margin: 4px 0; cursor: pointer; border-radius: 6px; color: #9ca3af; text-decoration: none; display: block; }
+        .nav-item.active { background: #1f2937; color: white; border-left: 4px solid var(--active-blue); }
+        .nav-item:hover { background: #1f2937; }
+
+        main { flex-grow: 1; padding: 30px; }
+
+        /* Task 47: Summary Section */
+        .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .stat-card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+
+        .dashboard-content { display: grid; grid-template-columns: 1fr 2fr; gap: 25px; }
+        .panel { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+
+        input { width: 100%; padding: 10px; margin: 8px 0; border: 1px solid #d1d5db; border-radius: 6px; box-sizing: border-box; }
+        
+        button { padding: 10px 16px; border-radius: 6px; border: none; cursor: pointer; font-weight: 600; }
+        .btn-primary { background: var(--active-blue); color: white; }
+        .btn-outline { border: 1px solid #d1d5db; background: white; }
+        .btn-danger { background: var(--danger); color: white; margin-top: auto; }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { text-align: left; padding: 12px; border-bottom: 1px solid #e5e7eb; }
+
+        #history-log { font-size: 13px; color: #4b5563; max-height: 150px; overflow-y: auto; background: #f9fafb; padding: 10px; border-radius: 6px; }
+    </style>
+</head>
+<body>
+
+    <aside>
+        <h2 style="color:white; margin-bottom: 30px;">AdminPro</h2>
+        <nav>
+            <a href="#" class="nav-item active">Dashboard</a> <a href="#" class="nav-item">Users</a>
+            <a href="#" class="nav-item">Reports</a>
+        </nav>
+
+        <button class="btn-danger" onclick="logout()">Logout & Clear Data</button>
+    </aside>
+
+    <main>
+        <header style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+            <div>
+                <h1 style="margin:0;">Welcome, <span id="display-name">User</span></h1>
+                <small class="text-gray-500">Last login: <span id="last-login-time">N/A</span></small>
+            </div>
+            <div class="stat-card" style="padding: 10px 20px;">
+                Live Rate: $<span id="live-price">50.00</span>
+                <button onclick="updateWidget()" style="padding: 4px 8px; font-size: 12px; margin-left: 10px;">Update</button>
+            </div>
+        </header>
+
+        <div class="summary-grid">
+            <div class="stat-card">
+                <small>Total Entries</small>
+                <h2 id="total-entries">0</h2>
+            </div>
+            <div class="stat-card">
+                <small>Active Sessions</small>
+                <h2>1</h2>
+            </div>
+        </div>
+
+        <div class="dashboard-content">
+            <section class="panel">
+                <h3>Update Profile</h3>
+                <form id="profileForm">
+                    <label>Display Name</label>
+                    <input type="text" id="profile-name-input" placeholder="Enter name">
+                    
+                    <label>New Entry (Task 46 & 49)</label>
+                    <input type="text" id="entry-input" placeholder="Add unique item">
+                    
+                    <button type="submit" class="btn-primary" style="width:100%">Update Dashboard</button>
+                </form>
+
+                <button class="btn-outline" onclick="resetDashboard()" style="width:100%; margin-top: 10px;">Reset All Records</button>
+            </section>
+
+            <section class="panel">
+                <h3>Data Records</h3>
+                <table>
+                    <thead>
+                        <tr><th>ID</th><th>Entry Name</th></tr>
+                    </thead>
+                    <tbody id="entry-table-body"></tbody>
+                </table>
+
+                <h4 style="margin-top: 30px;">Activity History</h4>
+                <div id="history-log"></div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        // --- State Management ---
+        let entries = JSON.parse(localStorage.getItem('entries')) || [];
+        let history = JSON.parse(localStorage.getItem('history')) || [];
+        let profileName = localStorage.getItem('profileName') || "User";
+
+        // --- Task 43: Initialize Dashboard ---
+        window.onload = () => {
+            const lastLogin = localStorage.getItem('lastLogin');
+            document.getElementById('last-login-time').innerText = lastLogin ? lastLogin : "First Session";
+            document.getElementById('display-name').innerText = profileName;
+            document.getElementById('profile-name-input').value = profileName;
+            
+            updateUI();
+        };
+
+        // --- Task 44, 46, 49: Form Submission Logic ---
+        document.getElementById('profileForm').onsubmit = (e) => {
+            e.preventDefault();
+            const newName = document.getElementById('profile-name-input').value;
+            const newEntry = document.getElementById('entry-input').value.trim();
+
+            // Task 44: Update Profile UI
+            profileName = newName;
+            localStorage.setItem('profileName', profileName);
+            document.getElementById('display-name').innerText = profileName;
+
+            if (newEntry !== "") {
+                // Task 46: Prevent Duplicate Entries
+                if (entries.includes(newEntry)) {
+                    alert("This entry already exists!");
+                    return;
+                }
+
+                entries.push(newEntry);
+                localStorage.setItem('entries', JSON.stringify(entries));
+
+                // Task 49: Add to History
+                const log = `Added "${newEntry}" at ${new Date().toLocaleTimeString()}`;
+                history.unshift(log); // Add to start of array
+                localStorage.setItem('history', JSON.stringify(history));
+            }
+
+            document.getElementById('entry-input').value = "";
+            updateUI();
+        };
+
+        // --- Task 45: Widget Update ---
+        function updateWidget() {
+            const newPrice = (Math.random() * 100).toFixed(2);
+            document.getElementById('live-price').innerText = newPrice;
+        }
+
+        // --- Task 48: Reset with Confirmation ---
+        function resetDashboard() {
+            if (confirm("Are you sure you want to delete all entries and history? This cannot be undone.")) {
+                entries = [];
+                history = [];
+                localStorage.removeItem('entries');
+                localStorage.removeItem('history');
+                updateUI();
+            }
+        }
+
+        // --- Task 42: Logout and Clear ---
+        function logout() {
+            localStorage.setItem('lastLogin', new Date().toLocaleString());
+            alert("Logging out. Session data saved, entries cleared for demo.");
+            // Clearing only specific app data for demo purposes
+            location.reload();
+        }
+
+        // --- Helper: Update all UI elements ---
+        function updateUI() {
+            // Task 47 & 50: Update Table and Summary
+            const tableBody = document.getElementById('entry-table-body');
+            tableBody.innerHTML = entries.map((item, idx) => `<tr><td>#${idx + 1}</td><td>${item}</td></tr>`).join('');
+            
+            document.getElementById('total-entries').innerText = entries.length;
+
+            // Update History Log
+            const historyBox = document.getElementById('history-log');
+            historyBox.innerHTML = history.map(item => `<div>• ${item}</div>`).join('');
+        }
+    </script>
+</body>
+</html>
