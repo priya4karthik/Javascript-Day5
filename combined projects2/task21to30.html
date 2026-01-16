@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tasks 21–30</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  display:flex;
+  background:#f3f6ff;
+}
+#sidebar{
+  width:250px;
+  background:#1e3c72;
+  color:#fff;
+  padding:20px;
+}
+#sidebar h2{font-size:18px;margin-bottom:15px}
+#sidebar li{
+  list-style:none;
+  padding:10px;
+  margin-bottom:6px;
+  cursor:pointer;
+  border-radius:6px;
+}
+#sidebar li:hover,#sidebar li.active{
+  background:rgba(255,255,255,0.2);
+}
+#content{
+  flex:1;
+  padding:20px;
+}
+section{
+  display:none;
+  background:#fff;
+  padding:20px;
+  border-radius:10px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+section.active{display:block}
+button{
+  padding:8px 14px;
+  background:#1e3c72;
+  color:#fff;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+}
+input,textarea,select{
+  width:100%;
+  padding:8px;
+  margin:8px 0;
+}
+.card{
+  background:#eef;
+  padding:15px;
+  border-radius:8px;
+  margin:8px 0;
+}
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div id="sidebar">
+  <h2>Tasks 21–30</h2>
+  <ul>
+    <li onclick="show(21)" class="active">21. Data Dashboard</li>
+    <li onclick="show(22)">22. Confirmation Dialog</li>
+    <li onclick="show(23)">23. Image Preview</li>
+    <li onclick="show(24)">24. Submission Tracker</li>
+    <li onclick="show(25)">25. Session Timeout</li>
+    <li onclick="show(26)">26. Settings Manager</li>
+    <li onclick="show(27)">27. Dynamic Dropdown</li>
+    <li onclick="show(28)">28. Search Highlight</li>
+    <li onclick="show(29)">29. Progress Tracker</li>
+    <li onclick="show(30)">30. Validation Library</li>
+  </ul>
+</div>
+
+<!-- CONTENT -->
+<div id="content">
+
+<!-- 21 -->
+<section id="t21" class="active">
+<h3>21. Data Dashboard (Summary Cards)</h3>
+<div class="card">Users: <span id="u21">0</span></div>
+<div class="card">Orders: <span id="o21">0</span></div>
+<button onclick="add21()">Simulate Data</button>
+</section>
+
+<!-- 22 -->
+<section id="t22">
+<h3>22. Confirmation Dialog System</h3>
+<button onclick="confirm22()">Delete Item</button>
+<p id="r22"></p>
+</section>
+
+<!-- 23 -->
+<section id="t23">
+<h3>23. Image Upload & Preview</h3>
+<input type="file" onchange="preview23(this)">
+<img id="img23" width="200">
+</section>
+
+<!-- 24 -->
+<section id="t24">
+<h3>24. Form Submission Tracker</h3>
+<button onclick="submit24()">Submit Form</button>
+<p>Total Submissions: <span id="c24">0</span></p>
+</section>
+
+<!-- 25 -->
+<section id="t25">
+<h3>25. Session Timeout App</h3>
+<button onclick="start25()">Start Session</button>
+<p id="s25"></p>
+</section>
+
+<!-- 26 -->
+<section id="t26">
+<h3>26. Settings Management</h3>
+<select onchange="save26(this.value)">
+<option value="">Theme</option>
+<option value="light">Light</option>
+<option value="dark">Dark</option>
+</select>
+<p id="m26"></p>
+</section>
+
+<!-- 27 -->
+<section id="t27">
+<h3>27. Dynamic Dropdown</h3>
+<select onchange="load27(this.value)">
+<option value="">Select Country</option>
+<option value="india">India</option>
+<option value="usa">USA</option>
+</select>
+<select id="city27"></select>
+</section>
+
+<!-- 28 -->
+<section id="t28">
+<h3>28. Search & Highlight</h3>
+<input id="q28" placeholder="Search word">
+<p id="text28">JavaScript is powerful and JavaScript is fun</p>
+<button onclick="highlight28()">Highlight</button>
+</section>
+
+<!-- 29 -->
+<section id="t29">
+<h3>29. Progress Tracker</h3>
+<button onclick="inc29()">Complete Step</button>
+<div class="card">Progress: <span id="p29">0</span>%</div>
+</section>
+
+<!-- 30 -->
+<section id="t30">
+<h3>30. Client-Side Validation Library</h3>
+<input id="e30" placeholder="Email">
+<button onclick="validate30()">Validate</button>
+<p id="m30"></p>
+</section>
+
+</div>
+
+<script>
+// sidebar
+function show(n){
+  document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
+  document.querySelectorAll("#sidebar li").forEach(l=>l.classList.remove("active"));
+  document.getElementById("t"+n).classList.add("active");
+  event.target.classList.add("active");
+}
+
+// 21 Dashboard
+let users=0, orders=0;
+function add21(){
+  users+=2; orders++;
+  u21.textContent=users;
+  o21.textContent=orders;
+}
+
+// 22 Confirm
+function confirm22(){
+  if(confirm("Are you sure?"))
+    r22.textContent="Item Deleted";
+  else r22.textContent="Cancelled";
+}
+
+// 23 Image Preview
+function preview23(input){
+  const file=input.files[0];
+  img23.src=URL.createObjectURL(file);
+}
+
+// 24 Tracker
+let count24=localStorage.getItem("c24")||0;
+c24.textContent=count24;
+function submit24(){
+  count24++;
+  localStorage.setItem("c24",count24);
+  c24.textContent=count24;
+}
+
+// 25 Session Timeout
+let timer;
+function start25(){
+  s25.textContent="Session Active";
+  clearTimeout(timer);
+  timer=setTimeout(()=>{
+    s25.textContent="Session Expired";
+  },5000);
+}
+
+// 26 Settings
+function save26(v){
+  localStorage.setItem("theme26",v);
+  m26.textContent="Saved: "+v;
+}
+
+// 27 Dropdown
+const cities={
+  india:["Delhi","Mumbai"],
+  usa:["New York","Texas"]
+};
+function load27(c){
+  city27.innerHTML="";
+  cities[c]?.forEach(x=>city27.innerHTML+=`<option>${x}</option>`);
+}
+
+// 28 Highlight
+function highlight28(){
+  const q=q28.value;
+  text28.innerHTML=text28.textContent.replaceAll(
+    q, `<mark>${q}</mark>`
+  );
+}
+
+// 29 Progress
+let prog=0;
+function inc29(){
+  if(prog<100) prog+=20;
+  p29.textContent=prog;
+}
+
+// 30 Validation Lib
+function isEmail(val){
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+}
+function validate30(){
+  m30.textContent=isEmail(e30.value)?"Valid Email":"Invalid Email";
+}
+</script>
+
+</body>
+</html>

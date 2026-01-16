@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tasks 11–20 Sidebar</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  display:flex;
+  background:#f4f6ff;
+}
+
+/* SIDEBAR */
+#sidebar{
+  width:240px;
+  background:#1e3c72;
+  color:#fff;
+  padding:20px;
+}
+#sidebar h2{
+  font-size:18px;
+  margin-bottom:15px;
+}
+#sidebar li{
+  list-style:none;
+  padding:10px;
+  margin-bottom:6px;
+  cursor:pointer;
+  border-radius:6px;
+}
+#sidebar li:hover,
+#sidebar li.active{
+  background:rgba(255,255,255,0.2);
+}
+
+/* CONTENT */
+#content{
+  flex:1;
+  padding:20px;
+}
+section{
+  display:none;
+  background:#fff;
+  padding:20px;
+  border-radius:10px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+section.active{display:block}
+
+button{
+  padding:8px 14px;
+  background:#1e3c72;
+  color:#fff;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+}
+input,textarea,select{
+  width:100%;
+  padding:8px;
+  margin:8px 0;
+}
+ul{padding-left:0}
+li{list-style:none}
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div id="sidebar">
+  <h2>Tasks 11–20</h2>
+  <ul>
+    <li onclick="show(11)" class="active">11. Search</li>
+    <li onclick="show(12)">12. Password</li>
+    <li onclick="show(13)">13. Notification</li>
+    <li onclick="show(14)">14. Auto Save</li>
+    <li onclick="show(15)">15. Profile</li>
+    <li onclick="show(16)">16. Sort Table</li>
+    <li onclick="show(17)">17. Navbar</li>
+    <li onclick="show(18)">18. Role UI</li>
+    <li onclick="show(19)">19. Cart</li>
+    <li onclick="show(20)">20. Component</li>
+  </ul>
+</div>
+
+<!-- CONTENT -->
+<div id="content">
+
+<section id="t11" class="active">
+<h3>11. Search Suggestion</h3>
+<input id="s11">
+<ul id="l11"></ul>
+</section>
+
+<section id="t12">
+<h3>12. Password Strength</h3>
+<input type="password" id="p12">
+<p id="o12"></p>
+</section>
+
+<section id="t13">
+<h3>13. Notification</h3>
+<button onclick="note13()">Show</button>
+<p id="n13"></p>
+</section>
+
+<section id="t14">
+<h3>14. Auto Save</h3>
+<textarea id="a14"></textarea>
+<p id="s14"></p>
+</section>
+
+<section id="t15">
+<h3>15. Profile Preview</h3>
+<input id="n15" placeholder="Name">
+<input id="b15" placeholder="Bio">
+<p id="p15"></p>
+</section>
+
+<section id="t16">
+<h3>16. Sortable Table</h3>
+<button onclick="sort16()">Sort</button>
+<table border="1" width="100%"><tbody id="tb16"></tbody></table>
+</section>
+
+<section id="t17">
+<h3>17. Navbar</h3>
+<button onclick="nav17()">☰ Menu</button>
+<ul id="m17" style="display:none">
+<li>Home</li><li>About</li><li>Contact</li>
+</ul>
+</section>
+
+<section id="t18">
+<h3>18. Role Based UI</h3>
+<select onchange="role18(this.value)">
+<option value="">Select</option>
+<option value="admin">Admin</option>
+<option value="user">User</option>
+</select>
+<p id="r18"></p>
+</section>
+
+<section id="t19">
+<h3>19. Cart</h3>
+<button onclick="add19()">Add Item</button>
+<p>Items: <span id="c19">0</span></p>
+</section>
+
+<section id="t20">
+<h3>20. Reusable Component</h3>
+<div id="box20"></div>
+</section>
+
+</div>
+
+<script>
+// sidebar switch
+function show(n){
+  document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
+  document.querySelectorAll("#sidebar li").forEach(l=>l.classList.remove("active"));
+  document.getElementById("t"+n).classList.add("active");
+  event.target.classList.add("active");
+}
+
+// 11
+const w11=["Java","JavaScript","Python","HTML","CSS"];
+s11.onkeyup=()=>{
+  l11.innerHTML="";
+  w11.filter(w=>w.toLowerCase().includes(s11.value.toLowerCase()))
+     .forEach(w=>l11.innerHTML+=`<li>${w}</li>`);
+};
+
+// 12
+p12.onkeyup=()=>{
+  o12.textContent=p12.value.length<4?"Weak":
+                 p12.value.length<8?"Medium":"Strong";
+};
+
+// 13
+function note13(){
+  n13.textContent="Notification!";
+  setTimeout(()=>n13.textContent="",3000);
+}
+
+// 14
+a14.oninput=()=>{
+  localStorage.setItem("a14",a14.value);
+  s14.textContent=a14.value;
+};
+s14.textContent=localStorage.getItem("a14")||"";
+
+// 15
+[n15,b15].forEach(i=>i.oninput=()=>{
+  p15.innerHTML=`<b>${n15.value}</b><br>${b15.value}`;
+});
+
+// 16
+let d16=[{n:"Asha",a:28},{n:"Ravi",a:22},{n:"Neha",a:25}];
+function r16(){
+  tb16.innerHTML="";
+  d16.forEach(x=>tb16.innerHTML+=`<tr><td>${x.n}</td><td>${x.a}</td></tr>`);
+}
+function sort16(){d16.sort((a,b)=>a.a-b.a);r16()}
+r16();
+
+// 17
+function nav17(){
+  m17.style.display=m17.style.display==="none"?"block":"none";
+}
+
+// 18
+function role18(r){
+  r18.textContent=r==="admin"?"Admin Access":"User Access";
+}
+
+// 19
+let c=0;
+function add19(){c++;c19.textContent=c}
+
+// 20
+box20.innerHTML=`<div style="padding:10px;background:#eef">
+<h4>Reusable Card</h4><p>Created via JS</p></div>`;
+</script>
+
+</body>
+</html>

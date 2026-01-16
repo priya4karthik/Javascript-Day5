@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>50 JS Mini Projects</title>
+    <style>
+        /* Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        /* RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* BODY */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(120deg, #f6f9ff, #eef2ff);
+            color: #333;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* SIDEBAR */
+        #sidebar {
+            width: 270px;
+            background: linear-gradient(180deg, #6e9aea, #2a5298);
+            /* color: #fff; */
+            padding: 20px 15px;
+            overflow-y: auto;
+        }
+
+        #sidebar h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        #sidebar ul {
+            list-style: none;
+        }
+
+        #sidebar ul li {
+            padding: 12px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+        }
+
+        #sidebar ul li:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(5px);
+        }
+
+        /* CONTENT */
+        #content {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        /* TASK SECTION */
+        section {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        section.active {
+            display: block;
+        }
+
+        /* HEADINGS */
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #1e3c72;
+        }
+
+        /* CARD */
+        .task-box {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+            max-width: 850px;
+        }
+
+        /* FORM ELEMENTS */
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+            margin-bottom: 15px;
+            transition: 0.3s;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #2a5298;
+            box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.15);
+        }
+
+        /* BUTTONS */
+        button {
+            padding: 10px 18px;
+            border-radius: 10px;
+            border: none;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(42, 82, 152, 0.35);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        /* LISTS */
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li {
+            background: #f6f9ff;
+            padding: 12px 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* TABLE */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th {
+            background: #1e3c72;
+            color: #fff;
+            padding: 12px;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+        }
+
+        tr:hover {
+            background: #f1f5ff;
+        }
+
+        /* MODAL */
+        #modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: 1000;
+        }
+
+        #modal>div {
+            background: #fff;
+            padding: 25px;
+            border-radius: 14px;
+            max-width: 320px;
+            margin: 120px auto;
+            position: relative;
+            animation: scaleIn 0.3s ease;
+        }
+
+        #modal span {
+            position: absolute;
+            top: 12px;
+            right: 15px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* PAGINATION */
+        #paginationList div {
+            background: #f1f5ff;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.85);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* SCROLLBAR */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #2a5298;
+            border-radius: 10px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            #sidebar {
+                width: 220px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
+            #sidebar {
+                width: 100%;
+                height: auto;
+            }
+
+            #content {
+                padding: 20px;
+            }
+        }
+
+        /* FIX SIDEBAR LI OVERRIDE */
+        #sidebar li {
+            background: transparent;
+            color: #fff;
+            display: block;
+        }
+
+        #sidebar li.active {
+            background: rgba(255, 255, 255, 0.25);
+            font-weight: 600;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="sidebar">
+        <h2>JS Mini Projects</h2>
+        <ul>
+            <!-- Navigation for all 50 tasks -->
+            <li onclick="showTask(1)">1. Login System</li>
+            <li onclick="showTask(2)">2. CRUD App</li>
+            <li onclick="showTask(3)">3. Dynamic Table</li>
+            <li onclick="showTask(4)">4. Form Validation</li>
+            <li onclick="showTask(5)">5. To-Do App</li>
+            <li onclick="showTask(6)">6. Theme Switcher</li>
+            <li onclick="showTask(7)">7. Pagination App</li>
+            <li onclick="showTask(8)">8. Modal Management</li>
+            <li onclick="showTask(9)">9. Multi-Step Form</li>
+            <li onclick="showTask(10)">10. Dashboard Layout</li>
+           
+        </ul>
+    </div>
+
+    <div id="content">
+        <!-- Task 1: Login System -->
+        <section id="task1" class="active">
+            <h3>1. Login System with Validation & Session Handling</h3>
+            <div class="task-box">
+                <input type="text" id="loginUser" placeholder="Username">
+                <input type="password" id="loginPass" placeholder="Password">
+                <button onclick="login()">Login</button>
+                <button onclick="logout()">Logout</button>
+                <p id="loginMsg"></p>
+            </div>
+        </section>
+
+        <!-- Task 2: CRUD App -->
+        <section id="task2">
+            <h3>2. CRUD App to Manage Users</h3>
+            <div class="task-box">
+                <input type="text" id="userName" placeholder="Name">
+                <input type="number" id="userAge" placeholder="Age">
+                <button onclick="addUser()">Add User</button>
+                <ul id="userList"></ul>
+            </div>
+        </section>
+
+        <!-- Task 3: Dynamic Table -->
+        <section id="task3">
+            <h3>3. Dynamic Table App</h3>
+            <div class="task-box">
+                <input type="text" id="searchTable" placeholder="Search..." onkeyup="filterTable()">
+                <table border="1" id="dynamicTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Age</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Task 4: Form Validation -->
+        <section id="task4">
+            <h3>4. Form Validation App</h3>
+            <div class="task-box">
+                <input type="text" id="valName" placeholder="Name">
+                <input type="email" id="valEmail" placeholder="Email">
+                <button onclick="validateForm()">Submit</button>
+                <p id="valMsg"></p>
+            </div>
+        </section>
+
+        <!-- Task 5: To-Do App -->
+        <section id="task5">
+            <h3>5. To-Do App</h3>
+            <div class="task-box">
+                <input type="text" id="todoInput" placeholder="Enter Task">
+                <button onclick="addTodo()">Add Task</button>
+                <ul id="todoList"></ul>
+            </div>
+        </section>
+
+        <!-- Task 6: Theme Switcher -->
+        <section id="task6">
+            <h3>6. Theme Switcher</h3>
+            <div class="task-box">
+                <button onclick="toggleTheme()">Toggle Theme</button>
+            </div>
+        </section>
+
+        <!-- Task 7: Pagination App -->
+        <section id="task7">
+            <h3>7. Pagination App</h3>
+            <div class="task-box">
+                <div id="paginationList"></div>
+                <button onclick="prevPage()">Prev</button>
+                <button onclick="nextPage()">Next</button>
+            </div>
+        </section>
+
+        <!-- Task 8: Modal Management -->
+        <section id="task8">
+            <h3>8. Modal Management</h3>
+            <div class="task-box">
+                <button onclick="openModal('Hello!')">Open Modal</button>
+                <div id="modal"
+                    style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);">
+                    <div style="background:#fff;padding:20px;margin:100px auto;width:200px;position:relative;">
+                        <span onclick="closeModal()"
+                            style="position:absolute;top:5px;right:10px;cursor:pointer;">X</span>
+                        <p id="modalContent"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Task 9: Multi-Step Form -->
+        <section id="task9">
+            <h3>9. Multi-Step Form</h3>
+            <div class="task-box">
+                <div id="step1">
+                    <input type="text" id="step1Name" placeholder="Name">
+                    <button onclick="nextStep()">Next</button>
+                </div>
+                <div id="step2" style="display:none;">
+                    <input type="email" id="step2Email" placeholder="Email">
+                    <button onclick="prevStep()">Back</button>
+                    <button onclick="finishStep()">Finish</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Task 10: Dashboard Layout -->
+        <section id="task10">
+            <h3>10. Dashboard Layout</h3>
+            <div class="task-box">
+                <div style="display:flex;">
+                    <div style="width:150px;background:#eee;padding:10px;">
+                        <p>Sidebar</p>
+                        <ul>
+                            <li onclick="alert('Home')">Home</li>
+                            <li onclick="alert('Profile')">Profile</li>
+                        </ul>
+                    </div>
+                    <div style="flex:1;padding:10px;">Content Area</div>
+                </div>
+            </div>
+        </section>
+        
+    </div>
+
+    <script>
+        // Sidebar navigation
+        // function showTask(num){
+        //   document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+        //   const task = document.getElementById('task'+num);
+        //   if(task) task.classList.add('active');
+        // }
+
+       function showTask(num){
+  document.querySelectorAll("section").forEach(s=>{
+    s.classList.remove("active");
+  });
+
+  const target = document.getElementById("task"+num);
+  if(target){
+    target.classList.add("active");
+  }
+
+  // initialize autosave ONLY when task14 opens
+  if(num === 14){
+    initAutoSave();
+  }
+}
+
+        // ---------------- TASK 1: Login System ----------------
+        function login() {
+            const user = document.getElementById('loginUser').value;
+            const pass = document.getElementById('loginPass').value;
+            if (user === 'admin' && pass === '123') {
+                localStorage.setItem('session', 'true');
+                document.getElementById('loginMsg').innerText = 'Login Successful';
+            } else {
+                document.getElementById('loginMsg').innerText = 'Invalid Credentials';
+            }
+        }
+        function logout() {
+            localStorage.removeItem('session');
+            document.getElementById('loginMsg').innerText = 'Logged Out';
+        }
+
+        // ---------------- TASK 2: CRUD App ----------------
+        function addUser() {
+            const name = document.getElementById('userName').value;
+            const age = document.getElementById('userAge').value;
+            if (!name || !age) return;
+            let users = JSON.parse(localStorage.getItem('users') || '[]');
+            users.push({ name, age });
+            localStorage.setItem('users', JSON.stringify(users));
+            renderUsers();
+        }
+        function renderUsers() {
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            const ul = document.getElementById('userList');
+            ul.innerHTML = '';
+            users.forEach((u, i) => {
+                const li = document.createElement('li');
+                li.innerHTML = `${u.name} (${u.age}) <button onclick="deleteUser(${i})">Delete</button>`;
+                ul.appendChild(li);
+            });
+        }
+        function deleteUser(i) {
+            let users = JSON.parse(localStorage.getItem('users') || '[]');
+            users.splice(i, 1);
+            localStorage.setItem('users', JSON.stringify(users));
+            renderUsers();
+        }
+        renderUsers();
+
+        // ---------------- TASK 3: Dynamic Table ----------------
+        let tableData = [
+            { name: 'Alice', age: 25 },
+            { name: 'Bob', age: 30 },
+            { name: 'Charlie', age: 22 }
+        ];
+        function renderTable() {
+            const tbody = document.querySelector('#dynamicTable tbody');
+            tbody.innerHTML = '';
+            tableData.forEach(d => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td>${d.name}</td><td>${d.age}</td>`;
+                tbody.appendChild(tr);
+            });
+        }
+        function filterTable() {
+            const val = document.getElementById('searchTable').value.toLowerCase();
+            const tbody = document.querySelector('#dynamicTable tbody');
+            tbody.innerHTML = '';
+            tableData.filter(d => d.name.toLowerCase().includes(val)).forEach(d => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td>${d.name}</td><td>${d.age}</td>`;
+                tbody.appendChild(tr);
+            });
+        }
+        renderTable();
+
+        // ---------------- TASK 4: Form Validation ----------------
+        function validateForm() {
+            const name = document.getElementById('valName').value;
+            const email = document.getElementById('valEmail').value;
+            let msg = '';
+            if (!name) msg += 'Name required. ';
+            if (!email.includes('@')) msg += 'Invalid Email.';
+            document.getElementById('valMsg').innerText = msg || 'Form Valid';
+        }
+
+        // ---------------- TASK 5: To-Do ----------------
+        function renderTodo() {
+            const todos = JSON.parse(localStorage.getItem('todos') || '[]');
+            const ul = document.getElementById('todoList');
+            ul.innerHTML = '';
+            todos.forEach((t, i) => {
+                const li = document.createElement('li');
+                li.innerHTML = `${t} <button onclick="deleteTodo(${i})">Delete</button>`;
+                ul.appendChild(li);
+            });
+        }
+        function addTodo() {
+            const val = document.getElementById('todoInput').value;
+            if (!val) return;
+            let todos = JSON.parse(localStorage.getItem('todos') || '[]');
+            todos.push(val);
+            localStorage.setItem('todos', JSON.stringify(todos));
+            renderTodo();
+        }
+        function deleteTodo(i) {
+            let todos = JSON.parse(localStorage.getItem('todos') || '[]');
+            todos.splice(i, 1);
+            localStorage.setItem('todos', JSON.stringify(todos));
+            renderTodo();
+        }
+        renderTodo();
+
+        // ---------------- TASK 6: Theme Switcher ----------------
+        function toggleTheme() {
+            if (document.body.style.background === 'black') {
+                document.body.style.background = 'white';
+                document.body.style.color = 'black';
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.body.style.background = 'black';
+                document.body.style.color = 'white';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+        // Apply saved theme
+        if (localStorage.getItem('theme') === 'dark') {
+            toggleTheme();
+        }
+
+        // ---------------- TASK 7: Pagination ----------------
+        const items = Array.from({ length: 20 }, (_, i) => `Item ${i + 1}`);
+        let currentPage = 0, perPage = 5;
+        function renderPagination() {
+            const container = document.getElementById('paginationList');
+            container.innerHTML = '';
+            items.slice(currentPage * perPage, (currentPage + 1) * perPage).forEach(i => {
+                const div = document.createElement('div');
+                div.innerText = i;
+                container.appendChild(div);
+            });
+        }
+        function nextPage() { if ((currentPage + 1) * perPage < items.length) { currentPage++; renderPagination(); } }
+        function prevPage() { if (currentPage > 0) { currentPage--; renderPagination(); } }
+        renderPagination();
+
+        // ---------------- TASK 8: Modal ----------------
+        function openModal(msg) {
+            document.getElementById('modalContent').innerText = msg;
+            document.getElementById('modal').style.display = 'block';
+        }
+        function closeModal() { document.getElementById('modal').style.display = 'none'; }
+
+        // ---------------- TASK 9: Multi-Step Form ----------------
+        function nextStep() { document.getElementById('step1').style.display = 'none'; document.getElementById('step2').style.display = 'block'; }
+        function prevStep() { document.getElementById('step1').style.display = 'block'; document.getElementById('step2').style.display = 'none'; }
+        function finishStep() { alert('Form Submitted!'); prevStep(); }
+
+    </script>
+    
+
+</body>
+
+</html>

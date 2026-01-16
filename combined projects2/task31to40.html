@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tasks 31–40</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;display:flex;background:#f3f6ff}
+#sidebar{
+  width:250px;background:#1e3c72;color:#fff;padding:20px
+}
+#sidebar li{
+  list-style:none;padding:10px;margin-bottom:6px;
+  cursor:pointer;border-radius:6px
+}
+#sidebar li.active,#sidebar li:hover{
+  background:rgba(255,255,255,.2)
+}
+#content{flex:1;padding:20px}
+section{
+  display:none;background:#fff;padding:20px;
+  border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,.1)
+}
+section.active{display:block}
+button{
+  padding:8px 14px;background:#1e3c72;
+  color:#fff;border:none;border-radius:6px;cursor:pointer
+}
+input,textarea{width:100%;padding:8px;margin:8px 0}
+.card{background:#eef;padding:12px;border-radius:8px;margin:8px 0}
+.tab button{margin-right:6px}
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div id="sidebar">
+<h2>Tasks 31–40</h2>
+<ul>
+<li class="active" onclick="show(31)">31. Mini Admin Panel</li>
+<li onclick="show(32)">32. User Activity Log</li>
+<li onclick="show(33)">33. Offline Data</li>
+<li onclick="show(34)">34. Conditional Wizard</li>
+<li onclick="show(35)">35. Notification Center</li>
+<li onclick="show(36)">36. Grid Layout</li>
+<li onclick="show(37)">37. Feedback Analyzer</li>
+<li onclick="show(38)">38. State Manager</li>
+<li onclick="show(39)">39. Tab System</li>
+<li onclick="show(40)">40. Search Dashboard</li>
+</ul>
+</div>
+
+<!-- CONTENT -->
+<div id="content">
+
+<!-- 31 -->
+<section id="t31" class="active">
+<h3>31. Mini Admin Panel</h3>
+<button onclick="addUser31()">Add User</button>
+<div id="list31"></div>
+</section>
+
+<!-- 32 -->
+<section id="t32">
+<h3>32. User Activity Log</h3>
+<button onclick="log32('Login')">Login</button>
+<button onclick="log32('Logout')">Logout</button>
+<ul id="log32"></ul>
+</section>
+
+<!-- 33 -->
+<section id="t33">
+<h3>33. Offline Data Handling</h3>
+<textarea id="data33" placeholder="Type offline..."></textarea>
+<p>Saved locally</p>
+</section>
+
+<!-- 34 -->
+<section id="t34">
+<h3>34. Conditional Form Wizard</h3>
+<select id="type34">
+<option value="">Choose</option>
+<option value="student">Student</option>
+<option value="employee">Employee</option>
+</select>
+<input id="extra34" placeholder="Extra Info" style="display:none">
+</section>
+
+<!-- 35 -->
+<section id="t35">
+<h3>35. Notification Center</h3>
+<button onclick="add35()">Add Notification</button>
+<div id="box35"></div>
+</section>
+
+<!-- 36 -->
+<section id="t36">
+<h3>36. Responsive Grid Layout</h3>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px">
+<div class="card">A</div><div class="card">B</div><div class="card">C</div>
+</div>
+</section>
+
+<!-- 37 -->
+<section id="t37">
+<h3>37. Feedback Analyzer</h3>
+<textarea id="fb37"></textarea>
+<button onclick="analyze37()">Analyze</button>
+<p id="out37"></p>
+</section>
+
+<!-- 38 -->
+<section id="t38">
+<h3>38. State Management</h3>
+<button onclick="inc38()">+</button>
+<button onclick="dec38()">-</button>
+<p>State: <span id="s38">0</span></p>
+</section>
+
+<!-- 39 -->
+<section id="t39">
+<h3>39. Tab Management</h3>
+<div class="tab">
+<button onclick="tab39(1)">Tab 1</button>
+<button onclick="tab39(2)">Tab 2</button>
+</div>
+<p id="tab39">Tab 1 Content</p>
+</section>
+
+<!-- 40 -->
+<section id="t40">
+<h3>40. Search & Filter Dashboard</h3>
+<input id="q40" placeholder="Search">
+<ul id="list40"></ul>
+</section>
+
+</div>
+
+<script>
+// sidebar
+function show(n){
+  document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
+  document.querySelectorAll("#sidebar li").forEach(l=>l.classList.remove("active"));
+  document.getElementById("t"+n).classList.add("active");
+  event.target.classList.add("active");
+}
+
+/* 31 Admin */
+let users31=[];
+function addUser31(){
+  users31.push("User "+(users31.length+1));
+  list31.innerHTML=users31.map(u=>`<div class="card">${u}</div>`).join("");
+}
+
+/* 32 Logs */
+function log32(action){
+  log32List=JSON.parse(localStorage.getItem("log32")||"[]");
+  log32List.push(action+" @ "+new Date().toLocaleTimeString());
+  localStorage.setItem("log32",JSON.stringify(log32List));
+  render32();
+}
+function render32(){
+  log32.innerHTML=(JSON.parse(localStorage.getItem("log32")||"[]"))
+    .map(l=>`<li>${l}</li>`).join("");
+}
+render32();
+
+/* 33 Offline */
+data33.value=localStorage.getItem("data33")||"";
+data33.oninput=()=>localStorage.setItem("data33",data33.value);
+
+/* 34 Wizard */
+type34.onchange=()=>{
+  extra34.style.display=type34.value?"block":"none";
+};
+
+/* 35 Notification Center */
+let n35=[];
+function add35(){
+  n35.push("Alert "+(n35.length+1));
+  box35.innerHTML=n35.map(n=>`<div class="card">${n}</div>`).join("");
+}
+
+/* 37 Feedback */
+function analyze37(){
+  out37.textContent=fb37.value.length>20?"Positive":"Needs Improvement";
+}
+
+/* 38 State */
+let state=0;
+function inc38(){s38.textContent=++state}
+function dec38(){s38.textContent=--state}
+
+/* 39 Tabs */
+function tab39(n){
+  document.getElementById("tab39").textContent = "Tab " + n + " Content";
+}
+
+
+/* 40 Search */
+const data40=["Dashboard","Users","Reports","Settings"];
+q40.oninput=()=>{
+  list40.innerHTML=data40
+  .filter(i=>i.toLowerCase().includes(q40.value.toLowerCase()))
+  .map(i=>`<li>${i}</li>`).join("");
+};
+</script>
+
+</body>
+</html>

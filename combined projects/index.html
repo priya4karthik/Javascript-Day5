@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>50 Mini Apps Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: #f4f6f8;
+      font-family: Arial, sans-serif;
+    }
+
+    .sidebar {
+      height: 100vh;
+      overflow-y: auto;
+    }
+
+    .sidebar a {
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .app-section {
+      display: none;
+    }
+
+    .app-section.active {
+      display: block;
+    }
+
+    .app-box {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container-fluid">
+  <div class="row">
+
+    <!-- SIDEBAR -->
+    <div class="col-md-3 col-lg-2 bg-dark text-white sidebar p-3">
+      <h5 class="text-center mb-3">📘 50 Mini Apps</h5>
+
+      <ul class="nav flex-column">
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(1)">1. Student Registration</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(2)">2. Login & Logout</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(3)">3. To-Do Manager</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(4)">4. Notes App</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(5)">5. User Profile Manager</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(6)">6. Contact Manager</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(7)">7. Feedback App</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(8)">8. Expense Tracker</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(9)">9. Daily Task Planner</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(10)">10. Password Strength Checker</a></li>
+
+        <!-- Continue -->
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(11)">11. Form Validation App</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(12)">12. Search & Filter App</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(13)">13. Dashboard App</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(14)">14. Multi-Step Registration</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(15)">15. Theme Switcher</a></li>
+
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(16)">16. Login Attempts Tracker</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(17)">17. Feedback Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(18)">18. Admin Panel</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(19)">19. Form History</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(20)">20. Notification Center</a></li>
+
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(21)">21. Responsive Navbar</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(22)">22. User Activity Tracker</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(23)">23. Profile Completion</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(24)">24. Survey App</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(25)">25. Chat UI</a></li>
+
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(26)">26. User Settings</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(27)">27. Product Manager</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(28)">28. Registration Approval</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(29)">29. Form Draft Save</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(30)">30. Session Timeout</a></li>
+
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(31)">31. Mini CRM</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(32)">32. Support Ticket UI</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(33)">33. Attendance App</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(34)">34. Analytics Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(35)">35. Form Wizard</a></li>
+
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(36)">36. User Roles</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(37)">37. Polling App</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(38)">38. Image Upload Preview</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(39)">39. Notification Preferences</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(40)">40. Login History</a></li>
+
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(41)">41. E-Learning Listing</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(42)">42. Task Progress Monitor</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(43)">43. Validation Rules Manager</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(44)">44. Account Deactivation</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(45)">45. Project Tracker</a></li>
+
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(46)">46. System Settings</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(47)">47. Report Generator</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(48)">48. Booking Form</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(49)">49. Calculator Form</a></li>
+        <li class="nav-item"><a class="nav-link text-white" onclick="showApp(50)">50. Complete Admin Dashboard</a></li>
+      </ul>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="col-md-9 col-lg-10 p-4">
+      <div class="app-box">
+
+        <!-- DEFAULT -->
+       <div id="app1" class="app-section active">
+  <h3>1. Student Registration Mini-App</h3>
+
+  <!-- FORM -->
+  <form id="studentForm" class="row g-3 mt-2">
+    <div class="col-md-4">
+      <label class="form-label">Name</label>
+      <input type="text" id="studentName" class="form-control">
+      <small class="text-danger" id="nameError"></small>
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Email</label>
+      <input type="email" id="studentEmail" class="form-control">
+      <small class="text-danger" id="emailError"></small>
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Course</label>
+      <input type="text" id="studentCourse" class="form-control">
+      <small class="text-danger" id="courseError"></small>
+    </div>
+
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary mt-2">
+        Register Student
+      </button>
+    </div>
+  </form>
+
+  <!-- TABLE -->
+  <hr>
+  <h5>Registered Students</h5>
+
+  <table class="table table-bordered mt-2">
+    <thead class="table-dark">
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Course</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="studentTable"></tbody>
+  </table>
+</div>
+
+
+    <div id="app2" class="app-section">
+  <h3>2. Login & Logout Mini-App</h3>
+
+  <!-- LOGIN FORM -->
+  <form id="loginForm" class="col-md-6 mt-3">
+    <div class="mb-3">
+      <label class="form-label">Username</label>
+      <input type="text" id="loginUsername" class="form-control">
+      <small class="text-danger" id="loginUserError"></small>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Password</label>
+      <input type="password" id="loginPassword" class="form-control">
+      <small class="text-danger" id="loginPassError"></small>
+    </div>
+
+    <button type="submit" class="btn btn-success">Login</button>
+  </form>
+
+  <!-- LOGGED IN VIEW -->
+  <div id="loggedInBox" class="mt-4 d-none">
+    <h5 class="text-success">✅ You are logged in</h5>
+    <p>
+      Welcome, <strong id="loggedInUser"></strong>
+    </p>
+    <button class="btn btn-danger" onclick="logoutUser()">Logout</button>
+  </div>
+</div>
+<div id="app3" class="app-section">
+  <h3>3. To-Do Manager App</h3>
+
+  <!-- ADD TASK -->
+  <div class="row mt-3">
+    <div class="col-md-8">
+      <input type="text" id="todoInput" class="form-control" placeholder="Enter task">
+      <small class="text-danger" id="todoError"></small>
+    </div>
+    <div class="col-md-4">
+      <button class="btn btn-primary w-100" onclick="addTodo()">Add Task</button>
+    </div>
+  </div>
+
+  <!-- TASK LIST -->
+  <ul class="list-group mt-4" id="todoList"></ul>
+</div>
+
+       <div id="app4" class="app-section">
+  <h3>4. Notes App</h3>
+
+  <!-- ADD NOTE -->
+  <div class="row mt-3">
+    <div class="col-md-9">
+      <textarea id="noteText" class="form-control" rows="3" placeholder="Write your note..."></textarea>
+      <small class="text-danger" id="noteError"></small>
+    </div>
+    <div class="col-md-3">
+      <button class="btn btn-success w-100 h-100" onclick="addNote()">Save Note</button>
+    </div>
+  </div>
+
+  <!-- NOTES LIST -->
+  <div class="row mt-4" id="notesList"></div>
+</div>
+
+<div id="app5" class="app-section">
+  <h3>5. User Profile Manager</h3>
+
+  <!-- EDIT PROFILE -->
+  <form id="profileForm" class="row g-3 mt-3">
+    <div class="col-md-6">
+      <label class="form-label">Full Name</label>
+      <input type="text" id="profileName" class="form-control">
+      <small class="text-danger" id="profileNameError"></small>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Email</label>
+      <input type="email" id="profileEmail" class="form-control">
+      <small class="text-danger" id="profileEmailError"></small>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Phone</label>
+      <input type="text" id="profilePhone" class="form-control">
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Bio</label>
+      <textarea id="profileBio" class="form-control" rows="2"></textarea>
+    </div>
+
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Save Profile</button>
+    </div>
+  </form>
+
+  <!-- PROFILE PREVIEW -->
+  <div id="profilePreview" class="mt-4 d-none">
+    <h5>Profile Preview</h5>
+    <p><strong>Name:</strong> <span id="viewName"></span></p>
+    <p><strong>Email:</strong> <span id="viewEmail"></span></p>
+    <p><strong>Phone:</strong> <span id="viewPhone"></span></p>
+    <p><strong>Bio:</strong> <span id="viewBio"></span></p>
+
+    <button class="btn btn-warning" onclick="editProfile()">Edit Profile</button>
+  </div>
+</div>
+<div id="app6" class="app-section">
+  <h3>6. Contact Management App</h3>
+
+  <!-- ADD CONTACT -->
+  <form id="contactForm" class="row g-3 mt-3">
+    <div class="col-md-4">
+      <label class="form-label">Name</label>
+      <input type="text" id="contactName" class="form-control">
+      <small class="text-danger" id="contactNameError"></small>
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Phone</label>
+      <input type="text" id="contactPhone" class="form-control">
+      <small class="text-danger" id="contactPhoneError"></small>
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Email</label>
+      <input type="email" id="contactEmail" class="form-control">
+    </div>
+
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Add Contact</button>
+    </div>
+  </form>
+
+  <!-- CONTACT LIST -->
+  <hr>
+  <h5>Saved Contacts</h5>
+
+  <table class="table table-bordered mt-2">
+    <thead class="table-dark">
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="contactTable"></tbody>
+  </table>
+</div>
+<div id="app7" class="app-section">
+  <h3>7. Feedback Collection App</h3>
+
+  <!-- FEEDBACK FORM -->
+  <form id="feedbackForm" class="col-md-6 mt-3">
+    <div class="mb-3">
+      <label class="form-label">Rating</label>
+      <select id="feedbackRating" class="form-select">
+        <option value="">Select rating</option>
+        <option value="1">1 - Poor</option>
+        <option value="2">2 - Fair</option>
+        <option value="3">3 - Good</option>
+        <option value="4">4 - Very Good</option>
+        <option value="5">5 - Excellent</option>
+      </select>
+      <small class="text-danger" id="ratingError"></small>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Comments</label>
+      <textarea id="feedbackComment" class="form-control" rows="3"></textarea>
+      <small class="text-danger" id="commentError"></small>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit Feedback</button>
+  </form>
+
+  <!-- FEEDBACK LIST -->
+  <hr>
+  <h5>Submitted Feedback</h5>
+
+  <ul class="list-group" id="feedbackList"></ul>
+</div>
+<div id="app8" class="app-section">
+  <h3>8. Expense Tracker App</h3>
+
+  <!-- ADD TRANSACTION -->
+  <form id="expenseForm" class="row g-3 mt-3">
+    <div class="col-md-4">
+      <label class="form-label">Description</label>
+      <input type="text" id="expenseDesc" class="form-control">
+      <small class="text-danger" id="expenseDescError"></small>
+    </div>
+
+    <div class="col-md-3">
+      <label class="form-label">Amount</label>
+      <input type="number" id="expenseAmount" class="form-control">
+      <small class="text-danger" id="expenseAmountError"></small>
+    </div>
+
+    <div class="col-md-3">
+      <label class="form-label">Type</label>
+      <select id="expenseType" class="form-select">
+        <option value="">Select</option>
+        <option value="income">Income</option>
+        <option value="expense">Expense</option>
+      </select>
+      <small class="text-danger" id="expenseTypeError"></small>
+    </div>
+
+    <div class="col-md-2 d-flex align-items-end">
+      <button type="submit" class="btn btn-success w-100">Add</button>
+    </div>
+  </form>
+
+  <!-- SUMMARY -->
+  <div class="row text-center mt-4">
+    <div class="col-md-4">
+      <div class="alert alert-success">
+        <strong>Total Income</strong>
+        <h4 id="totalIncome">0</h4>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="alert alert-danger">
+        <strong>Total Expense</strong>
+        <h4 id="totalExpense">0</h4>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="alert alert-primary">
+        <strong>Balance</strong>
+        <h4 id="balance">0</h4>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRANSACTION LIST -->
+  <h5 class="mt-4">Transactions</h5>
+  <table class="table table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th>#</th>
+        <th>Description</th>
+        <th>Amount</th>
+        <th>Type</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="expenseTable"></tbody>
+  </table>
+</div>
+<div id="app9" class="app-section">
+  <h3>9. Daily Task Planner</h3>
+
+  <!-- ADD TASK -->
+  <form id="dailyTaskForm" class="row g-3 mt-3">
+    <div class="col-md-4">
+      <label class="form-label">Select Date</label>
+      <input type="date" id="taskDate" class="form-control">
+      <small class="text-danger" id="dateError"></small>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Task</label>
+      <input type="text" id="dailyTaskInput" class="form-control" placeholder="Enter task">
+      <small class="text-danger" id="dailyTaskError"></small>
+    </div>
+
+    <div class="col-md-2 d-flex align-items-end">
+      <button type="submit" class="btn btn-primary w-100">Add</button>
+    </div>
+  </form>
+
+  <!-- TASK LIST -->
+  <hr>
+  <h5>Tasks by Date</h5>
+  <ul class="list-group" id="dailyTaskList"></ul>
+</div>
+
+     <div id="app10" class="app-section">
+  <h3>10. Password Strength Checker</h3>
+
+  <div class="col-md-6 mt-3">
+    <label class="form-label">Enter Password</label>
+    <input type="password" id="passwordInput" class="form-control" placeholder="Enter password">
+    
+    <div class="mt-2">
+      <span id="strengthText" class="fw-bold"></span>
+    </div>
+
+    <div class="progress mt-2">
+      <div id="strengthBar" class="progress-bar" role="progressbar" style="width: 0%"></div>
+    </div>
+
+    <ul class="mt-3">
+      <li id="ruleLength">At least 8 characters</li>
+      <li id="ruleUpper">One uppercase letter</li>
+      <li id="ruleLower">One lowercase letter</li>
+      <li id="ruleNumber">One number</li>
+      <li id="ruleSpecial">One special character</li>
+    </ul>
+  </div>
+</div>
+
+
+
+
+<div id="app11" class="app-section">
+  <h3>11. Real-Time Form Validation</h3>
+
+  <form id="liveForm" class="col-md-6 mt-3">
+    <input type="text" id="name11" class="form-control mb-2" placeholder="Name">
+    <small id="name11Error" class="text-danger"></small>
+
+    <input type="email" id="email11" class="form-control mb-2" placeholder="Email">
+    <small id="email11Error" class="text-danger"></small>
+
+    <button class="btn btn-primary mt-2" id="submit11" disabled>Submit</button>
+  </form>
+</div>
+<div id="app12" class="app-section">
+  <h3>12. Search & Filter App</h3>
+
+  <input type="text" id="search12" class="form-control mb-3" placeholder="Search product">
+
+  <ul class="list-group" id="productList12"></ul>
+</div>
+<div id="app13" class="app-section">
+  <h3>13. Dashboard App</h3>
+
+  <div class="btn-group mb-3">
+    <button class="btn btn-outline-primary" onclick="showTab('home')">Home</button>
+    <button class="btn btn-outline-primary" onclick="showTab('users')">Users</button>
+    <button class="btn btn-outline-primary" onclick="showTab('settings')">Settings</button>
+  </div>
+
+  <div id="home" class="tab13">Welcome Home</div>
+  <div id="users" class="tab13 d-none">User List</div>
+  <div id="settings" class="tab13 d-none">Settings Panel</div>
+</div>
+<div id="app14" class="app-section">
+  <h3>14. Multi-Step Registration</h3>
+
+  <div id="step1">
+    <input class="form-control mb-2" placeholder="Name">
+    <button class="btn btn-primary" onclick="nextStep(2)">Next</button>
+  </div>
+
+  <div id="step2" class="d-none">
+    <input class="form-control mb-2" placeholder="Email">
+    <button class="btn btn-secondary" onclick="nextStep(1)">Back</button>
+    <button class="btn btn-success" onclick="nextStep(3)">Next</button>
+  </div>
+
+  <div id="step3" class="d-none">
+    <p>Registration Complete 🎉</p>
+  </div>
+</div>
+<div id="app15" class="app-section">
+  <h3>15. Theme Switcher</h3>
+  <button class="btn btn-dark" id="themeBtn">Toggle Theme</button>
+</div>
+<!-- ================= TASK 16: LOGIN ATTEMPTS TRACKER ================= -->
+<div id="app16" class="app-section">
+  <h3>16. Login Attempts Tracker</h3>
+
+  <form id="loginForm16" class="col-md-6 mt-3">
+    <input type="text" id="loginUser16" class="form-control mb-2" placeholder="Username">
+    <input type="password" id="loginPass16" class="form-control mb-2" placeholder="Password">
+    <button class="btn btn-primary w-100">Login</button>
+    <small class="text-danger" id="loginMsg16"></small>
+    <small class="text-muted d-block mt-1" id="attempts16"></small>
+  </form>
+</div>
+
+<!-- ================= TASK 17: USER FEEDBACK DASHBOARD ================= -->
+<div id="app17" class="app-section">
+  <h3>17. User Feedback Dashboard</h3>
+
+  <div class="row mt-3">
+    <div class="col-md-4">
+      <div class="alert alert-success">
+        <strong>Positive:</strong> <span id="positive17">0</span>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="alert alert-warning">
+        <strong>Neutral:</strong> <span id="neutral17">0</span>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="alert alert-danger">
+        <strong>Negative:</strong> <span id="negative17">0</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= TASK 18: BASIC ADMIN PANEL ================= -->
+<div id="app18" class="app-section">
+  <h3>18. Basic Admin Panel</h3>
+
+  <form id="adminForm18" class="row g-3 mt-3">
+    <div class="col-md-4">
+      <input type="text" id="adminName18" class="form-control" placeholder="Name">
+    </div>
+    <div class="col-md-4">
+      <input type="email" id="adminEmail18" class="form-control" placeholder="Email">
+    </div>
+    <div class="col-md-4">
+      <button class="btn btn-primary w-100">Add User</button>
+    </div>
+  </form>
+
+  <hr>
+  <table class="table table-bordered mt-2">
+    <thead class="table-dark">
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="adminTable18"></tbody>
+  </table>
+</div>
+
+<!-- ================= TASK 19: FORM SUBMISSION HISTORY ================= -->
+<div id="app19" class="app-section">
+  <h3>19. Form Submission History</h3>
+
+  <form id="historyForm19" class="col-md-6 mt-3">
+    <input type="text" id="historyName19" class="form-control mb-2" placeholder="Name">
+    <input type="email" id="historyEmail19" class="form-control mb-2" placeholder="Email">
+    <button class="btn btn-primary w-100">Submit</button>
+  </form>
+
+  <hr>
+  <ul class="list-group mt-2" id="historyList19"></ul>
+</div>
+
+<!-- ================= TASK 20: NOTIFICATION CENTER ================= -->
+<div id="app20" class="app-section">
+  <h3>20. Notification Center</h3>
+
+  <button class="btn btn-info mb-2" onclick="addNotification('New message received')">Add Notification</button>
+
+  <ul class="list-group" id="notificationList20"></ul>
+</div>
+<!-- ================= TASK 21: RESPONSIVE NAVIGATION MENU ================= -->
+<div id="app21" class="app-section">
+  <h3>21. Responsive Navigation Menu</h3>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Menu</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav21">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav21">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<!-- ================= TASK 22: USER ACTIVITY TRACKER ================= -->
+<div id="app22" class="app-section">
+  <h3>22. User Activity Tracker</h3>
+  <button class="btn btn-primary" id="clickBtn22">Click Me</button>
+  <p class="mt-2">Button clicked <span id="clickCount22">0</span> times</p>
+</div>
+
+<!-- ================= TASK 23: PROFILE COMPLETION STATUS ================= -->
+<div id="app23" class="app-section">
+  <h3>23. Profile Completion Status</h3>
+  <div class="progress">
+    <div id="profileBar23" class="progress-bar" role="progressbar" style="width: 0%">0%</div>
+  </div>
+  <button class="btn btn-success mt-2" id="increaseProfile23">Complete Step</button>
+</div>
+
+<!-- ================= TASK 24: SURVEY FORM WITH RESULT ================= -->
+<div id="app24" class="app-section">
+  <h3>24. Survey Form</h3>
+  <form id="surveyForm24">
+    <label>How do you like our product?</label><br>
+    <input type="radio" name="survey24" value="Good"> Good<br>
+    <input type="radio" name="survey24" value="Average"> Average<br>
+    <input type="radio" name="survey24" value="Poor"> Poor<br>
+    <button class="btn btn-primary mt-2">Submit</button>
+  </form>
+  <p class="mt-2">Result: <span id="surveyResult24"></span></p>
+</div>
+
+<!-- ================= TASK 25: SIMPLE CHAT UI ================= -->
+<div id="app25" class="app-section">
+  <h3>25. Simple Chat UI</h3>
+  <div class="border p-2" style="height:150px; overflow-y:auto;" id="chatBox25"></div>
+  <input type="text" id="chatInput25" class="form-control mt-2" placeholder="Type a message">
+  <button class="btn btn-primary mt-1" id="chatSend25">Send</button>
+</div>
+
+<!-- ================= TASK 26: USER SETTINGS WITH AUTO-SAVE ================= -->
+<div id="app26" class="app-section">
+  <h3>26. User Settings Auto-Save</h3>
+  <input type="text" id="settingName26" class="form-control mb-2" placeholder="Name">
+  <input type="email" id="settingEmail26" class="form-control mb-2" placeholder="Email">
+  <small id="saveMsg26" class="text-success"></small>
+</div>
+
+<!-- ================= TASK 27: PRODUCT MANAGEMENT WITH SEARCH ================= -->
+<div id="app27" class="app-section">
+  <h3>27. Product Management</h3>
+  <input type="text" id="productSearch27" class="form-control mb-2" placeholder="Search Product">
+  <ul class="list-group" id="productList27"></ul>
+</div>
+
+
+<!-- ================= TASK 28: REGISTRATION APPROVAL ================= -->
+<div id="app28" class="app-section">
+  <h3>28. Registration Approval</h3>
+  <ul class="list-group" id="regList28"></ul>
+</div>
+
+<!-- ================= TASK 29: FORM DRAFT SAVE ================= -->
+<div id="app29" class="app-section">
+  <h3>29. Form Draft Save</h3>
+  <input type="text" id="draftName29" class="form-control mb-2" placeholder="Name">
+  <input type="email" id="draftEmail29" class="form-control mb-2" placeholder="Email">
+</div>
+
+<!-- ================= TASK 30: SESSION TIMEOUT WARNING ================= -->
+<div id="app30" class="app-section">
+  <h3>30. Session Timeout Warning</h3>
+  <p id="sessionMsg30">Session active</p>
+</div>
+<!-- ================= TASK 31: MINI CRM ================= -->
+<div id="app31" class="app-section">
+  <h3>31. Mini CRM</h3>
+  <form id="crmForm31" class="row g-3 mt-2">
+    <div class="col-md-4"><input type="text" id="crmName31" class="form-control" placeholder="Customer Name"></div>
+    <div class="col-md-4"><input type="email" id="crmEmail31" class="form-control" placeholder="Customer Email"></div>
+    <div class="col-md-4"><button class="btn btn-primary w-100">Add Customer</button></div>
+  </form>
+  <hr>
+  <ul class="list-group" id="crmList31"></ul>
+</div>
+
+<!-- ================= TASK 32: SUPPORT TICKET SYSTEM UI ================= -->
+<div id="app32" class="app-section">
+  <h3>32. Support Ticket System</h3>
+  <input type="text" id="ticketInput32" class="form-control mb-2" placeholder="Ticket title">
+  <button class="btn btn-primary mb-2" id="ticketAdd32">Add Ticket</button>
+  <ul class="list-group" id="ticketList32"></ul>
+</div>
+
+<!-- ================= TASK 33: EMPLOYEE ATTENDANCE UI ================= -->
+<div id="app33" class="app-section">
+  <h3>33. Employee Attendance</h3>
+  <button class="btn btn-success mb-2" id="presentBtn33">Mark Present</button>
+  <button class="btn btn-danger mb-2" id="absentBtn33">Mark Absent</button>
+  <ul class="list-group" id="attendanceList33"></ul>
+</div>
+
+<!-- ================= TASK 34: DASHBOARD ANALYTICS ================= -->
+<div id="app34" class="app-section">
+  <h3>34. Dashboard Analytics (Static)</h3>
+  <div class="row mt-2">
+    <div class="col-md-4"><div class="alert alert-primary">Sales: 1000</div></div>
+    <div class="col-md-4"><div class="alert alert-success">Users: 500</div></div>
+    <div class="col-md-4"><div class="alert alert-warning">Visitors: 2000</div></div>
+  </div>
+</div>
+
+<!-- ================= TASK 35: FORM WIZARD ================= -->
+<div id="app35" class="app-section">
+  <h3>35. Form Wizard</h3>
+  <div id="wizardStep1">
+    <input type="text" id="wizardName35" class="form-control mb-2" placeholder="Name">
+    <button class="btn btn-primary" onclick="wizardNext35(2)">Next</button>
+  </div>
+  <div id="wizardStep2" class="d-none">
+    <input type="email" id="wizardEmail35" class="form-control mb-2" placeholder="Email">
+    <button class="btn btn-secondary" onclick="wizardNext35(1)">Back</button>
+    <button class="btn btn-success" onclick="wizardNext35(3)">Next</button>
+  </div>
+  <div id="wizardStep3" class="d-none"><p>Wizard Complete 🎉</p></div>
+</div>
+
+<!-- ================= TASK 36: USER ROLE MANAGEMENT ================= -->
+<div id="app36" class="app-section">
+  <h3>36. User Role Management</h3>
+  <ul class="list-group" id="roleList36"></ul>
+</div>
+
+<!-- ================= TASK 37: SIMPLE POLLING APP ================= -->
+<div id="app37" class="app-section">
+  <h3>37. Simple Polling</h3>
+  <button class="btn btn-success me-2" onclick="vote37('Yes')">Yes</button>
+  <button class="btn btn-danger" onclick="vote37('No')">No</button>
+  <p class="mt-2">Yes: <span id="yesCount37">0</span>, No: <span id="noCount37">0</span></p>
+</div>
+
+<!-- ================= TASK 38: PROFILE IMAGE UPLOAD & PREVIEW ================= -->
+<div id="app38" class="app-section">
+  <h3>38. Profile Image Upload & Preview</h3>
+  <input type="file" id="profileImg38" accept="image/*" class="form-control mb-2">
+  <img id="previewImg38" style="max-width:150px; display:block;">
+</div>
+
+<!-- ================= TASK 39: NOTIFICATION PREFERENCE ================= -->
+<div id="app39" class="app-section">
+  <h3>39. Notification Preference</h3>
+  <label><input type="checkbox" id="emailNotify39"> Email Notifications</label><br>
+  <label><input type="checkbox" id="smsNotify39"> SMS Notifications</label>
+</div>
+
+<!-- ================= TASK 40: USER LOGIN HISTORY ================= -->
+<div id="app40" class="app-section">
+  <h3>40. User Login History</h3>
+  <ul class="list-group" id="loginHistory40"></ul>
+</div>
+<!-- ================= TASK 41: SIMPLE E-LEARNING COURSE LIST ================= -->
+<div id="app41" class="app-section">
+  <h3>41. E-Learning Course Listing</h3>
+  <input type="text" id="courseSearch41" class="form-control mb-2" placeholder="Search courses">
+  <ul class="list-group" id="courseList41"></ul>
+</div>
+
+
+<!-- ================= TASK 42: TASK PROGRESS MONITORING ================= -->
+<div id="app42" class="app-section">
+  <h3>42. Task Progress Monitoring</h3>
+  <ul class="list-group" id="taskList42"></ul>
+</div>
+
+<!-- ================= TASK 43: FORM VALIDATION RULES MANAGER ================= -->
+<div id="app43" class="app-section">
+  <h3>43. Form Validation Rules Manager</h3>
+  <input type="text" id="ruleName43" class="form-control mb-2" placeholder="Rule Name">
+  <button class="btn btn-primary" id="addRule43">Add Rule</button>
+  <ul class="list-group mt-2" id="ruleList43"></ul>
+</div>
+
+<!-- ================= TASK 44: USER ACCOUNT DEACTIVATION ================= -->
+<div id="app44" class="app-section">
+  <h3>44. User Account Deactivation</h3>
+  <button class="btn btn-danger" id="deactivate44">Deactivate Account</button>
+  <p id="status44" class="mt-2">Status: Active</p>
+</div>
+
+<!-- ================= TASK 45: MINI PROJECT TRACKER ================= -->
+<div id="app45" class="app-section">
+  <h3>45. Mini Project Tracker</h3>
+  <input type="text" id="projName45" class="form-control mb-2" placeholder="Project Name">
+  <button class="btn btn-primary mb-2" id="addProj45">Add Project</button>
+  <ul class="list-group" id="projList45"></ul>
+</div>
+
+<!-- ================= TASK 46: SYSTEM SETTINGS DASHBOARD ================= -->
+<div id="app46" class="app-section">
+  <h3>46. System Settings Dashboard</h3>
+  <label><input type="checkbox" id="darkMode46"> Dark Mode</label>
+</div>
+
+<!-- ================= TASK 47: USER REPORT GENERATION ================= -->
+<div id="app47" class="app-section">
+  <h3>47. User Report Generation</h3>
+  <button class="btn btn-primary" id="genReport47">Generate Report</button>
+  <pre id="report47" class="mt-2 bg-light p-2"></pre>
+</div>
+
+<!-- ================= TASK 48: BASIC BOOKING FORM ================= -->
+<div id="app48" class="app-section">
+  <h3>48. Basic Booking Form</h3>
+  <input type="text" id="bookName48" class="form-control mb-2" placeholder="Name">
+  <input type="date" id="bookDate48" class="form-control mb-2">
+  <button class="btn btn-primary" id="bookBtn48">Book</button>
+  <ul class="list-group mt-2" id="bookList48"></ul>
+</div>
+
+<!-- ================= TASK 49: FORM-BASED CALCULATOR ================= -->
+<div id="app49" class="app-section">
+  <h3>49. Form-Based Calculator</h3>
+  <input type="number" id="num149" class="form-control mb-2" placeholder="Number 1">
+  <input type="number" id="num249" class="form-control mb-2" placeholder="Number 2">
+  <button class="btn btn-primary" id="calc49">Add</button>
+  <p class="mt-2">Result: <span id="result49">0</span></p>
+</div>
+
+<!-- ================= TASK 50: COMPLETE MINI ADMIN DASHBOARD ================= -->
+<div id="app50" class="app-section">
+  <h3>50. Mini Admin Dashboard</h3>
+  <form id="adminForm50" class="row g-3">
+    <div class="col-md-4"><input type="text" id="adminName50" class="form-control" placeholder="Name"></div>
+    <div class="col-md-4"><input type="email" id="adminEmail50" class="form-control" placeholder="Email"></div>
+    <div class="col-md-4"><button class="btn btn-primary w-100">Add</button></div>
+  </form>
+  <table class="table table-bordered mt-2">
+    <thead class="table-dark">
+      <tr><th>#</th><th>Name</th><th>Email</th><th>Action</th></tr>
+    </thead>
+    <tbody id="adminTable50"></tbody>
+  </table>
+</div>
+
+   <!-- You will build logic inside each section -->
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function showApp(num) {
+    document.querySelectorAll('.app-section').forEach(section => {
+      section.classList.remove('active');
+    });
+    document.getElementById('app' + num).classList.add('active');
+  }
+</script>
+<script src="script.js"></script>
+</body>
+</html>

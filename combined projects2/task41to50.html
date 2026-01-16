@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tasks 41–50</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{display:flex;font-family:Arial,sans-serif;background:#f3f6ff}
+#sidebar{width:250px;background:#1e3c72;color:#fff;padding:20px}
+#sidebar li{list-style:none;padding:10px;margin-bottom:6px;cursor:pointer;border-radius:6px}
+#sidebar li:hover,#sidebar li.active{background:rgba(255,255,255,.2)}
+#content{flex:1;padding:20px}
+section{display:none;background:#fff;padding:20px;border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,.1)}
+section.active{display:block}
+button{padding:8px 14px;background:#1e3c72;color:#fff;border:none;border-radius:6px;cursor:pointer;margin-top:6px}
+input,textarea,select{width:100%;padding:8px;margin:8px 0}
+.card{background:#eef;padding:12px;border-radius:8px;margin:8px 0}
+.progress-bar{background:#1e3c72;height:20px;border-radius:8px;color:#fff;text-align:center;}
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div id="sidebar">
+<h2>Tasks 41–50</h2>
+<ul>
+<li class="active" onclick="show(41)">41. Form Rules Engine</li>
+<li onclick="show(42)">42. Login Attempt Limit</li>
+<li onclick="show(43)">43. Dynamic Content Loader</li>
+<li onclick="show(44)">44. Simple Reporting Dashboard</li>
+<li onclick="show(45)">45. Keyboard Accessibility</li>
+<li onclick="show(46)">46. UI Error Handling</li>
+<li onclick="show(47)">47. Dashboard Theme Customizer</li>
+<li onclick="show(48)">48. User Onboarding Flow</li>
+<li onclick="show(49)">49. Client-Side Routing</li>
+<li onclick="show(50)">50. Complete Interview-Ready Mini App</li>
+</ul>
+</div>
+
+<div id="content">
+
+<!-- 41 -->
+<section id="t41" class="active">
+<h3>41. Form Rules Engine</h3>
+<input id="age41" placeholder="Enter Age">
+<p id="msg41"></p>
+<button onclick="validate41()">Check Rules</button>
+</section>
+
+<!-- 42 -->
+<section id="t42">
+<h3>42. Login Attempt Limit</h3>
+<input id="user42" placeholder="Username">
+<input type="password" id="pass42" placeholder="Password">
+<p id="msg42"></p>
+<button onclick="login42()">Login</button>
+</section>
+
+<!-- 43 -->
+<section id="t43">
+<h3>43. Dynamic Content Loader</h3>
+<button onclick="load43()">Load Data</button>
+<div id="box43"></div>
+</section>
+
+<!-- 44 -->
+<section id="t44">
+<h3>44. Simple Reporting Dashboard</h3>
+<div class="card">Revenue: <span id="rev44">0</span></div>
+<button onclick="add44()">Simulate Revenue</button>
+</section>
+
+<!-- 45 -->
+<section id="t45">
+<h3>45. Keyboard Accessibility</h3>
+<input id="inp45" placeholder="Type & press Enter">
+<p id="out45"></p>
+</section>
+
+<!-- 46 -->
+<section id="t46">
+<h3>46. UI Error Handling</h3>
+<button onclick="throwError46()">Trigger Error</button>
+<p id="msg46"></p>
+</section>
+
+<!-- 47 -->
+<section id="t47">
+<h3>47. Dashboard Theme Customizer</h3>
+<select id="theme47" onchange="changeTheme47(this.value)">
+<option value="">Select Theme</option>
+<option value="light">Light</option>
+<option value="dark">Dark</option>
+</select>
+</section>
+
+<!-- 48 -->
+<section id="t48">
+<h3>48. User Onboarding Flow</h3>
+<div id="flow48">
+<p>Step 1: Welcome</p>
+<button onclick="next48()">Next</button>
+</div>
+</section>
+
+<!-- 49 -->
+<section id="t49">
+<h3>49. Client-Side Routing</h3>
+<button onclick="route49('home')">Home</button>
+<button onclick="route49('profile')">Profile</button>
+<div id="content49">Home Page</div>
+</section>
+
+<!-- 50 -->
+<section id="t50">
+<h3>50. Complete Interview-Ready Mini App</h3>
+<button onclick="simulate50()">Run App</button>
+<div id="box50"></div>
+</section>
+
+</div>
+
+<script>
+// Sidebar navigation
+function show(n){
+  document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
+  document.querySelectorAll("#sidebar li").forEach(l=>l.classList.remove("active"));
+  document.getElementById("t"+n).classList.add("active");
+  event.target.classList.add("active");
+}
+
+// 41 Form Rules Engine
+function validate41(){
+  const age=+document.getElementById("age41").value;
+  if(age>=18 && age<=60) msg41.textContent="Valid age";
+  else msg41.textContent="Age not allowed";
+}
+
+// 42 Login Attempt Limit
+let attempts42=0;
+function login42(){
+  const u=user42.value, p=pass42.value;
+  if(u==="admin" && p==="123") msg42.textContent="Login Success";
+  else{
+    attempts42++;
+    msg42.textContent="Invalid! Attempts: "+attempts42;
+    if(attempts42>=3) msg42.textContent="Too many attempts! Try later.";
+  }
+}
+
+// 43 Dynamic Content Loader
+function load43(){
+  box43.innerHTML="<p>Loading...</p>";
+  setTimeout(()=>box43.innerHTML="<p>Data Loaded Successfully!</p>",1000);
+}
+
+// 44 Simple Dashboard
+let rev44=0;
+function add44(){ rev44+=100; rev44=document.getElementById("rev44").textContent=rev44; }
+
+// 45 Keyboard Accessibility
+inp45.addEventListener("keypress",e=>{
+  if(e.key==="Enter") out45.textContent="You typed: "+inp45.value;
+});
+
+// 46 UI Error Handling
+function throwError46(){
+  try{throw new Error("Demo Error")}catch(e){msg46.textContent=e.message}
+}
+
+// 47 Theme Customizer
+function changeTheme47(v){
+  document.body.style.background=v==="dark"?"#222":"#f3f6ff";
+  document.body.style.color=v==="dark"?"#fff":"#000";
+}
+
+// 48 Onboarding Flow
+let step48=1;
+function next48(){
+  step48++;
+  if(step48===2) flow48.innerHTML='<p>Step 2: Profile Setup</p><button onclick="next48()">Next</button>';
+  else if(step48===3) flow48.innerHTML='<p>Step 3: Finish!</p>';
+}
+
+// 49 Client-Side Routing
+function route49(page){
+  content49.textContent=page==="home"?"Home Page":"Profile Page";
+}
+
+// 50 Complete Mini App
+function simulate50(){
+  box50.innerHTML="";
+  box50.innerHTML+='<div class="card">Form Loaded</div>';
+  box50.innerHTML+='<div class="card">Dashboard Rendered</div>';
+  box50.innerHTML+='<div class="card">Validation & Storage Done</div>';
+}
+</script>
+
+</body>
+</html>
